@@ -1,0 +1,23 @@
+{
+  "name": "unofficial-umdearborn-catalog-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/.bin/webpack",
+    "watch": "./node_modules/.bin/webpack --watch",
+    "nodemon": "./node_modules/.bin/nodemon ./dist/catalog-api.js",
+    "start": "npm run watch & npm run nodemon"
+  },
+  "author": "rico kahler",
+  "license": "MIT",
+  "devDependencies": {
+    "awesome-typescript-loader": "^3.2.3",
+    "nodemon": "^1.12.1",
+    "typescript": "^2.5.3",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1",
+    "webpack-node-externals": "^1.6.0"
+  }
+}
