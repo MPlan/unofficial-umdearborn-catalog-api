@@ -1,0 +1,3077 @@
+[
+  {
+    "title": "Computer Literacy/Info Mgmt",
+    "subject": "CIS",
+    "number": "112",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "INST-Environ Studies-Area C",
+      "Coll of Engineering & Comp Sci",
+      "Lower Division"
+    ]
+  },
+  {
+    "title": "Survey of Computer Science",
+    "subject": "CIS",
+    "number": "125",
+    "creditHours": 3,
+    "otherHours": {
+      "Other": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Recitation"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Lower Division"
+    ]
+  },
+  {
+    "title": "Computer Science I",
+    "subject": "CIS",
+    "number": "150",
+    "creditHours": 4,
+    "otherHours": {
+      "Topics include principles of program design, coding, debugging, testing, and documentation.  Students are introduced to the Unified Modeling Language for requirements analysis using use-cases and activity diagrams, an object oriented programming language, and the fundamentals of computer hardware, system software, and components.  The course will consist of three lecture": null,
+      "Lecture": 3,
+      "Lab": 2
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Economics Cognate",
+      "Comp Skills/Rsrch Methods-INST",
+      "INST-Environ Studies-Area C",
+      "Coll of Engineering & Comp Sci",
+      "Lower Division"
+    ]
+  },
+  {
+    "title": "CS I for Data Scientists",
+    "subject": "CIS",
+    "number": "1501",
+    "creditHours": 4,
+    "otherHours": {
+      "Topics include principles of program design, coding, debugging, testing, and documentation. Students are introduced to the Unified Modeling Language for requirements analysis using use-cases and activity diagrams, an object-oriented programming language for data science applications, and the fundamentals of computer hardware, system software, and components. The course will consist of three lecture": null,
+      "Lecture": 3,
+      "Lab": 2
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Laboratory",
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Computer Science I Lab",
+    "subject": "CIS",
+    "number": "150L",
+    "creditHours": 0,
+    "otherHours": {
+      "Lab": 2
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Laboratory"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Lower Division"
+    ]
+  },
+  {
+    "title": "Proxy Server",
+    "subject": "CIS",
+    "number": "167",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Professional Development"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Microsoft Systems Engineering"
+    ]
+  },
+  {
+    "title": "Computer Science II",
+    "subject": "CIS",
+    "number": "200",
+    "creditHours": 4,
+    "otherHours": {
+      "Topics covered include pointers, templates, and inheritance.  The principles of UML modeling are continued.  This course will consist of three lecture": null,
+      "Lecture": 3,
+      "Lab": 2
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Laboratory",
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Math Cognate",
+      "Economics Cognate",
+      "Coll of Engineering & Comp Sci",
+      "Lower Division"
+    ]
+  },
+  {
+    "title": "CS II for Data Scientists",
+    "subject": "CIS",
+    "number": "2001",
+    "creditHours": 4,
+    "otherHours": {
+      "Topics covered include pointers, templates, and inheritance. The principles of UML modeling are continued. This course will consist of three lecture": null,
+      "Lecture": 3,
+      "Lab": 2
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Laboratory",
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Lower Division"
+    ]
+  },
+  {
+    "title": "Computer Science II Lab",
+    "subject": "CIS",
+    "number": "200L",
+    "creditHours": 0,
+    "otherHours": {
+      "Lab": 2
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Laboratory"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Lower Division"
+    ]
+  },
+  {
+    "title": "Comp Programming for Engineers",
+    "subject": "CIS",
+    "number": "205",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Lower Division"
+    ]
+  },
+  {
+    "title": "Discrete Structures I",
+    "subject": "CIS",
+    "number": "275",
+    "creditHours": 4,
+    "otherHours": {
+      "Lecture": 4
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Lower Division"
+    ]
+  },
+  {
+    "title": "Prac Aspects of Computer Sec",
+    "subject": "CIS",
+    "number": "280",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Lower Division"
+    ]
+  },
+  {
+    "title": "Software Engineering Tools",
+    "subject": "CIS",
+    "number": "285",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 2,
+      "Lab": 2
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Laboratory",
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Info Systems Elective Course",
+      "Lower Division"
+    ]
+  },
+  {
+    "title": "Topic in Programming Languages",
+    "subject": "CIS",
+    "number": "290",
+    "creditHours": 2,
+    "otherHours": {
+      "Other": 2
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Recitation"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Math Cognate",
+      "Coll of Engineering & Comp Sci",
+      "Lower Division"
+    ]
+  },
+  {
+    "title": "Topic in Programming Languages",
+    "subject": "CIS",
+    "number": "290A",
+    "creditHours": 2,
+    "otherHours": {
+      "Lecture": 2
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Recitation"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Lower Division"
+    ]
+  },
+  {
+    "title": "Programming with Visual Basic",
+    "subject": "CIS",
+    "number": "294",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Software Engin Tech Elective",
+      "Lower Division"
+    ]
+  },
+  {
+    "title": "Java Programming",
+    "subject": "CIS",
+    "number": "296",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Software Engin Tech Elective",
+      "Lower Division"
+    ]
+  },
+  {
+    "title": "Intro to C Sharp",
+    "subject": "CIS",
+    "number": "297",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Info Systems Elective Course",
+      "Software Engin Tech Elective",
+      "Lower Division"
+    ]
+  },
+  {
+    "title": "Intro to Python",
+    "subject": "CIS",
+    "number": "298",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Internship",
+    "subject": "CIS",
+    "number": "299",
+    "creditHours": 1,
+    "otherHours": {
+      "Other": 1
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Internship/Co-op",
+      "Independent Study"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Lower Division"
+    ]
+  },
+  {
+    "title": "Discrete Structures II",
+    "subject": "CIS",
+    "number": "306",
+    "creditHours": 4,
+    "otherHours": {
+      "Lecture": 4
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Info Systems Elective Course",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Computer Org and Assembly Lang",
+    "subject": "CIS",
+    "number": "310",
+    "creditHours": 4,
+    "otherHours": {
+      "Lecture": 4
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Data Science II",
+    "subject": "CIS",
+    "number": "3200",
+    "creditHours": 4,
+    "otherHours": {
+      "Lecture": 4
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Data Struc and Algorithm Anlys",
+    "subject": "CIS",
+    "number": "350",
+    "creditHours": 4,
+    "otherHours": {
+      "Lecture": 4
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Data Struc &amp; Alg Anlys for SE",
+    "subject": "CIS",
+    "number": "3501",
+    "creditHours": 4,
+    "otherHours": {
+      "Lecture": 4
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Software Engineering I",
+    "subject": "CIS",
+    "number": "375",
+    "creditHours": 4,
+    "otherHours": {
+      "Other": 4
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Internet",
+      "Recitation"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper-Level Writing Intensive",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Software Engineering II",
+    "subject": "CIS",
+    "number": "376",
+    "creditHours": 4,
+    "otherHours": {
+      "Lecture": 4
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Info Systems Elective Course",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Industrial Robots",
+    "subject": "CIS",
+    "number": "381",
+    "creditHours": 4,
+    "otherHours": {
+      "Lecture": 3,
+      "Lab": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Laboratory",
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Info Systems Elective Course",
+      "Software Engin Tech Elective",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Digital Forensics I",
+    "subject": "CIS",
+    "number": "387",
+    "creditHours": 4,
+    "otherHours": {
+      "Lecture": 3,
+      "Lab": 2
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Laboratory",
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Info Systems Elective Course",
+      "Software Engin Tech Elective",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Topics in Computer Science",
+    "subject": "CIS",
+    "number": "390",
+    "otherHours": {
+      "TO     3.000 Credit": 1,
+      "TO     3.000 Lecture": 1
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Topics in Computer Science II",
+    "subject": "CIS",
+    "number": "391",
+    "otherHours": {
+      "TO     3.000 Credit": 1,
+      "TO     3.000 Lecture": 1
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Internship",
+    "subject": "CIS",
+    "number": "399",
+    "creditHours": 1,
+    "otherHours": {
+      "Other": 1
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Internship/Co-op",
+      "Independent Study"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Programming Languages",
+    "subject": "CIS",
+    "number": "400",
+    "creditHours": 4,
+    "otherHours": {
+      "Lecture": 4
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Info Systems Elective Course",
+      "Software Engin Tech Elective",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Algorithm Analysis &amp; Design",
+    "subject": "CIS",
+    "number": "405",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Info Systems Elective Course",
+      "Software Engin Tech Elective",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Database Mgmt Systems",
+    "subject": "CIS",
+    "number": "421",
+    "creditHours": 4,
+    "otherHours": {
+      "Lecture": 4
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Software Engin Tech Elective",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Massive Data Management",
+    "subject": "CIS",
+    "number": "422",
+    "creditHours": 4,
+    "otherHours": {
+      "Lecture": 4,
+      "Lab": 2
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Laboratory",
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Dec Support and Exp Systems",
+    "subject": "CIS",
+    "number": "423",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Seminar"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Info Systems Elective Course",
+      "Software Engin Tech Elective",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Information Systems",
+    "subject": "CIS",
+    "number": "425",
+    "creditHours": 4,
+    "otherHours": {
+      "Lecture": 4
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Software Engin Tech Elective",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Inf Sys Analysis &amp; Design I",
+    "subject": "CIS",
+    "number": "4261",
+    "creditHours": 4,
+    "otherHours": {
+      "Lecture": 4
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Inf Sys Analysis &amp; Design II",
+    "subject": "CIS",
+    "number": "4262",
+    "creditHours": 4,
+    "otherHours": {
+      "Lecture": 4
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Seminar"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Software Engin Tech Elective",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Comp Networks and Dis Process",
+    "subject": "CIS",
+    "number": "427",
+    "creditHours": 4,
+    "otherHours": {
+      "Lecture": 4
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "High Speed Network Admin",
+    "subject": "CIS",
+    "number": "428",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 2,
+      "Lab": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Laboratory",
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Web Technology",
+    "subject": "CIS",
+    "number": "435",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Info Systems Elective Course",
+      "Software Engin Tech Elective",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Mobile App Des &amp; Impl",
+    "subject": "CIS",
+    "number": "436",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Advanced Networking",
+    "subject": "CIS",
+    "number": "437",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Seminar"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Info Systems Elective Course",
+      "Software Engin Tech Elective",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Intro Computr &amp; Ntwrk Security",
+    "subject": "CIS",
+    "number": "447",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Seminar"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Info Systems Elective Course",
+      "Software Engin Tech Elective",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Operating Systems",
+    "subject": "CIS",
+    "number": "450",
+    "otherHours": {
+      "OR     4.000 Credit": 3,
+      "OR     4.000 Lecture": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Computer Graphics",
+    "subject": "CIS",
+    "number": "451",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham",
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Info Systems Elective Course",
+      "Software Engin Tech Elective",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Inf Vis &amp; Multimedia Gaming",
+    "subject": "CIS",
+    "number": "452",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Seminar"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Info Systems Elective Course",
+      "Software Engin Tech Elective",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Windows Programming",
+    "subject": "CIS",
+    "number": "456",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Digital Forensics II",
+    "subject": "CIS",
+    "number": "467",
+    "creditHours": 4,
+    "otherHours": {
+      "Lecture": 3,
+      "Lab": 2
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Laboratory",
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Info Systems Elective Course",
+      "Software Engin Tech Elective",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Compiler Design",
+    "subject": "CIS",
+    "number": "474",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham",
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Info Systems Elective Course",
+      "Software Engin Tech Elective",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Software Engineering Seminar",
+    "subject": "CIS",
+    "number": "475",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Seminar"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Soft Arch &amp; Design Patterns",
+    "subject": "CIS",
+    "number": "476",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Intro to Artificial Intel",
+    "subject": "CIS",
+    "number": "479",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham",
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Info Systems Elective Course",
+      "Software Engin Tech Elective",
+      "Intersections",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Computational Learning",
+    "subject": "CIS",
+    "number": "481",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Data Security and Privacy",
+    "subject": "CIS",
+    "number": "4851",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Computer Game Design &amp; Implem",
+    "subject": "CIS",
+    "number": "487",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Info Systems Elective Course",
+      "Software Engin Tech Elective",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Computer Game Design II",
+    "subject": "CIS",
+    "number": "488",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Computer Sci Elective Course",
+      "Info Systems Elective Course",
+      "Software Engin Tech Elective",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Advanced Topics",
+    "subject": "CIS",
+    "number": "490",
+    "otherHours": {
+      "TO     3.000 Credit": 1,
+      "TO     3.000 Lecture": 1
+    },
+    "levels": [
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham",
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Research Project I",
+    "subject": "CIS",
+    "number": "491",
+    "otherHours": {
+      "TO     4.000 Credit": 1,
+      "TO     4.000 Other": 1
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Independent Study"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Research Project II",
+    "subject": "CIS",
+    "number": "492",
+    "otherHours": {
+      "TO     4.000 Credit": 1,
+      "TO     4.000 Other": 1
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Independent Study"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Independent Study I",
+    "subject": "CIS",
+    "number": "493",
+    "otherHours": {
+      "TO     4.000 Credit": 1,
+      "TO     4.000 Other": 1
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Independent Study"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Independent Study II",
+    "subject": "CIS",
+    "number": "494",
+    "otherHours": {
+      "TO     4.000 Credit": 1,
+      "TO     4.000 Other": 1
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Independent Study"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Design Seminar",
+    "subject": "CIS",
+    "number": "495",
+    "creditHours": 4,
+    "otherHours": {
+      "Lecture": 4
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Seminar"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Design Seminar I",
+    "subject": "CIS",
+    "number": "4951",
+    "creditHours": 2,
+    "otherHours": {
+      "Lecture": 2
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Seminar"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Critical and Creative Thinking",
+      "Capstone Experience",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Design Seminar II",
+    "subject": "CIS",
+    "number": "4952",
+    "creditHours": 2,
+    "otherHours": {
+      "Lecture": 2
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Seminar"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Critical and Creative Thinking",
+      "Capstone Experience",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Design Seminar for SE",
+    "subject": "CIS",
+    "number": "496",
+    "creditHours": 4,
+    "otherHours": {
+      "Lecture": 4
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Design Seminar for SE I",
+    "subject": "CIS",
+    "number": "4961",
+    "creditHours": 2,
+    "otherHours": {
+      "Lecture": 2
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Seminar"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Critical and Creative Thinking",
+      "Capstone Experience",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Design Seminar for SE II",
+    "subject": "CIS",
+    "number": "4962",
+    "creditHours": 2,
+    "otherHours": {
+      "Lecture": 2
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Seminar"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Critical and Creative Thinking",
+      "Capstone Experience",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Cap Sem for Data Sci I",
+    "subject": "CIS",
+    "number": "4971",
+    "creditHours": 2,
+    "otherHours": {
+      "Other": 2
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Seminar"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Critical and Creative Thinking",
+      "Capstone Experience",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Cap Proj for Data Sci II",
+    "subject": "CIS",
+    "number": "4972",
+    "creditHours": 2,
+    "otherHours": {
+      "Other": 2
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Seminar"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Critical and Creative Thinking",
+      "Capstone Experience",
+      "Upper-Level Writing Intensive",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Internship",
+    "subject": "CIS",
+    "number": "499",
+    "creditHours": 1,
+    "otherHours": {
+      "Other": 1
+    },
+    "levels": [
+      "Undergraduate"
+    ],
+    "scheduleTypes": [
+      "Internship/Co-op",
+      "Independent Study"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Algorithm Analysis and Design",
+    "subject": "CIS",
+    "number": "505",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Computer Interfacing",
+    "subject": "CIS",
+    "number": "510",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Laboratory",
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Computer Graphics",
+    "subject": "CIS",
+    "number": "515",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Web Technology",
+    "subject": "CIS",
+    "number": "525",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Computer Networks",
+    "subject": "CIS",
+    "number": "527",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 2,
+      "Lab": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Laboratory",
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Semantic Web",
+    "subject": "CIS",
+    "number": "534",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Wireless Tech/Pervasive Cmptg",
+    "subject": "CIS",
+    "number": "535",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Information Retrieval",
+    "subject": "CIS",
+    "number": "536",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Advanced Netwrkng &amp; Dist Syst",
+    "subject": "CIS",
+    "number": "537",
+    "creditHours": 3,
+    "otherHours": {
+      "Other": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Computer and Network Security",
+    "subject": "CIS",
+    "number": "544",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Data Security and Privacy",
+    "subject": "CIS",
+    "number": "545",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Graduate",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Distance Learning",
+      "Upper Division"
+    ]
+  },
+  {
+    "title": "Securty&amp;Privacy Wireless Ntwk",
+    "subject": "CIS",
+    "number": "546",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Sec and Priv in Cloud Comp",
+    "subject": "CIS",
+    "number": "548",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Obj-Oriet Prog and Its Applic",
+    "subject": "CIS",
+    "number": "550",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Advanced Computer Graphics",
+    "subject": "CIS",
+    "number": "551",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Inf Vis &amp; Multimedia Gaming",
+    "subject": "CIS",
+    "number": "552",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Software Engineering",
+    "subject": "CIS",
+    "number": "553",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Info Sys Analysis and Design",
+    "subject": "CIS",
+    "number": "554",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Dec Support and Expert System",
+    "subject": "CIS",
+    "number": "555",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Database Systems",
+    "subject": "CIS",
+    "number": "556",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Introduction to Big Data",
+    "subject": "CIS",
+    "number": "5570",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Prin of Social Netwk Science",
+    "subject": "CIS",
+    "number": "559",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Electronic Commerce",
+    "subject": "CIS",
+    "number": "560",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Graduate",
+      "Graduate",
+      "Professional Development",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Web Information Management",
+    "subject": "CIS",
+    "number": "562",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Modeling of Computer-based Sys",
+    "subject": "CIS",
+    "number": "563",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Enterprise Information Systems",
+    "subject": "CIS",
+    "number": "564",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Professional Development",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Software Quality Assurance",
+    "subject": "CIS",
+    "number": "565",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Software Arch and Des Patterns",
+    "subject": "CIS",
+    "number": "566",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Data Mining",
+    "subject": "CIS",
+    "number": "568",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Wireless Sensor Networks",
+    "subject": "CIS",
+    "number": "569",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Advanced Data Mining",
+    "subject": "CIS",
+    "number": "5700",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Web Services",
+    "subject": "CIS",
+    "number": "571",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Object Oriented Systems Design",
+    "subject": "CIS",
+    "number": "572",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Graduate",
+      "Graduate",
+      "Professional Development",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Compiler Design",
+    "subject": "CIS",
+    "number": "574",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Software Engineering Mgmt",
+    "subject": "CIS",
+    "number": "575",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "S/W User Interface Dsgn&amp;Analys",
+    "subject": "CIS",
+    "number": "577",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Advanced Operating Systems",
+    "subject": "CIS",
+    "number": "578",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Artificial Intelligence",
+    "subject": "CIS",
+    "number": "579",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Data Analytics in Software Eng",
+    "subject": "CIS",
+    "number": "580",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Distance Learning"
+    ]
+  },
+  {
+    "title": "Adv Comp Net Sec",
+    "subject": "CIS",
+    "number": "584",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Adv AI",
+    "subject": "CIS",
+    "number": "585",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Graduate",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Distance Learning",
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Distance Learning"
+    ]
+  },
+  {
+    "title": "Advanced Data Management",
+    "subject": "CIS",
+    "number": "586",
+    "creditHours": 3,
+    "otherHours": {
+      "Other": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Computer Game Design and Impl",
+    "subject": "CIS",
+    "number": "587",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Computer Game Design II",
+    "subject": "CIS",
+    "number": "588",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Internet"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Selected Topics",
+    "subject": "CIS",
+    "number": "590",
+    "otherHours": {
+      "TO     3.000 Credit": 1,
+      "TO     3.000 Other": 1
+    },
+    "levels": [
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Select Topics in CIS",
+    "subject": "CIS",
+    "number": "590I",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Directed Research Project",
+    "subject": "CIS",
+    "number": "591",
+    "otherHours": {
+      "TO     3.000 Credit": 1,
+      "TO     3.000 Other": 1
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Independent Study"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Res Adv Cmp Net Sec",
+    "subject": "CIS",
+    "number": "624",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Rsrch Advances Ntwkng&amp;Dist Sys",
+    "subject": "CIS",
+    "number": "647",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Info Vsualzatn &amp; Comp Anim",
+    "subject": "CIS",
+    "number": "652",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Research Advances in Data Mgt",
+    "subject": "CIS",
+    "number": "658",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Soft Arch Des &amp; Analysis",
+    "subject": "CIS",
+    "number": "676",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Research Advances Software Eng",
+    "subject": "CIS",
+    "number": "678",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate",
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Computational Game Theory",
+    "subject": "CIS",
+    "number": "679",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Graduate",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci",
+      "Distance Learning"
+    ]
+  },
+  {
+    "title": "Res Adv in Art Intell",
+    "subject": "CIS",
+    "number": "685",
+    "creditHours": 3,
+    "otherHours": {
+      "Lecture": 3
+    },
+    "levels": [
+      "Doctorate",
+      "Graduate",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Lecture",
+      "Seminar"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Adv Dir Study",
+    "subject": "CIS",
+    "number": "691",
+    "otherHours": {
+      "TO     3.000 Credit": 1,
+      "TO     3.000 Other": 1
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate"
+    ],
+    "scheduleTypes": [
+      "Independent Study"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Master's Project",
+    "subject": "CIS",
+    "number": "695",
+    "creditHours": 3,
+    "otherHours": {
+      "Other": 3
+    },
+    "levels": [
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Independent Study"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Master's Thesis",
+    "subject": "CIS",
+    "number": "699",
+    "otherHours": {
+      "TO     6.000 Credit": 1,
+      "TO     6.000 Other": 1
+    },
+    "levels": [
+      "Graduate",
+      "Graduate",
+      "Rackham",
+      "Rackham"
+    ],
+    "scheduleTypes": [
+      "Independent Study"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Adv Guided Study",
+    "subject": "CIS",
+    "number": "791",
+    "otherHours": {
+      "TO     3.000 Credit": 1,
+      "TO     3.000 Other": 1
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate"
+    ],
+    "scheduleTypes": [
+      "Independent Study"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Doctoral Seminar",
+    "subject": "CIS",
+    "number": "798",
+    "creditHours": 0,
+    "otherHours": {
+      "Other": 0
+    },
+    "levels": [
+      "Doctorate"
+    ],
+    "scheduleTypes": [
+      "Seminar"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Pre-Cand Dissertation Research",
+    "subject": "CIS",
+    "number": "980",
+    "otherHours": {
+      "TO     9.000 Credit": 1,
+      "TO     9.000 Other": 1
+    },
+    "levels": [
+      "Doctorate",
+      "Doctorate"
+    ],
+    "scheduleTypes": [
+      "Independent Study"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": "Doctoral Dissertation",
+    "subject": "CIS",
+    "number": "990",
+    "otherHours": {
+      "TO     9.000 Credit": 1,
+      "TO     9.000 Other": 1
+    },
+    "levels": [
+      "Doctorate"
+    ],
+    "scheduleTypes": [
+      "Independent Study"
+    ],
+    "department": "Computer Information Sciences Department",
+    "courseAttributes": [
+      "Coll of Engineering & Comp Sci"
+    ]
+  },
+  {
+    "title": null,
+    "subject": null,
+    "number": null,
+    "otherHours": {},
+    "levels": [],
+    "scheduleTypes": [],
+    "courseAttributes": []
+  }
+]
