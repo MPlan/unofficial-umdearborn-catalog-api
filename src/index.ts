@@ -33,12 +33,45 @@ interface DisplayCoursesCatalogEntry {
 
 function parseTitle(rawTitle: string) {
   const titleSplit = rawTitle.split('-');
-  const subjectAndNumber = titleSplit[0];
+  const subjectAndNumber = titleSplit[0] || '';
   const title = titleSplit.slice(1).join('-').trim();
   const subjectAndNumberSplit = subjectAndNumber.split(' ');
-  const subject = subjectAndNumberSplit[0].toUpperCase().trim();
+  const subject = (subjectAndNumberSplit[0] || '').toUpperCase().trim();
   const number = subjectAndNumberSplit.slice(1).join(' ').trim();
   return { title, subject, number };
+}
+
+function parseHours(
+  body: string,
+  previous = {} as {[key: string]: number | undefined}
+): {[key: string]: number | undefined} {
+  const regex = /([\d.]+)(.+)hours/.exec(body);
+  if (!regex) {
+    return previous;
+  }
+  const hours = parseFloat(regex[1].trim());
+  const type = regex[2].trim();
+  previous[type] = hours;
+
+  return parseHours(body.slice(regex.index + regex[0].length), previous);
+}
+
+function parseBody(rawBody: string) {
+
+  /([\d.]+)(.+)hours/
+}
+
+function textNodes(node: Node | null | undefined): Node[] {
+  let all = [] as Node[];
+  for (node = node && node.firstChild; node; node = node.nextSibling) {
+    if (node.nodeType == 3) {
+      all.push(node);
+    }
+    else {
+      all = all.concat(textNodes(node));
+    }
+  }
+  return all;
 }
 
 function parseCatalogEntries(html: string) {
@@ -57,13 +90,41 @@ function parseCatalogEntries(html: string) {
       currentGroup.body = headingOrBody;
     }
     return groups;
-  }, [] as { heading: HTMLTableRowElement, body: HTMLTableRowElement }[])
+  }, [] as { heading: HTMLTableRowElement | undefined, body: HTMLTableRowElement | undefined }[])
 
-  groups.map(group => {
-    const titleElement = group.heading.querySelector('.nttitle a');
+  const a = groups.map(group => {
+    const titleElement = group.heading && group.heading.querySelector('.nttitle a');
     const titleSubjectAndNumber = titleElement && parseTitle(titleElement.innerHTML);
-    return titleSubjectAndNumber;
-  })
+
+    const bodyElement = group.body && group.body.querySelector('.ntdefault');
+
+    const bodyText = bodyElement && textNodes(bodyElement).map(x => x.textContent).join(' ');
+    return parseHours(bodyText || '');
+  });
+  fs.writeFileSync('thing.txt', a[0]);
 }
 
-parseCatalogEntries(html);
+// parseCatalogEntries(html);
+
+const b = `
+This is a microcomputer literacy course with primary emphasis on the application tools of the word processor, spreadsheets, and database.  Additional topics of computer terms, systems, and use in society are included.  The course is intended for undergraduates in the College of Arts, Sciences, and Letters.  No previous experience with computers is expected. (YR).
+
+   3.000 Credit hours
+
+   3.000   Lecture hours
+
+
+Levels:  Undergraduate 
+
+Schedule Types:  Lecture  
+
+
+Computer Information Sciences Department
+
+
+Course Attributes:  INST-Environ Studies-Area C, Coll of Engineering & Comp Sci, Lower Division 
+
+
+`;
+
+console.log(parseHours(b))
