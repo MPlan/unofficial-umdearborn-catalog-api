@@ -19,18 +19,6 @@ async function main() {
 
 const html = fs.readFileSync('course-list.html').toString();
 
-interface DisplayCoursesCatalogEntry {
-  subject: string,
-  number: string,
-  title: string,
-  creditHours: number,
-  otherHours: { [type: string]: number }
-  levels: string[],
-  scheduleTypes: string[],
-  department: string,
-  courseAttributes: string[],
-}
-
 function parseTitle(rawTitle: string) {
   const titleSplit = rawTitle.split('-');
   const subjectAndNumber = titleSplit[0] || '';
@@ -43,8 +31,8 @@ function parseTitle(rawTitle: string) {
 
 function parseHours(
   body: string,
-  previous = {} as {[key: string]: number | undefined}
-): {[key: string]: number | undefined} {
+  previous = {} as { [key: string]: number }
+): { [key: string]: number } {
   const regex = /([\d.]+)(.+)hours/.exec(body);
   if (!regex) {
     return previous;
@@ -56,9 +44,65 @@ function parseHours(
   return parseHours(body.slice(regex.index + regex[0].length), previous);
 }
 
-function parseBody(rawBody: string) {
+function parseLevels(body: string) {
+  const regex = /Levels:(.+)/g.exec(body);
+  if (!regex) {
+    return [];
+  };
+  return regex[1].trim().split(',').map(x => x.trim());
+}
 
-  /([\d.]+)(.+)hours/
+function parseSchedules(body: string) {
+  const regex = /Schedule Types:(.+)/g.exec(body);
+  if (!regex) {
+    return [];
+  };
+  return regex[1].trim().split(',').map(x => x.trim());
+}
+
+function parseDepartment(body: string) {
+  const regex = /:(?:.+)[\n\s]+(.+)[\s\n]+Course/g.exec(body);
+  if (!regex) {
+    return undefined;
+  }
+  return regex[1].trim();
+}
+
+function parseCourseAttributes(body: string) {
+  const regex = /Course Attributes:(.+)/g.exec(body);
+  if (!regex) {
+    return [];
+  };
+  return regex[1].trim().split(',').map(x => x.trim());
+}
+
+interface DisplayCoursesCatalogEntry {
+  subject: string,
+  number: string,
+  title: string,
+  creditHours: number,
+  otherHours: { [type: string]: number }
+  levels: string[],
+  scheduleTypes: string[],
+  department: string,
+  courseAttributes: string[],
+}
+
+function parseBody(body: string) {
+  const { Credit, ...otherHours } = parseHours(body);
+  const levels = parseLevels(body);
+  const scheduleTypes = parseSchedules(body);
+  const department = parseDepartment(body);
+  const courseAttributes = parseCourseAttributes(body);
+  const creditHours = Credit;
+  return {
+    creditHours,
+    otherHours,
+    levels,
+    scheduleTypes,
+    department,
+    courseAttributes
+  };
 }
 
 function textNodes(node: Node | null | undefined): Node[] {
@@ -92,39 +136,23 @@ function parseCatalogEntries(html: string) {
     return groups;
   }, [] as { heading: HTMLTableRowElement | undefined, body: HTMLTableRowElement | undefined }[])
 
-  const a = groups.map(group => {
+  const parsedGroups = groups.map(group => {
     const titleElement = group.heading && group.heading.querySelector('.nttitle a');
     const titleSubjectAndNumber = titleElement && parseTitle(titleElement.innerHTML);
 
     const bodyElement = group.body && group.body.querySelector('.ntdefault');
 
     const bodyText = bodyElement && textNodes(bodyElement).map(x => x.textContent).join(' ');
-    return parseHours(bodyText || '');
+    return {
+      title: titleSubjectAndNumber && titleSubjectAndNumber.title,
+      subject: titleSubjectAndNumber && titleSubjectAndNumber.subject,
+      number: titleSubjectAndNumber && titleSubjectAndNumber.number,
+      ...parseBody(bodyText || '')
+    };
   });
-  fs.writeFileSync('thing.txt', a[0]);
+  return parsedGroups;
 }
 
-// parseCatalogEntries(html);
+const parsedHtml = parseCatalogEntries(html);
 
-const b = `
-This is a microcomputer literacy course with primary emphasis on the application tools of the word processor, spreadsheets, and database.  Additional topics of computer terms, systems, and use in society are included.  The course is intended for undergraduates in the College of Arts, Sciences, and Letters.  No previous experience with computers is expected. (YR).
-
-   3.000 Credit hours
-
-   3.000   Lecture hours
-
-
-Levels:  Undergraduate 
-
-Schedule Types:  Lecture  
-
-
-Computer Information Sciences Department
-
-
-Course Attributes:  INST-Environ Studies-Area C, Coll of Engineering & Comp Sci, Lower Division 
-
-
-`;
-
-console.log(parseHours(b))
+fs.writeFileSync('data.json', JSON.stringify(parsedHtml));
