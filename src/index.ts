@@ -1,1 +1,3 @@
-console.log('test 1')
+import * as Koa from 'koa';
+const app = new Koa();
+

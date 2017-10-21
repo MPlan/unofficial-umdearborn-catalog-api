@@ -1,0 +1,1 @@
+export const Something = 'hey look something else';
