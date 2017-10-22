@@ -160,7 +160,7 @@ function parseCatalogEntries(html: string) {
       number: titleSubjectAndNumber && titleSubjectAndNumber.number,
       ...parseBody(bodyText || '')
     };
-  });
+  }).filter(group => group.subject && group.number);
   return parsedGroups;
 }
 
