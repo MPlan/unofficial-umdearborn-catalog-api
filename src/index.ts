@@ -63,9 +63,17 @@ function parseSchedules(body: string) {
 function parseDepartment(body: string) {
   const regex = /:(?:.+)[\n\s]+(.+)[\s\n]+Course/g.exec(body);
   if (!regex) {
-    return undefined;
+    return '';
   }
   return regex[1].trim();
+}
+
+function parseDescription(body: string) {
+  const creditHourRegex = /([\d.]+)\s+(\S+)\s+hours\s+/g.exec(body);
+  if (!creditHourRegex) {
+    return '';
+  }
+  return body.substring(0, creditHourRegex.index).trim();
 }
 
 function parseCourseAttributes(body: string) {
@@ -86,6 +94,7 @@ interface DisplayCoursesCatalogEntry {
   scheduleTypes: string[],
   department: string,
   courseAttributes: string[],
+  description: string,
 }
 
 function parseBody(body: string) {
@@ -94,6 +103,7 @@ function parseBody(body: string) {
   const scheduleTypes = parseSchedules(body);
   const department = parseDepartment(body);
   const courseAttributes = parseCourseAttributes(body);
+  const description = parseDescription(body);
   const creditHours = Credit;
   return {
     creditHours,
@@ -101,7 +111,8 @@ function parseBody(body: string) {
     levels,
     scheduleTypes,
     department,
-    courseAttributes
+    courseAttributes,
+    description,
   };
 }
 
