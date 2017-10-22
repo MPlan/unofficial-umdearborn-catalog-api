@@ -33,7 +33,7 @@ function parseHours(
   body: string,
   previous = {} as { [key: string]: number }
 ): { [key: string]: number } {
-  const regex = /([\d.]+)(.+)hours/.exec(body);
+  const regex = /([\d.]+)\s+(\S+)\s+hours\s+/.exec(body);
   if (!regex) {
     return previous;
   }
