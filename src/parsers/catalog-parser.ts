@@ -8,14 +8,14 @@ export interface CatalogEntry {
   href: string,
 }
 
-export function parseTitle(rawTitle: string) {
-  const titleSplit = rawTitle.split('-');
+export function parseHeader(header: string) {
+  const titleSplit = header.split('-');
   const subjectAndNumber = titleSplit[0] || '';
   const title = titleSplit.slice(1).join('-').trim();
   const subjectAndNumberSplit = subjectAndNumber.split(' ');
-  const subject = (subjectAndNumberSplit[0] || '').toUpperCase().trim();
-  const number = subjectAndNumberSplit.slice(1).join(' ').trim();
-  return { title, subject, number };
+  const subjectCode = (subjectAndNumberSplit[0] || '').toUpperCase().trim();
+  const courseNumber = subjectAndNumberSplit.slice(1).join(' ').trim();
+  return { title, subjectCode, courseNumber };
 }
 
 export function parseCatalogEntriesHtml(html: string) {
@@ -33,11 +33,11 @@ export function parseCatalogEntriesHtml(html: string) {
 
   const parsedGroups = headingRows.map(headingRow => {
     const titleElement = headingRow && headingRow.querySelector('.nttitle a') as HTMLAnchorElement | null;
-    const titleSubjectAndNumber = titleElement && parseTitle(titleElement.innerHTML);
+    const titleSubjectAndNumber = titleElement && parseHeader(titleElement.innerHTML);
     return {
       title: titleSubjectAndNumber && titleSubjectAndNumber.title || '',
-      subjectCode: titleSubjectAndNumber && titleSubjectAndNumber.subject || '',
-      courseNumber: titleSubjectAndNumber && titleSubjectAndNumber.number || '',
+      subjectCode: titleSubjectAndNumber && titleSubjectAndNumber.subjectCode || '',
+      courseNumber: titleSubjectAndNumber && titleSubjectAndNumber.courseNumber || '',
       href: titleElement && titleElement.href || '',
     } as CatalogEntry;
   }).filter(catalogEntry => {
