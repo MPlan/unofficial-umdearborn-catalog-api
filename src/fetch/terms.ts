@@ -2,8 +2,8 @@ import axios from 'axios';
 import * as https from 'https';
 import { JSDOM } from 'jsdom';
 
-interface Term {
-  key: string,
+export interface Term {
+  code: string,
   season: string,
   year: number,
 }
@@ -36,7 +36,7 @@ export async function fetchTerms() {
       const [rawSeason, rawYear] = option.text.split(' ');
 
       const term: Term = {
-        key: option.value,
+        code: option.value,
         season: rawSeason.toLowerCase().trim(),
         year: parseInt(rawYear.trim()),
       };
