@@ -22,7 +22,9 @@ export function parseCatalogEntriesHtml(html: string) {
   const { window } = new JSDOM(html);
   const { document } = window;
 
-  const dataTableRows = Array.from(document.querySelectorAll('.datadisplaytable tr'));
+  const dataTableRows: HTMLTableRowElement[] = Array.from(
+    document.querySelectorAll('.datadisplaytable tr')
+  );
 
   const headingRows = dataTableRows.reduce((groups, headingOrBody: HTMLTableRowElement, index) => {
     if (index % 2 === 0) {

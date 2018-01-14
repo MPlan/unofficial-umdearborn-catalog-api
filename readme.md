@@ -17,3 +17,9 @@ Planned entities:
   * course attributes?
 * Section
   * CRN
+
+
+```
+GET /api/catalog/-term-/sub/number
+GET /api/catalog/201820/CIS/150L
+```

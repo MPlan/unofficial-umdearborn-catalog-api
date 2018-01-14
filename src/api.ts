@@ -1,1 +1,7 @@
-export const Something = 'hey look something else';
+import * as express from 'express';
+const api = express.Router();
+
+
+api.get('/catalog', (req, res) => {
+
+});
