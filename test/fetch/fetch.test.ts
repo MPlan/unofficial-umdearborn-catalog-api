@@ -2,6 +2,7 @@ import { expect } from 'chai';
 
 import { fetchTerms } from '../../src/fetch/terms';
 import { fetchSubjects } from '../../src/fetch/subjects';
+import { fetchCatalogEntries } from '../../src/fetch/catalog-entries';
 
 require('dotenv').config();
 
@@ -32,5 +33,12 @@ describe('fetch', function () {
       expect(code).to.be.not.empty;
       expect(name).to.be.not.empty;
     }
+  });
+  it('catalog entries', async function () {
+    if (process.env.SKIP_FETCH_TEST_ALL || process.env.SKIP_FETCH_TEST_CATALOG_ENTRIES) {
+      this.skip();
+      return;
+    }
+    const entries = await fetchCatalogEntries('201820', 'CIS');
   });
 });
