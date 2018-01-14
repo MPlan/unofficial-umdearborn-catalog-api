@@ -1,12 +1,8 @@
 import axios from 'axios';
 import * as https from 'https';
 import { JSDOM } from 'jsdom';
-
-export interface Term {
-  code: string,
-  season: string,
-  year: number,
-}
+import { Term } from '../models/term';
+import { parseTerms } from '../parsers/terms'
 
 export async function fetchTerms() {
   const catalogTermResponse = await axios({
@@ -20,29 +16,9 @@ export async function fetchTerms() {
       `Catalog term request returned non-200 response code: '${catalogTermResponse.status}'!`
     );
   }
-  const catalogTermHtml = catalogTermResponse.data as string | undefined;
-  if (!catalogTermHtml) {
+  const html = catalogTermResponse.data as string | undefined;
+  if (!html) {
     throw new Error('Catalog term response was undefined or empty.');
   }
-  const document = new JSDOM(catalogTermHtml).window.document;
-  const termsSelect = document.querySelector('#term_input_id') as HTMLSelectElement | null;
-  if (!termsSelect) { throw new Error('No term select box in catalog terms HTML.'); }
-  const termsOptions = Array.from(termsSelect.querySelectorAll('option')) as HTMLOptionElement[];
-  const terms = (termsOptions
-    .filter(option => {
-      return !!/(\w*) (\d*)/.exec(option.text);
-    })
-    .map(option => {
-      const [rawSeason, rawYear] = option.text.split(' ');
-
-      const term: Term = {
-        code: option.value,
-        season: rawSeason.toLowerCase().trim(),
-        year: parseInt(rawYear.trim()),
-      };
-
-      return term;
-    })
-  );
-  return terms;
+  return parseTerms(html);
 }

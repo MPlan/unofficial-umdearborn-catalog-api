@@ -1,10 +1,10 @@
 import { expect } from 'chai';
-import { parseDescription } from '../src/parsers/course-detail-parser';
+import { parseDescription } from '../../src/parsers/course-details';
 import { oneLine } from 'common-tags';
 import * as fs from 'fs';
 import * as path from 'path';
 const rawDescriptionHtml = fs.readFileSync(
-  path.resolve(__dirname, './example-pages/description-body.html')
+  path.resolve(__dirname, '../example-pages/description-body.html')
 ).toString();
 
 describe('Course detail parser', function () {

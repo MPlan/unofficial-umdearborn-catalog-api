@@ -1,12 +1,6 @@
 import { JSDOM } from 'jsdom';
+import { CatalogEntry } from '../models/catalog-entry';
 
-
-export interface CatalogEntry {
-  subjectCode: string,
-  courseNumber: string,
-  title: string,
-  href: string,
-}
 const catalogEntryKeys: (keyof CatalogEntry)[] = ['subjectCode', 'courseNumber', 'title', 'href'];
 
 export function parseHeader(header: string) {
@@ -19,7 +13,7 @@ export function parseHeader(header: string) {
   return { title, subjectCode, courseNumber };
 }
 
-export function parseCatalogEntriesHtml(html: string) {
+export function parseCatalogEntries(html: string) {
   const { window } = new JSDOM(html);
   const { document } = window;
 

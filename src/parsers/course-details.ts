@@ -21,6 +21,6 @@ export function parseDescription(html: string) {
   return description.trim();
 }
 
-export function parseCourseDetailHtml(html: string) {
+export function parseCourseDetail(html: string) {
 
 }

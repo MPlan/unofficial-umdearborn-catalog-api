@@ -259,12 +259,3 @@ interface Plan {
    */
   planSemesters: PlanSemester[]
 }
-
-
-    interface SomeName {
-      // bunch of text0
-    }
-
-    interface SomeOtherName {
-      // bunch of text1
-    }

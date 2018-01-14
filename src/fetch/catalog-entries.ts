@@ -3,12 +3,7 @@ import * as https from 'https';
 import { JSDOM } from 'jsdom';
 import { oneLineTrim } from 'common-tags';
 import { formEncode } from '../utilities';
-import { parseCatalogEntriesHtml } from '../parsers/catalog-parser';
-
-export interface Subject {
-  code: string,
-  name: string,
-}
+import { parseCatalogEntries } from '../parsers/catalog-entries';
 
 export async function fetchCatalogEntries(termCode: string, subjectCode: string) {
 
@@ -57,5 +52,5 @@ export async function fetchCatalogEntries(termCode: string, subjectCode: string)
     throw new Error('Subjects response was undefined or empty.');
   }
 
-  return parseCatalogEntriesHtml(html);
+  return parseCatalogEntries(html);
 }

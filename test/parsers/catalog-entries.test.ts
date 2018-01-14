@@ -1,9 +1,9 @@
 import { expect } from 'chai';
 import * as fs from 'fs';
 import * as path from 'path';
-import { parseCatalogEntriesHtml, parseHeader } from '../src/parsers/catalog-parser';
+import { parseCatalogEntries, parseHeader } from '../../src/parsers/catalog-entries';
 const exampleHtml = fs.readFileSync(
-  path.resolve(__dirname, './example-pages/course-list.html')
+  path.resolve(__dirname, '../example-pages/course-list.html')
 ).toString();
 
 describe('Catalog entries parser', function () {
@@ -19,7 +19,7 @@ describe('Catalog entries parser', function () {
   });
 
   it('parses "course-list.html" correctly', function () {
-    const catalogEntries = parseCatalogEntriesHtml(exampleHtml);
+    const catalogEntries = parseCatalogEntries(exampleHtml);
     expect(catalogEntries.length).to.be.equal(136);
 
     for (const { subjectCode, courseNumber, title, href } of catalogEntries) {
