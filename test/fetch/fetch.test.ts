@@ -4,10 +4,13 @@ import { fetchTerms } from '../../src/fetch/terms';
 import { fetchSubjects } from '../../src/fetch/subjects';
 import { fetchCatalogEntries } from '../../src/fetch/catalog-entries';
 
+const twentySeconds = 20 * 1000;
+
 require('dotenv').config();
 
 describe('fetch', function () {
   it('terms', async function () {
+    this.timeout(twentySeconds);
     if (process.env.SKIP_FETCH_TEST_ALL || process.env.SKIP_FETCH_TEST_TERMS) {
       this.skip();
       return;
@@ -24,6 +27,7 @@ describe('fetch', function () {
     }
   });
   it('subjects', async function () {
+    this.timeout(twentySeconds);
     if (process.env.SKIP_FETCH_TEST_ALL || process.env.SKIP_FETCH_TEST_SUBJECTS) {
       this.skip();
       return;
@@ -35,10 +39,22 @@ describe('fetch', function () {
     }
   });
   it('catalog entries', async function () {
+    this.timeout(twentySeconds);
     if (process.env.SKIP_FETCH_TEST_ALL || process.env.SKIP_FETCH_TEST_CATALOG_ENTRIES) {
       this.skip();
       return;
     }
     const entries = await fetchCatalogEntries('201820', 'CIS');
+
+    for (const { courseNumber, subjectCode, title, href } of entries) {
+      try {
+        expect(courseNumber).to.be.not.empty;
+        expect(subjectCode).to.be.equal('CIS');
+        expect(title).to.be.not.empty;
+        expect(href).to.be.not.empty;
+      } catch (e) {
+        throw new Error(`${subjectCode} ${courseNumber} threw and error`);
+      }
+    }
   });
 });

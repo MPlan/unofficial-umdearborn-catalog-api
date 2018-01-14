@@ -18,8 +18,15 @@ describe('Catalog entries parser', function () {
     expect(parsedHeader.title).to.be.equal(title);
   });
 
-  it('parses "course-list.html" with the correct length', function () {
+  it('parses "course-list.html" correctly', function () {
     const catalogEntries = parseCatalogEntriesHtml(exampleHtml);
     expect(catalogEntries.length).to.be.equal(136);
+
+    for (const { subjectCode, courseNumber, title, href } of catalogEntries) {
+      expect(subjectCode).to.be.equal('CIS');
+      expect(courseNumber).to.not.be.empty;
+      expect(title).to.not.be.empty;
+      expect(href).to.not.be.empty;
+    }
   });
 });

@@ -1,12 +1,13 @@
 import { JSDOM } from 'jsdom';
 
-const catalogEntryKeys = ['subjectCode', 'courseNumber', 'title', 'href'];
+
 export interface CatalogEntry {
   subjectCode: string,
   courseNumber: string,
   title: string,
   href: string,
 }
+const catalogEntryKeys: (keyof CatalogEntry)[] = ['subjectCode', 'courseNumber', 'title', 'href'];
 
 export function parseHeader(header: string) {
   const titleSplit = header.split('-');
@@ -33,17 +34,26 @@ export function parseCatalogEntriesHtml(html: string) {
     return groups;
   }, [] as HTMLTableRowElement[]);
 
-  const parsedGroups = headingRows.map(headingRow => {
-    const titleElement = headingRow && headingRow.querySelector('.nttitle a') as HTMLAnchorElement | null;
-    const titleSubjectAndNumber = titleElement && parseHeader(titleElement.innerHTML);
-    return {
-      title: titleSubjectAndNumber && titleSubjectAndNumber.title || '',
-      subjectCode: titleSubjectAndNumber && titleSubjectAndNumber.subjectCode || '',
-      courseNumber: titleSubjectAndNumber && titleSubjectAndNumber.courseNumber || '',
-      href: titleElement && titleElement.href || '',
-    } as CatalogEntry;
-  }).filter(catalogEntry => {
-    return Object.keys(catalogEntry).every(objectKey => catalogEntryKeys.includes(objectKey));
-  });
+  const parsedGroups = (headingRows
+    .map(headingRow => {
+      const titleElement = headingRow && headingRow.querySelector('.nttitle a') as HTMLAnchorElement | null;
+      const titleSubjectAndNumber = titleElement && parseHeader(titleElement.innerHTML);
+      const catalogEntry: CatalogEntry = {
+        title: titleSubjectAndNumber && titleSubjectAndNumber.title || '',
+        subjectCode: titleSubjectAndNumber && titleSubjectAndNumber.subjectCode || '',
+        courseNumber: titleSubjectAndNumber && titleSubjectAndNumber.courseNumber || '',
+        href: titleElement && titleElement.href || '',
+      };
+      return catalogEntry;
+    })
+    .filter(catalogEntry => {
+      return (Object
+        .keys(catalogEntry)
+        .every(objectKey =>
+          catalogEntryKeys.includes(objectKey as any) && !!catalogEntry[objectKey as keyof CatalogEntry]
+        )
+      );
+    })
+  );
   return parsedGroups;
 }

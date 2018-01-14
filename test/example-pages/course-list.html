@@ -65,9 +65,6 @@ function windowOpen(window_url) {
 </SCRIPT>
 <SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
 <!-- Hide JavaScript from older browsers 
-var level_depth = "0";
-var userDetails = "";
-var wcMessage = "";
 var locale_val = "AMERICAN_AMERICA";
 var locale_lang = "en_US";
 var help_width= "450";
@@ -76,6 +73,7 @@ var help_height = "500";
 </SCRIPT>
 </head>
 <body>
+<div class="crumbs"><SPAN class="links"><a href="/BANP/twbkwbis.P_GenMenu?name=bmenu.P_MainMnu">Home</a></SPAN><SPAN class="divider"> > </SPAN><SPAN class="lastValue">Catalog Entries</SPAN></div>
 <div id="headerImage">
 <img src="/wtlgifs/UMD_header_logo.gif" CLASS="headerImg" TITLE=""  NAME="UMD Wordmark" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=78 WIDTH=550 />
 </div>
@@ -89,11 +87,20 @@ var help_height = "500";
 <tr>
 <TD CLASS="pldefault">
 <div class="headerlinksdiv2">
-&nbsp;
+<form action="/BANP/twbksrch.P_ShowResults" method="post">
+Search
+<SPAN class="fieldlabeltextinvisible"><LABEL for=keyword_in_id><SPAN class="fieldlabeltext">Search</SPAN></LABEL></SPAN>
+<input type="text" name="KEYWRD_IN" size="20" maxlength="65" ID="keyword_in_id" />
+<input type="submit" value="Go" />
+</form>
 </div>
 </TD>
 <TD CLASS="pldefault"><p class="rightaligntext"></p>
 <SPAN class="pageheaderlinks">
+<a href="/BANP/twbkwbis.P_GenMenu?name=bmenu.P_AdminMnu"  class="submenulinktext2" id="ssbbackurl">RETURN TO MENU</a>
+|
+<a href="/BANP/twbksite.P_DispSiteMap?menu_name_in=bmenu.P_MainMnu&amp;depth_in=2&amp;columns_in=3" accesskey="2" class="submenulinktext2">SITE MAP</a>
+|
 <a href="/wtlhelp/twbhhelp.htm" accesskey="H" onClick="popup = window.open('/wtlhelp/twbhhelp.htm', 'PopupPage','height=500,width=450,scrollbars=yes,resizable=yes'); return false" target="_blank" onMouseOver="window.status='';  return true" onMouseOut="window.status=''; return true"onFocus="window.status='';  return true" onBlur="window.status=''; return true"  class="submenulinktext2">HELP</a>
 |
 <a href="twbkwbis.P_Logout" accesskey="3" class="submenulinktext2">EXIT</a>
@@ -115,7 +122,7 @@ var help_height = "500";
 <TD CLASS="pldefault"><p class="rightaligntext"></p>
 <div class="staticheaders">
 Winter 2018<br>
-21-OCT-2017<br>
+14-JAN-2018<br>
 </div>
 </TD>
 </tr>
@@ -620,7 +627,7 @@ This course introduces students to further topics in discrete mathematics, inclu
 Computer Information Sciences Department
 <br />
 <br />
-<SPAN class="fieldlabeltext">Course Attributes: </SPAN><br />Coll of Engineering & Comp Sci, Info Systems Elective Course, Upper Division 
+<SPAN class="fieldlabeltext">Course Attributes: </SPAN><br />Coll of Engineering & Comp Sci, Info Systems Elective Course, Intersections, Upper Division 
 <br />
 <br />
 <tr>
@@ -637,7 +644,7 @@ The architecture of computer systems and associated software. Topics include dig
 <br />
 <SPAN class="fieldlabeltext">Levels: </SPAN>Undergraduate 
 <br />
-<SPAN class="fieldlabeltext">Schedule Types: </SPAN><a href="/BANP/bwckctlg.p_disp_listcrse?term_in=201820&amp;subj_in=CIS&amp;crse_in=310&amp;schd_in=L">Lecture</a> 
+<SPAN class="fieldlabeltext">Schedule Types: </SPAN><a href="/BANP/bwckctlg.p_disp_listcrse?term_in=201820&amp;subj_in=CIS&amp;crse_in=310&amp;schd_in=L">Lecture</a>, Internet 
 <br />
 <br />
 Computer Information Sciences Department
@@ -1080,7 +1087,7 @@ Study of the management aspects of computing networks and distributed systems. T
 <br />
 <SPAN class="fieldlabeltext">Levels: </SPAN>Undergraduate 
 <br />
-<SPAN class="fieldlabeltext">Schedule Types: </SPAN><a href="/BANP/bwckctlg.p_disp_listcrse?term_in=201820&amp;subj_in=CIS&amp;crse_in=427&amp;schd_in=L">Lecture</a> 
+<SPAN class="fieldlabeltext">Schedule Types: </SPAN><a href="/BANP/bwckctlg.p_disp_listcrse?term_in=201820&amp;subj_in=CIS&amp;crse_in=427&amp;schd_in=L">Lecture</a>, Internet 
 <br />
 <br />
 Computer Information Sciences Department
@@ -1184,6 +1191,30 @@ Computer Information Sciences Department
 <br />
 <br />
 <tr>
+<td CLASS="nttitle" scope="colgroup" ><a href="/BANP/bwckctlg.p_disp_course_detail?cat_term_in=201820&amp;subj_code_in=CIS&amp;crse_numb_in=446">CIS 446 - Wireless & Mobi Comp Security</a></td>
+</tr>
+<tr>
+<TD CLASS="ntdefault">
+Full course title: Wireless and Mobile Computing Security. 
+The course focuses on security and privacy issues in the area of wireless networks and mobile computing such as cellular networks, wireless LANs, connected vehicles, smart and mobile devices, sensors and sensor networks, IoT, etc. The course will first present on overview of wireless communication and wireless systems, then focus on attacks, discuss proposed solutions and their limitations. Topics of this course include:(1) introduction to security primitives and wireless networks; (2) security issues in single-hop wireless networks that include cellular networks, RFID, modern vehicle, smartphone security; (3) security issues in multi-hop wireless network that include Mobile Ad Hoc network, wireless sensor network and vehicular network security. (YR)
+<br />
+    3.000 Credit hours
+<br />
+    3.000   Lecture hours
+<br />
+<br />
+<SPAN class="fieldlabeltext">Levels: </SPAN>Undergraduate 
+<br />
+<SPAN class="fieldlabeltext">Schedule Types: </SPAN><a href="/BANP/bwckctlg.p_disp_listcrse?term_in=201820&amp;subj_in=CIS&amp;crse_in=446&amp;schd_in=L">Lecture</a>, Internet 
+<br />
+<br />
+Computer Information Sciences Department
+<br />
+<br />
+<SPAN class="fieldlabeltext">Course Attributes: </SPAN><br />Coll of Engineering & Comp Sci, Upper Division 
+<br />
+<br />
+<tr>
 <td CLASS="nttitle" scope="colgroup" ><a href="/BANP/bwckctlg.p_disp_course_detail?cat_term_in=201820&amp;subj_code_in=CIS&amp;crse_numb_in=447">CIS 447 - Intro Computr & Ntwrk Security</a></td>
 </tr>
 <tr>
@@ -1220,7 +1251,7 @@ Computer Information Sciences Department
 <br />
 <SPAN class="fieldlabeltext">Levels: </SPAN>Undergraduate 
 <br />
-<SPAN class="fieldlabeltext">Schedule Types: </SPAN><a href="/BANP/bwckctlg.p_disp_listcrse?term_in=201820&amp;subj_in=CIS&amp;crse_in=450&amp;schd_in=L">Lecture</a> 
+<SPAN class="fieldlabeltext">Schedule Types: </SPAN><a href="/BANP/bwckctlg.p_disp_listcrse?term_in=201820&amp;subj_in=CIS&amp;crse_in=450&amp;schd_in=L">Lecture</a>, Internet 
 <br />
 <br />
 Computer Information Sciences Department
@@ -1406,7 +1437,7 @@ This course introduces students to basic concepts and methods of artificial inte
 <br />
 <SPAN class="fieldlabeltext">Levels: </SPAN>Graduate, Graduate, Rackham, Rackham, Undergraduate 
 <br />
-<SPAN class="fieldlabeltext">Schedule Types: </SPAN>Lecture, Internet 
+<SPAN class="fieldlabeltext">Schedule Types: </SPAN><a href="/BANP/bwckctlg.p_disp_listcrse?term_in=201820&amp;subj_in=CIS&amp;crse_in=479&amp;schd_in=L">Lecture</a>, Internet 
 <br />
 <br />
 Computer Information Sciences Department
@@ -2167,7 +2198,7 @@ Computer Information Sciences Department
 <br />
 <SPAN class="fieldlabeltext">Levels: </SPAN>Doctorate, Doctorate, Graduate, Graduate, Rackham, Rackham 
 <br />
-<SPAN class="fieldlabeltext">Schedule Types: </SPAN><a href="/BANP/bwckctlg.p_disp_listcrse?term_in=201820&amp;subj_in=CIS&amp;crse_in=551&amp;schd_in=L">Lecture</a> 
+<SPAN class="fieldlabeltext">Schedule Types: </SPAN>Lecture 
 <br />
 <br />
 Computer Information Sciences Department
@@ -2627,7 +2658,7 @@ Computer Information Sciences Department
 <br />
 <SPAN class="fieldlabeltext">Levels: </SPAN>Graduate, Graduate, Rackham, Rackham 
 <br />
-<SPAN class="fieldlabeltext">Schedule Types: </SPAN><a href="/BANP/bwckctlg.p_disp_listcrse?term_in=201820&amp;subj_in=CIS&amp;crse_in=575&amp;schd_in=L">Lecture</a>, Internet 
+<SPAN class="fieldlabeltext">Schedule Types: </SPAN>Lecture, Internet 
 <br />
 <br />
 Computer Information Sciences Department
@@ -2742,7 +2773,7 @@ This course consists of an in-depth examination of current technological advance
 <br />
 <SPAN class="fieldlabeltext">Levels: </SPAN>Doctorate, Doctorate, Graduate, Graduate, Rackham, Rackham 
 <br />
-<SPAN class="fieldlabeltext">Schedule Types: </SPAN><a href="/BANP/bwckctlg.p_disp_listcrse?term_in=201820&amp;subj_in=CIS&amp;crse_in=584&amp;schd_in=L">Lecture</a> 
+<SPAN class="fieldlabeltext">Schedule Types: </SPAN>Lecture 
 <br />
 <br />
 Computer Information Sciences Department
@@ -3111,7 +3142,7 @@ Advanced Directed Studies:  Special topic in computer and information science.  
 <br />
 <SPAN class="fieldlabeltext">Levels: </SPAN>Doctorate, Doctorate 
 <br />
-<SPAN class="fieldlabeltext">Schedule Types: </SPAN>Independent Study 
+<SPAN class="fieldlabeltext">Schedule Types: </SPAN><a href="/BANP/bwckctlg.p_disp_listcrse?term_in=201820&amp;subj_in=CIS&amp;crse_in=691&amp;schd_in=I">Independent Study</a> 
 <br />
 <br />
 Computer Information Sciences Department
@@ -3203,7 +3234,7 @@ After attaining candidacy, every Ph.D. student is required to attend and activel
 <br />
 <SPAN class="fieldlabeltext">Levels: </SPAN>Doctorate 
 <br />
-<SPAN class="fieldlabeltext">Schedule Types: </SPAN>Seminar 
+<SPAN class="fieldlabeltext">Schedule Types: </SPAN><a href="/BANP/bwckctlg.p_disp_listcrse?term_in=201820&amp;subj_in=CIS&amp;crse_in=798&amp;schd_in=S">Seminar</a> 
 <br />
 <br />
 Computer Information Sciences Department
@@ -3227,7 +3258,7 @@ Dissertation work by a pre-candidate student in Computer and Information Science
 <br />
 <SPAN class="fieldlabeltext">Levels: </SPAN>Doctorate, Doctorate 
 <br />
-<SPAN class="fieldlabeltext">Schedule Types: </SPAN>Independent Study 
+<SPAN class="fieldlabeltext">Schedule Types: </SPAN><a href="/BANP/bwckctlg.p_disp_listcrse?term_in=201820&amp;subj_in=CIS&amp;crse_in=980&amp;schd_in=I">Independent Study</a> 
 <br />
 <br />
 Computer Information Sciences Department
@@ -3250,7 +3281,7 @@ Dissertation work by a student of the Ph.D. in Computer and Information Science 
 <br />
 <SPAN class="fieldlabeltext">Levels: </SPAN>Doctorate 
 <br />
-<SPAN class="fieldlabeltext">Schedule Types: </SPAN>Independent Study 
+<SPAN class="fieldlabeltext">Schedule Types: </SPAN><a href="/BANP/bwckctlg.p_disp_listcrse?term_in=201820&amp;subj_in=CIS&amp;crse_in=990&amp;schd_in=I">Independent Study</a> 
 <br />
 <br />
 Computer Information Sciences Department
