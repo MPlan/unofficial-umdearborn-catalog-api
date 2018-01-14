@@ -1,0 +1,398 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/transitional.dtd">
+<HTML lang="en">
+
+<head>
+  <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <LINK REL="stylesheet" HREF="/css/web_defaultapp.css" TYPE="text/css">
+  <LINK REL="stylesheet" HREF="/css/web_defaultprint.css" TYPE="text/css" media="print">
+  <link rel="stylesheet" type="text/css" href="/css/app-overrides.css">
+  <link rel="stylesheet" type="text/css" href="/css/common-platform.css">
+  <link rel="stylesheet" type="text/css" href="/css/common-controls.css">
+  <LINK REL="stylesheet" type="text/css" href="/css/jquery/jquery.autocomplete.css">
+  <LINK REL="stylesheet" type="text/css" href="/css/cascade.css">
+  <!--[if IE 6]><link href="/css/ie6.css" rel="stylesheet" type="text/css"><![endif]-->
+  <!--[if IE 7]><link href="/css/ie7.css" rel="stylesheet" type="text/css"><![endif]-->
+  <!--[if IE 8]><link href="/css/ie8.css" rel="stylesheet" type="text/css"><![endif]-->
+  <LINK REL="stylesheet" type="text/css" href="/css/cascade-print.css" media="print">
+  <script type="text/javascript" src="/js/jquery-1.6.1.min.js"></script>
+  <script type="text/javascript" src="/js/jquery/jquery.includeMany-1.2.0.js"></script>
+  <script type="text/javascript" src="/js/jquery/jquery.history.js"></script>
+  <script type="text/javascript" src="/js/jquery/jquery-ui-personalized-1.5.3.js"></script>
+  <script type="text/javascript" src="/js/jquery/jquery.colorpicker.js"></script>
+  <script type="text/javascript" src="/js/jquery/jquery.autocomplete.js"></script>
+  <script type="text/javascript" src="/js/jquery/jquery.form.js"></script>
+  <script type="text/javascript" src="/js/jquery/json2xml.js"></script>
+  <script type="text/javascript" src="/js/jquery/jquery.jsonp-2.1.3.min.js"></script>
+  <script type="text/javascript" src="/js/serviceProperties.js"></script>
+  <script type="text/javascript" src="/js/common-controls-min.js"></script>
+  <script type="text/javascript" src="/js/common-integrate-min.js"></script>
+  <script type="text/javascript" src="/js/common-navigation-min.js"></script>
+  <script type="text/javascript" src="/js/common-platform-min.js"></script>
+  <script type="text/javascript" src="/js/cascade-utils-min.js"></script>
+  <script type="text/javascript" src="/js/cascade-controls-min.js"></script>
+  <script type="text/javascript" src="/js/udcxml-service-min.js"></script>
+  <script type="text/javascript" src="/js/cascade-parser-min.js"></script>
+  <script type="text/javascript" src="/js/cascade-ext-min.js"></script>
+  <title>Search for Courses</title>
+  <meta http-equiv="Content-Script-Type" name="Default_Script_Language" content="text/javascript">
+  <SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+< !--Hide JavaScript from older browsers
+    window.onunload = function () { submitcount = 0; }
+    var submitcount = 0;
+    function checkSubmit() {
+      if (submitcount == 0) {
+        submitcount++;
+        return true;
+      }
+      else {
+        alert("Your changes have already been submitted.");
+        return false;
+      }
+    }
+//  End script hiding -->
+  </SCRIPT>
+  <SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+< !--Hide JavaScript from older browsers
+    //  Function to open a window
+    function windowOpen(window_url) {
+      helpWin = window.open(window_url, '', 'toolbar=yes,status=no,scrollbars=yes,menubar=yes,resizable=yes,directories=no,location=no,width=350,height=400');
+      if (document.images) {
+        if (helpWin) helpWin.focus()
+      }
+    }
+//  End script hiding -->
+  </SCRIPT>
+  <SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+< !--Hide JavaScript from older browsers
+    var level_depth = "0";
+    var userDetails = "";
+    var wcMessage = "";
+    var locale_val = "AMERICAN_AMERICA";
+    var locale_lang = "en_US";
+    var help_width = "450";
+    var help_height = "500";
+//  End script hiding -->
+  </SCRIPT>
+</head>
+
+<body>
+  <div id="headerImage">
+    <img src="/wtlgifs/UMD_header_logo.gif" CLASS="headerImg" TITLE="" NAME="UMD Wordmark" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=78
+      WIDTH=550 />
+  </div>
+  <div class="headerwrapperdiv">
+    <div class="pageheaderdiv1">
+      <a href="#main_content" onMouseover="window.status='Go to Main Content'; return true" onMouseout="window.status=''; return true"
+        OnFocus="window.status='Go to Main Content'; return true" onBlur="window.status=''; return true" class="skiplinks">Go to Main Content</a>
+      <h1>Univ. of Mich. Dearborn (BANP)</h1>
+    </DIV>
+    <div class="headerlinksdiv">
+    </DIV>
+    <table CLASS="plaintable" SUMMARY="This table displays Menu Items and Banner Search textbox." WIDTH="100%">
+      <tr>
+        <TD CLASS="pldefault">
+          <div class="headerlinksdiv2">
+            &nbsp;
+          </div>
+        </TD>
+        <TD CLASS="pldefault">
+          <p class="rightaligntext"></p>
+          <SPAN class="pageheaderlinks">
+            <a href="/wtlhelp/twbhhelp.htm" accesskey="H" onClick="popup = window.open('/wtlhelp/twbhhelp.htm', 'PopupPage','height=500,width=450,scrollbars=yes,resizable=yes'); return false"
+              target="_blank" onMouseOver="window.status='';  return true" onMouseOut="window.status=''; return true" onFocus="window.status='';  return true"
+              onBlur="window.status=''; return true" class="submenulinktext2">HELP</a>
+            |
+            <a href="twbkwbis.P_Logout" accesskey="3" class="submenulinktext2">EXIT</a>
+          </span>
+        </TD>
+      </tr>
+    </table>
+  </DIV>
+  <div class="pagetitlediv">
+    <table CLASS="plaintable" SUMMARY="This table displays title and static header displays." WIDTH="100%">
+      <tr>
+        <TD CLASS="pldefault">
+          <h2>Search for Courses</h2>
+        </TD>
+        <TD CLASS="pldefault">
+          &nbsp;
+        </TD>
+        <TD CLASS="pldefault">
+          <p class="rightaligntext"></p>
+          <div class="staticheaders">
+            Winter 2018
+            <br> 14-JAN-2018
+            <br>
+          </div>
+        </TD>
+      </tr>
+      <tr>
+        <TD class="bg3" width="100%" colSpan=3>
+          <img src="/wtlgifs/web_transparent.gif" alt="Transparent Image" CLASS="headerImg" TITLE="Transparent Image" NAME="web_transparent"
+            HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=3 WIDTH=10 />
+        </TD>
+      </tr>
+    </table>
+    <a name="main_content"></a>
+  </DIV>
+  <div class="pagebodydiv">
+    <!--  ** END OF twbkwbis.P_OpenDoc **  -->
+    <div class="infotextdiv">
+      <table CLASS="infotexttable" SUMMARY="This layout table contains information that may be helpful in understanding the content and functionality of this page.  It could be a brief set of instructions, a description of error messages, or other special information.">
+        <tr>
+          <td CLASS="indefault">
+            <img src="/wtlgifs/web_info_cascade.png" alt="Information" CLASS="headerImg" TITLE="Information" NAME="web_info" HSPACE=0
+              VSPACE=0 BORDER=0 HEIGHT=12 WIDTH=14 />
+          </td>
+          <td CLASS="indefault">
+            <SPAN class="infotext"> Use any combination of selection options to narrow your search for courses. You must choose at least one Subject.
+              When your selection is complete, choose Get Courses to perform the search.</SPAN>
+          </td>
+        </tr>
+      </table>
+      <p>
+    </DIV>
+    <br />
+    <form action="/BANP/bwckctlg.p_display_courses" method="post">
+      <input type="hidden" name="term_in" value="201820" />
+      <input type="hidden" name="call_proc_in" value="bwckctlg.p_disp_dyn_ctlg" />
+      <input type="hidden" name="sel_subj" value="dummy" />
+      <input type="hidden" name="sel_levl" value="dummy" />
+      <input type="hidden" name="sel_schd" value="dummy" />
+      <input type="hidden" name="sel_coll" value="dummy" />
+      <input type="hidden" name="sel_divs" value="dummy" />
+      <input type="hidden" name="sel_dept" value="dummy" />
+      <input type="hidden" name="sel_attr" value="dummy" />
+      <table CLASS="dataentrytable" SUMMARY="This table is used for input criteria for catalog courses.">
+        <tr>
+          <td CLASS="delabel" scope="row">
+            <LABEL for=subj_id>
+              <SPAN class="fieldlabeltext">Subject (BZ): </SPAN>
+            </LABEL>
+          </td>
+          <TD CLASS="dedefault">
+            <select name="sel_subj" size="3" MULTIPLE ID="subj_id">
+              <OPTION VALUE="ACC">Accounting</OPTION>
+              <OPTION VALUE="AAAS">African & African-Amer Studies</OPTION>
+              <OPTION VALUE="AMST">American Studies</OPTION>
+              <OPTION VALUE="ANTH">Anthropology</OPTION>
+              <OPTION VALUE="MAPP">Applied Music</OPTION>
+              <OPTION VALUE="AAST">Arab American Studies</OPTION>
+              <OPTION VALUE="ARBC">Arabic</OPTION>
+              <OPTION VALUE="ART">Art Applied</OPTION>
+              <OPTION VALUE="ARTH">Art History</OPTION>
+              <OPTION VALUE="ASTR">Astronomy</OPTION>
+              <OPTION VALUE="AENG">Automotive Engineering</OPTION>
+              <OPTION VALUE="ASE">Automotive Systems Engineering</OPTION>
+              <OPTION VALUE="BBS">Behavioral & Biological Sci</OPTION>
+              <OPTION VALUE="BSCI">Behavioral Science</OPTION>
+              <OPTION VALUE="BCHM">Biochemistry</OPTION>
+              <OPTION VALUE="BENG">Bioengineering</OPTION>
+              <OPTION VALUE="BIOL">Biological Science</OPTION>
+              <OPTION VALUE="BA">Business Administration</OPTION>
+              <OPTION VALUE="BE">Business Economics</OPTION>
+              <OPTION VALUE="BI">Business Internship</OPTION>
+              <OPTION VALUE="BPS">Business Policy and Strategy</OPTION>
+              <OPTION VALUE="CHEM">Chemistry</OPTION>
+              <OPTION VALUE="CLS">Child Life</OPTION>
+              <OPTION VALUE="CIVE">Civic Engagement</OPTION>
+              <OPTION VALUE="COMM">Communication</OPTION>
+              <OPTION VALUE="CHE">Community Health Education</OPTION>
+              <OPTION VALUE="COML">Comparative Literature</OPTION>
+              <OPTION VALUE="CCM">Computer & Computational Math</OPTION>
+              <OPTION VALUE="CIS">Computer & Information Science</OPTION>
+              <OPTION VALUE="CBA">Continuing Business Admin</OPTION>
+              <OPTION VALUE="CELP">Continuing Eng Lang Prof</OPTION>
+              <OPTION VALUE="CEM">Continuing Engineering Mgmt</OPTION>
+              <OPTION VALUE="CHST">Continuing History</OPTION>
+              <OPTION VALUE="CPSY">Continuing Psychology</OPTION>
+              <OPTION VALUE="CRJ">Criminal Justice Studies</OPTION>
+              <OPTION VALUE="DS">Decision Sciences</OPTION>
+              <OPTION VALUE="ECON">Economics</OPTION>
+              <OPTION VALUE="EDA">Educ A-Theoretical Foundatns</OPTION>
+              <OPTION VALUE="EDB">Educ B-Educational Admin</OPTION>
+              <OPTION VALUE="EDC">Educ C-Psychological Foundatns</OPTION>
+              <OPTION VALUE="EDD">Educ D-Curriculum & Instructn</OPTION>
+              <OPTION VALUE="EDF">Educ F-Physical Education</OPTION>
+              <OPTION VALUE="EDK">Educ K-Independent Study</OPTION>
+              <OPTION VALUE="EDM">Educ M-Community & Bilingual</OPTION>
+              <OPTION VALUE="EDN">Educ N-Special Education</OPTION>
+              <OPTION VALUE="EDT">Educ T-Education Technology</OPTION>
+              <OPTION VALUE="EDMA">Education Mathematics</OPTION>
+              <OPTION VALUE="ECE">Electrical&Computer Engin</OPTION>
+              <OPTION VALUE="ESE">Energy Systems Engineering</OPTION>
+              <OPTION VALUE="ENGR">Engineering Core</OPTION>
+              <OPTION VALUE="EMGT">Engineering Management</OPTION>
+              <OPTION VALUE="ENGL">English</OPTION>
+              <OPTION VALUE="COMP">English Composition</OPTION>
+              <OPTION VALUE="ELP">English Language Proficiency</OPTION>
+              <OPTION VALUE="ENT">Entrepreneurship</OPTION>
+              <OPTION VALUE="ESCI">Environmental Science</OPTION>
+              <OPTION VALUE="ENST">Environmental Studies</OPTION>
+              <OPTION VALUE="EXPS">Exploratory Studies</OPTION>
+              <OPTION VALUE="FIN">Finance</OPTION>
+              <OPTION VALUE="FREN">French</OPTION>
+              <OPTION VALUE="GEOG">Geography</OPTION>
+              <OPTION VALUE="GEOL">Geology</OPTION>
+              <OPTION VALUE="GER">German</OPTION>
+              <OPTION VALUE="GLOC">Global Cultures</OPTION>
+              <OPTION VALUE="HSED">Health & Human Services & Educ</OPTION>
+              <OPTION VALUE="HHS">Health and Human Service</OPTION>
+              <OPTION VALUE="HIT">Health Information Technology</OPTION>
+              <OPTION VALUE="HPS">Health Policy Studies</OPTION>
+              <OPTION VALUE="HIST">History</OPTION>
+              <OPTION VALUE="MHIS">History of Music</OPTION>
+              <OPTION VALUE="HRM">Human Resource Management</OPTION>
+              <OPTION VALUE="HUM">Humanities</OPTION>
+              <OPTION VALUE="IMSE">Indust & Manufac Sys Engin</OPTION>
+              <OPTION VALUE="ISE">Information Sys Engineering</OPTION>
+              <OPTION VALUE="ITM">Information Technology Mgmt</OPTION>
+              <OPTION VALUE="IB">International Business</OPTION>
+              <OPTION VALUE="JPN">Japanese</OPTION>
+              <OPTION VALUE="JASS">Journalism and Screen Studies</OPTION>
+              <OPTION VALUE="LAT">Latin</OPTION>
+              <OPTION VALUE="LE">Law & Environment</OPTION>
+              <OPTION VALUE="LIBS">Liberal Studies</OPTION>
+              <OPTION VALUE="LIBR">Library Science</OPTION>
+              <OPTION VALUE="LING">Linguistics</OPTION>
+              <OPTION VALUE="LGM">Local Government Management</OPTION>
+              <OPTION VALUE="MIS">Management Information Systems</OPTION>
+              <OPTION VALUE="MKT">Marketing</OPTION>
+              <OPTION VALUE="MATH">Mathematics</OPTION>
+              <OPTION VALUE="ME">Mechanical Engineering</OPTION>
+              <OPTION VALUE="MICR">Microbiology</OPTION>
+              <OPTION VALUE="MILS">Military Science</OPTION>
+              <OPTION VALUE="MCL">Modern & Classical Language</OPTION>
+              <OPTION VALUE="MTHY">Music Theory</OPTION>
+              <OPTION VALUE="NSCI">Natural Science</OPTION>
+              <OPTION VALUE="OM">Operations Management</OPTION>
+              <OPTION VALUE="OB">Organizational Behavior</OPTION>
+              <OPTION VALUE="PHIL">Philosophy</OPTION>
+              <OPTION VALUE="PHYS">Physics</OPTION>
+              <OPTION VALUE="POL">Political Science</OPTION>
+              <OPTION VALUE="PDED">Professional Education</OPTION>
+              <OPTION VALUE="PSYC">Psychology</OPTION>
+              <OPTION VALUE="PADM">Public Administration</OPTION>
+              <OPTION VALUE="PPOL">Public Policy</OPTION>
+              <OPTION VALUE="RELS">Religious Studies</OPTION>
+              <OPTION VALUE="STS">Science and Technology Studies</OPTION>
+              <OPTION VALUE="SSCI">Social Sciences</OPTION>
+              <OPTION VALUE="SWK">Social Work</OPTION>
+              <OPTION VALUE="SOC">Sociology</OPTION>
+              <OPTION VALUE="SPAN">Spanish</OPTION>
+              <OPTION VALUE="SPEE">Speech</OPTION>
+              <OPTION VALUE="STAT">Statistics</OPTION>
+              <OPTION VALUE="TAX">Tax</OPTION>
+              <OPTION VALUE="URS">Urban and Regional Studies</OPTION>
+              <OPTION VALUE="WGST">Women's and Gender Studies</OPTION>
+            </select>
+          </TD>
+        </tr>
+        <tr>
+          <td CLASS="delabel" scope="row">
+            <LABEL for=crse_id_from>
+              <SPAN class="fieldlabeltext">Course Number Range: </SPAN>
+            </LABEL>
+          </td>
+          <td colspan="7" CLASS="dedefault"> from
+            <input type="text" name="sel_crse_strt" size="6" maxlength="5" ID="crse_id_from" />
+            <LABEL for=crse_id_to>
+              <SPAN class="fieldlabeltextinvisible">Course To</SPAN>
+            </LABEL> to
+            <input type="text" name="sel_crse_end" size="6" maxlength="5" ID="crse_id_to" />
+          </td>
+        </tr>
+        <tr>
+          <td CLASS="delabel" scope="row">
+            <LABEL for=title_id>
+              <SPAN class="fieldlabeltext">Title: </SPAN>
+            </LABEL>
+          </td>
+          <td colspan="7" CLASS="dedefault">
+            <input type="text" name="sel_title" size="33" maxlength="30" ID="title_id" />
+          </td>
+        </tr>
+        <tr>
+          <td CLASS="delabel" scope="row">
+            <LABEL for=levl_id>
+              <SPAN class="fieldlabeltext">Level: </SPAN>
+            </LABEL>
+          </td>
+          <TD CLASS="dedefault">
+            <select name="sel_levl" size="3" MULTIPLE ID="levl_id">
+              <OPTION VALUE="%" SELECTED>All</OPTION>
+              <OPTION VALUE="DO">Doctorate</OPTION>
+              <OPTION VALUE="GR">Graduate</OPTION>
+              <OPTION VALUE="RA">Rackham</OPTION>
+              <OPTION VALUE="SP">Specialist</OPTION>
+              <OPTION VALUE="UG">Undergraduate</OPTION>
+            </select>
+          </TD>
+        </tr>
+        <input type="hidden" name="sel_schd" value="%" />
+        <input type="hidden" name="sel_coll" value="%" />
+        <input type="hidden" name="sel_divs" value="%" />
+        <input type="hidden" name="sel_dept" value="%" />
+        <tr>
+          <td CLASS="delabel" scope="row">
+            <LABEL for=credit_id_from>
+              <SPAN class="fieldlabeltext">Credit Range: </SPAN>
+            </LABEL>
+          </td>
+          <TD CLASS="dedefault">
+            <input type="text" name="sel_from_cred" size="11" maxlength="10" ID="credit_id_from" /> hours to
+            <LABEL for=credit_id_to>
+              <SPAN class="fieldlabeltextinvisible">Credit Range To:</SPAN>
+            </LABEL>
+            <input type="text" name="sel_to_cred" size="11" maxlength="10" ID="credit_id_to" /> hours
+          </TD>
+        </tr>
+        <input type="hidden" name="sel_attr" value="%" />
+        <tr>
+          <td CLASS="dedefault">
+            <input type="submit" value="Get Courses" />
+          </td>
+          <td CLASS="dedefault">
+            <input type="reset" VALUE="Reset" />
+          </td>
+        </tr>
+      </table>
+    </form>
+
+    <!--  ** START OF twbkwbis.P_CloseDoc **  -->
+    <table CLASS="plaintable" SUMMARY="This is table displays line separator at end of the page." WIDTH="100%" cellSpacing=0
+      cellPadding=0 border=0>
+      <tr>
+        <TD class="bgtabon" width="100%" colSpan=2>
+          <img src="/wtlgifs/web_transparent.gif" alt="Transparent Image" CLASS="headerImg" TITLE="Transparent Image" NAME="web_transparent"
+            HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=3 WIDTH=10 />
+        </TD>
+      </tr>
+    </table>
+    <a href="#top" onMouseover="window.status='Skip to top of page'; return true" onMouseout="window.status=''; return true"
+      OnFocus="window.status='Skip to top of page'; return true" onBlur="window.status=''; return true" class="skiplinks">Skip to top of page</a>
+  </DIV>
+  <div class="footerafterdiv">
+
+  </DIV>
+  <div class="globalafterdiv">
+
+  </DIV>
+  <div class="globalfooterdiv">
+
+  </DIV>
+  <div class="pagefooterdiv">
+    <SPAN class="releasetext">Release: 8.7.2</SPAN>
+  </DIV>
+  <div class="poweredbydiv">
+  </DIV>
+  <DIV class="div1"></DIV>
+  <DIV class="div2"></DIV>
+  <DIV class="div3"></DIV>
+  <DIV class="div4"></DIV>
+  <DIV class="div5"></DIV>
+  <DIV class="div6"></DIV>
+  <div class="banner_copyright"></div>
+</body>
+
+</html>

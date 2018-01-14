@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/transitional.dtd">
+<HTML lang="en">
+
+<head>
+  <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <LINK REL="stylesheet" HREF="/css/web_defaultapp.css" TYPE="text/css">
+  <LINK REL="stylesheet" HREF="/css/web_defaultprint.css" TYPE="text/css" media="print">
+  <link rel="stylesheet" type="text/css" href="/css/app-overrides.css">
+  <link rel="stylesheet" type="text/css" href="/css/common-platform.css">
+  <link rel="stylesheet" type="text/css" href="/css/common-controls.css">
+  <LINK REL="stylesheet" type="text/css" href="/css/jquery/jquery.autocomplete.css">
+  <LINK REL="stylesheet" type="text/css" href="/css/cascade.css">
+  <!--[if IE 6]><link href="/css/ie6.css" rel="stylesheet" type="text/css"><![endif]-->
+  <!--[if IE 7]><link href="/css/ie7.css" rel="stylesheet" type="text/css"><![endif]-->
+  <!--[if IE 8]><link href="/css/ie8.css" rel="stylesheet" type="text/css"><![endif]-->
+  <LINK REL="stylesheet" type="text/css" href="/css/cascade-print.css" media="print">
+  <script type="text/javascript" src="/js/jquery-1.6.1.min.js"></script>
+  <script type="text/javascript" src="/js/jquery/jquery.includeMany-1.2.0.js"></script>
+  <script type="text/javascript" src="/js/jquery/jquery.history.js"></script>
+  <script type="text/javascript" src="/js/jquery/jquery-ui-personalized-1.5.3.js"></script>
+  <script type="text/javascript" src="/js/jquery/jquery.colorpicker.js"></script>
+  <script type="text/javascript" src="/js/jquery/jquery.autocomplete.js"></script>
+  <script type="text/javascript" src="/js/jquery/jquery.form.js"></script>
+  <script type="text/javascript" src="/js/jquery/json2xml.js"></script>
+  <script type="text/javascript" src="/js/jquery/jquery.jsonp-2.1.3.min.js"></script>
+  <script type="text/javascript" src="/js/serviceProperties.js"></script>
+  <script type="text/javascript" src="/js/common-controls-min.js"></script>
+  <script type="text/javascript" src="/js/common-integrate-min.js"></script>
+  <script type="text/javascript" src="/js/common-navigation-min.js"></script>
+  <script type="text/javascript" src="/js/common-platform-min.js"></script>
+  <script type="text/javascript" src="/js/cascade-utils-min.js"></script>
+  <script type="text/javascript" src="/js/cascade-controls-min.js"></script>
+  <script type="text/javascript" src="/js/udcxml-service-min.js"></script>
+  <script type="text/javascript" src="/js/cascade-parser-min.js"></script>
+  <script type="text/javascript" src="/js/cascade-ext-min.js"></script>
+  <title>Catalog Term</title>
+  <meta http-equiv="Content-Script-Type" name="Default_Script_Language" content="text/javascript">
+  <SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+< !--Hide JavaScript from older browsers
+    window.onunload = function () { submitcount = 0; }
+    var submitcount = 0;
+    function checkSubmit() {
+      if (submitcount == 0) {
+        submitcount++;
+        return true;
+      }
+      else {
+        alert("Your changes have already been submitted.");
+        return false;
+      }
+    }
+//  End script hiding -->
+  </SCRIPT>
+  <SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+< !--Hide JavaScript from older browsers
+    //  Function to open a window
+    function windowOpen(window_url) {
+      helpWin = window.open(window_url, '', 'toolbar=yes,status=no,scrollbars=yes,menubar=yes,resizable=yes,directories=no,location=no,width=350,height=400');
+      if (document.images) {
+        if (helpWin) helpWin.focus()
+      }
+    }
+//  End script hiding -->
+  </SCRIPT>
+  <SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+< !--Hide JavaScript from older browsers
+    var level_depth = "0";
+    var userDetails = "";
+    var wcMessage = "";
+    var locale_val = "AMERICAN_AMERICA";
+    var locale_lang = "en_US";
+    var help_width = "450";
+    var help_height = "500";
+//  End script hiding -->
+  </SCRIPT>
+</head>
+
+<body>
+  <div id="headerImage">
+    <img src="/wtlgifs/UMD_header_logo.gif" CLASS="headerImg" TITLE="" NAME="UMD Wordmark" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=78
+      WIDTH=550 />
+  </div>
+  <div class="headerwrapperdiv">
+    <div class="pageheaderdiv1">
+      <a href="#main_content" onMouseover="window.status='Go to Main Content'; return true" onMouseout="window.status=''; return true"
+        OnFocus="window.status='Go to Main Content'; return true" onBlur="window.status=''; return true" class="skiplinks">Go to Main Content</a>
+      <h1>Univ. of Mich. Dearborn (BANP)</h1>
+    </DIV>
+    <div class="headerlinksdiv">
+    </DIV>
+    <table CLASS="plaintable" SUMMARY="This table displays Menu Items and Banner Search textbox." WIDTH="100%">
+      <tr>
+        <TD CLASS="pldefault">
+          <div class="headerlinksdiv2">
+            &nbsp;
+          </div>
+        </TD>
+        <TD CLASS="pldefault">
+          <p class="rightaligntext"></p>
+          <SPAN class="pageheaderlinks">
+            <a href="/BANP/twbkfrmt.P_DispHelp?pagename_in=bwckctlg.p_disp_cat_term_date" accesskey="H" onClick="popup = window.open('/BANP/twbkfrmt.P_DispHelp?pagename_in=bwckctlg.p_disp_cat_term_date', 'PopupPage','height=500,width=450,scrollbars=yes,resizable=yes'); return false"
+              target="_blank" onMouseOver="window.status='';  return true" onMouseOut="window.status=''; return true" onFocus="window.status='';  return true"
+              onBlur="window.status=''; return true" class="submenulinktext2">HELP</a>
+            |
+            <a href="twbkwbis.P_Logout" accesskey="3" class="submenulinktext2">EXIT</a>
+          </span>
+        </TD>
+      </tr>
+    </table>
+  </DIV>
+  <div class="pagetitlediv">
+    <table CLASS="plaintable" SUMMARY="This table displays title and static header displays." WIDTH="100%">
+      <tr>
+        <TD CLASS="pldefault">
+          <h2>Catalog Term</h2>
+        </TD>
+        <TD CLASS="pldefault">
+          &nbsp;
+        </TD>
+        <TD CLASS="pldefault">
+          <p class="rightaligntext"></p>
+          <div class="staticheaders">
+          </div>
+        </TD>
+      </tr>
+      <tr>
+        <TD class="bg3" width="100%" colSpan=3>
+          <img src="/wtlgifs/web_transparent.gif" alt="Transparent Image" CLASS="headerImg" TITLE="Transparent Image" NAME="web_transparent"
+            HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=3 WIDTH=10 />
+        </TD>
+      </tr>
+    </table>
+    <a name="main_content"></a>
+  </DIV>
+  <div class="pagebodydiv">
+    <!--  ** END OF twbkwbis.P_OpenDoc **  -->
+    <div class="infotextdiv">
+      <table CLASS="infotexttable" SUMMARY="This layout table contains information that may be helpful in understanding the content and functionality of this page.  It could be a brief set of instructions, a description of error messages, or other special information.">
+        <tr>
+          <td CLASS="indefault">
+            <img src="/wtlgifs/web_info_cascade.png" alt="Information" CLASS="headerImg" TITLE="Information" NAME="web_info" HSPACE=0
+              VSPACE=0 BORDER=0 HEIGHT=12 WIDTH=14 />
+          </td>
+          <td CLASS="indefault">
+            <SPAN class="infotext"> Please select a Catalog term and choose Submit to proceed to the Course Search page.</SPAN>
+          </td>
+        </tr>
+      </table>
+      <p>
+    </DIV>
+    <form action="/BANP/bwckctlg.p_disp_cat_term_date" method="post">
+      <input type="hidden" name="call_proc_in" value="bwckctlg.p_disp_dyn_ctlg" />
+      <table CLASS="dataentrytable" SUMMARY="This layout table is used for catalog term for the dynamic catalog." WIDTH="100%">
+        <caption class="captiontext">Search by Term: </caption>
+        <tr>
+          <TD CLASS="dedefault">
+            <LABEL for=term_input_id>
+              <SPAN class="fieldlabeltextinvisible">Term</SPAN>
+            </LABEL>
+            <select name="cat_term_in" size="1" ID="term_input_id">
+              <OPTION VALUE="None">None</OPTION>
+              <OPTION VALUE="201820">Winter 2018</OPTION>
+              <OPTION VALUE="201810">Fall 2017</OPTION>
+              <OPTION VALUE="201730">Summer 2017</OPTION>
+              <OPTION VALUE="201720">Winter 2017</OPTION>
+              <OPTION VALUE="201710">Fall 2016</OPTION>
+              <OPTION VALUE="201630">Summer 2016</OPTION>
+              <OPTION VALUE="201620">Winter 2016</OPTION>
+              <OPTION VALUE="201610">Fall 2015</OPTION>
+              <OPTION VALUE="201530">Summer 2015</OPTION>
+              <OPTION VALUE="201520">Winter 2015</OPTION>
+              <OPTION VALUE="201510">Fall 2014</OPTION>
+              <OPTION VALUE="201430">Summer 2014</OPTION>
+              <OPTION VALUE="201420">Winter 2014</OPTION>
+              <OPTION VALUE="201410">Fall 2013</OPTION>
+              <OPTION VALUE="201330">Summer 2013</OPTION>
+              <OPTION VALUE="201320">Winter 2013</OPTION>
+              <OPTION VALUE="201310">Fall 2012</OPTION>
+              <OPTION VALUE="201230">Summer 2012</OPTION>
+              <OPTION VALUE="201220">Winter 2012</OPTION>
+              <OPTION VALUE="201210">Fall 2011</OPTION>
+              <OPTION VALUE="201130">Summer 2011</OPTION>
+              <OPTION VALUE="201120">Winter 2011</OPTION>
+              <OPTION VALUE="201110">Fall 2010</OPTION>
+              <OPTION VALUE="201030">Summer 2010</OPTION>
+              <OPTION VALUE="201020">Winter 2010</OPTION>
+              <OPTION VALUE="201010">Fall 2009</OPTION>
+              <OPTION VALUE="200930">Summer 2009</OPTION>
+              <OPTION VALUE="200920">Winter 2009</OPTION>
+              <OPTION VALUE="200910">Fall 2008</OPTION>
+              <OPTION VALUE="200830">Summer 2008</OPTION>
+              <OPTION VALUE="200820">Winter 2008</OPTION>
+              <OPTION VALUE="200810">Fall 2007</OPTION>
+              <OPTION VALUE="200730">Summer 2007</OPTION>
+              <OPTION VALUE="200720">Winter 2007</OPTION>
+              <OPTION VALUE="200710">Fall 2006</OPTION>
+              <OPTION VALUE="200630">Summer 2006</OPTION>
+              <OPTION VALUE="200620">Winter 2006</OPTION>
+              <OPTION VALUE="200610">Fall 2005</OPTION>
+              <OPTION VALUE="200530">Summer 2005</OPTION>
+              <OPTION VALUE="200520">Winter 2005</OPTION>
+              <OPTION VALUE="200510">Fall 2004</OPTION>
+              <OPTION VALUE="200430">Summer 2004</OPTION>
+              <OPTION VALUE="200420">Winter 2004</OPTION>
+              <OPTION VALUE="200410">Fall 2003</OPTION>
+              <OPTION VALUE="200330">Summer 2003</OPTION>
+              <OPTION VALUE="200320">Winter 2003</OPTION>
+              <OPTION VALUE="200310">Fall 2002</OPTION>
+              <OPTION VALUE="200230">Summer 2002</OPTION>
+              <OPTION VALUE="200220">Winter 2002</OPTION>
+              <OPTION VALUE="200210">Fall 2001</OPTION>
+              <OPTION VALUE="200130">Summer 2001</OPTION>
+              <OPTION VALUE="200120">Winter 2001</OPTION>
+              <OPTION VALUE="200110">Fall 2000</OPTION>
+              <OPTION VALUE="200030">Summer 2000</OPTION>
+              <OPTION VALUE="200020">Winter 2000</OPTION>
+              <OPTION VALUE="200010">Fall 1999</OPTION>
+              <OPTION VALUE="199930">Summer 1999</OPTION>
+              <OPTION VALUE="199920">Winter 1999</OPTION>
+              <OPTION VALUE="199910">Fall 1998</OPTION>
+              <OPTION VALUE="199830">Summer 1998</OPTION>
+              <OPTION VALUE="199820">Winter 1998</OPTION>
+              <OPTION VALUE="199810">Fall 1997</OPTION>
+            </select>
+          </TD>
+        </tr>
+      </table>
+      <br />
+      <br />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <!--  ** START OF twbkwbis.P_CloseDoc **  -->
+    <table CLASS="plaintable" SUMMARY="This is table displays line separator at end of the page." WIDTH="100%" cellSpacing=0
+      cellPadding=0 border=0>
+      <tr>
+        <TD class="bgtabon" width="100%" colSpan=2>
+          <img src="/wtlgifs/web_transparent.gif" alt="Transparent Image" CLASS="headerImg" TITLE="Transparent Image" NAME="web_transparent"
+            HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=3 WIDTH=10 />
+        </TD>
+      </tr>
+    </table>
+    <a href="#top" onMouseover="window.status='Skip to top of page'; return true" onMouseout="window.status=''; return true"
+      OnFocus="window.status='Skip to top of page'; return true" onBlur="window.status=''; return true" class="skiplinks">Skip to top of page</a>
+  </DIV>
+  <div class="footerafterdiv">
+
+  </DIV>
+  <div class="globalafterdiv">
+
+  </DIV>
+  <div class="globalfooterdiv">
+
+  </DIV>
+  <div class="pagefooterdiv">
+    <SPAN class="releasetext">Release: 8.7.2</SPAN>
+  </DIV>
+  <div class="poweredbydiv">
+  </DIV>
+  <DIV class="div1"></DIV>
+  <DIV class="div2"></DIV>
+  <DIV class="div3"></DIV>
+  <DIV class="div4"></DIV>
+  <DIV class="div5"></DIV>
+  <DIV class="div6"></DIV>
+  <div class="banner_copyright"></div>
+</body>
+
+</html>

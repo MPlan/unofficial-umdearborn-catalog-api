@@ -6,19 +6,19 @@ const exampleHtml = fs.readFileSync(
   path.resolve(__dirname, '../example-pages/course-list.html')
 ).toString();
 
-describe('Catalog entries parser', function () {
+describe('catalog entries parser', function () {
   const subjectCode = 'SUB';
   const courseNumber = '100L';
   const title = 'some course title - with -- extra _ dashes';
   const header = `${subjectCode} ${courseNumber} - ${title}`;
-  it(`parses headers correctly: "${header}"`, function () {
+  it(`parses headers correctly: '${header}'`, function () {
     const parsedHeader = parseHeader(header);
     expect(parsedHeader.subjectCode).to.be.equal(subjectCode);
     expect(parsedHeader.courseNumber).to.be.equal(courseNumber);
     expect(parsedHeader.title).to.be.equal(title);
   });
 
-  it('parses "course-list.html" correctly', function () {
+  it(`parses 'course-list.html' correctly`, function () {
     const catalogEntries = parseCatalogEntries(exampleHtml);
     expect(catalogEntries.length).to.be.equal(136);
 

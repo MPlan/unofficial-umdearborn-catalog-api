@@ -7,8 +7,8 @@ const rawDescriptionHtml = fs.readFileSync(
   path.resolve(__dirname, '../example-pages/description-body.html')
 ).toString();
 
-describe('Course detail parser', function () {
-  it('parses description out of course detail HTML', function () {
+describe(`course detail parser`, function () {
+  it(`parses description out of course detail HTML`, function () {
     const description = parseDescription(rawDescriptionHtml);
     expect(description).to.be.equal(oneLine`
       This course takes a detailed, hands-on approach to study the procedures and techniques used to
