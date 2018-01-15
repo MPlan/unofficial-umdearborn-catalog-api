@@ -32,40 +32,72 @@ notes:
 # gets all the subjects available in the most recent semester's catalog
 GET /api/catalog
 
-[
-  "ANTH",
-  "CIS",
-  "CHEM"
-]
+```
 
-# gets all the courses available in the most recent semester's catalog
-GET /api/catalog/CIS
-
-[
-  {
-    "subjectCode": "CIS",
-    "courseNumber": "450",
-    "name": "Operating Systems",
-    "sectionsHref": {
-      "L": "/BANP/bwckctlg.p_disp_listcrse?term_in=201820&subj_in=CIS&crse_in=450&schd_in=L"
-    }
-  }
-]
-
-# gets all the full info on a course
-GET /api/catalog/CIS/450
-
+```json
 {
-  "subjectCode": "CIS",
-  "courseNumber": "450",
-  "name": "Operating Systems",
-  "detailHref": "/BANP/bwckctlg.p_disp_course_detail?cat_term_in=201820&subj_code_in=CIS&crse_numb_in=450",
-  "sectionsHref": {
-    "L": "/BANP/bwckctlg.p_disp_listcrse?term_in=201820&subj_in=CIS&crse_in=450&schd_in=L"
-  },
-  "sections": {
-    "201820": {
-      "L": []
+  "CIS": {
+    "450": {
+      "name": "Operating Systems",
+      "shortDes": "Introduction to computer operating systems. Proces...",
+      "credits": 4,
+      "creditsMin": null,
+      "restrictions": [],
+      "prereqs": {
+        "g": "&",
+        "o": [
+          ["CIS", "999"],
+          "Remedial Math",
+          {
+            "g": "|",
+            "o": [
+              ["CIS", "350"],
+              ["ECE", "999"]
+            ]
+          },
+          {
+            "g": "|",
+            "o": [
+              ["CIS", "999"],
+              ["ECE", "999"]
+            ]
+          }
+        ]
+      },
+      "crossList": ["ECE", "478"],
+      "sections": {
+        "201820": [
+          {
+            "ins": "shqwang",
+            "typ": "Lecture",
+            "tim": "4:00 pm - 5:45 pm",
+            "day": "TR",
+            "loc": "Professional Education Center 1430",
+            "cap": 30,
+            "rem": 5
+          },
+          {
+            "ins": "shqwang",
+            "typ": "Internet",
+            "tim": "TBA",
+            "day": "",
+            "loc": "Internet Instruction",
+            "cap": 20,
+            "rem": 10
+          }
+        ],
+        "201810": [
+          {
+            "ins": "shqwang",
+            "typ": "Lecture",
+            "tim": "4:00 pm - 5:45 pm",
+            "day": "TR",
+            "loc": "Professional Education Center 1430",
+            "cap": 30,
+            "rem": 5
+          }
+        ]
+      }
     }
   }
 }
