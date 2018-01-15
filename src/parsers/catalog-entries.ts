@@ -1,7 +1,6 @@
 import { JSDOM } from 'jsdom';
 import { CatalogEntry } from '../models/catalog-entry';
-
-const catalogEntryKeys: (keyof CatalogEntry)[] = ['subjectCode', 'courseNumber', 'title', 'href'];
+import { formDecode } from '../utilities';
 
 export function parseHeader(header: string) {
   const titleSplit = header.split('-');
@@ -13,6 +12,11 @@ export function parseHeader(header: string) {
   return { title, subjectCode, courseNumber };
 }
 
+interface HtmlCatalogEntry {
+  heading: HTMLTableRowElement,
+  body: HTMLTableRowElement,
+}
+
 export function parseCatalogEntries(html: string) {
   const { window } = new JSDOM(html);
   const { document } = window;
@@ -21,31 +25,68 @@ export function parseCatalogEntries(html: string) {
     document.querySelectorAll('.datadisplaytable tr')
   );
 
-  const headingRows = dataTableRows.reduce((groups, headingOrBody: HTMLTableRowElement, index) => {
+  const htmlCatalogEntries = dataTableRows.reduce((
+    groups,
+    headingOrBody: HTMLTableRowElement,
+    index
+  ) => {
+    const i = Math.floor(index / 2);
+    const group = groups[i] || { heading: null, body: null, };
     if (index % 2 === 0) {
-      groups.push(headingOrBody);
+      group.heading = headingOrBody;
+    } else {
+      group.body = headingOrBody;
     }
+    groups[i] = group;
     return groups;
-  }, [] as HTMLTableRowElement[]);
+  }, [] as HtmlCatalogEntry[]);
 
-  const parsedGroups = (headingRows
-    .map(headingRow => {
+  const parsedGroups = (htmlCatalogEntries
+    .filter(htmlCatalogEntry => !!htmlCatalogEntry.heading && !!htmlCatalogEntry.body)
+    .map(htmlCatalogEntry => {
+      const headingRow = htmlCatalogEntry.heading;
       const titleElement = headingRow && headingRow.querySelector('.nttitle a') as HTMLAnchorElement | null;
       const titleSubjectAndNumber = titleElement && parseHeader(titleElement.innerHTML);
+
+      const name = titleSubjectAndNumber && titleSubjectAndNumber.title || '';
+      const subjectCode = titleSubjectAndNumber && titleSubjectAndNumber.subjectCode || '';
+      const courseNumber = titleSubjectAndNumber && titleSubjectAndNumber.courseNumber || '';
+      const detailHref = titleElement && titleElement.href || '';
+
+      const scheduleHrefs = (Array
+        .from(htmlCatalogEntry.body.querySelectorAll('a'))
+        .filter(a => {
+          if (!a.href) { return false; }
+          const querySplit = a.href.split('?');
+          const queryEncoded = querySplit[1];
+          if (!queryEncoded) { return false; }
+          const query = formDecode(queryEncoded);
+          if (query.subj_in.toUpperCase().trim() !== subjectCode.toUpperCase()) { return false; }
+          if (query.crse_in.toUpperCase().trim() !== courseNumber.toUpperCase()) { return false; }
+          if (!query.schd_in) { return false; }
+          return true;
+        })
+        .map(a => {
+          const querySplit = a.href.split('?');
+          const queryEncoded = querySplit[1];
+          const query = formDecode(queryEncoded);
+          return { scheduleType: query.schd_in, href: a.href };
+        })
+        .reduce((scheduleHrefs, { scheduleType, href }) => {
+          scheduleHrefs[scheduleType.trim().toUpperCase()] = href;
+          return scheduleHrefs;
+        }, {} as { [scheuledType: string]: string })
+      );
+
       const catalogEntry: CatalogEntry = {
-        title: titleSubjectAndNumber && titleSubjectAndNumber.title || '',
-        subjectCode: titleSubjectAndNumber && titleSubjectAndNumber.subjectCode || '',
-        courseNumber: titleSubjectAndNumber && titleSubjectAndNumber.courseNumber || '',
-        href: titleElement && titleElement.href || '',
+        name, subjectCode, courseNumber, detailHref, scheduleHrefs,
       };
       return catalogEntry;
     })
     .filter(catalogEntry => {
       return (Object
         .keys(catalogEntry)
-        .every(objectKey =>
-          catalogEntryKeys.includes(objectKey as any) && !!catalogEntry[objectKey as keyof CatalogEntry]
-        )
+        .every(objectKey => !!catalogEntry[objectKey as keyof CatalogEntry])
       );
     })
   );

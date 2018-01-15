@@ -46,12 +46,12 @@ describe('fetch', function () {
     }
     const entries = await fetchCatalogEntries('201820', 'CIS');
 
-    for (const { courseNumber, subjectCode, title, href } of entries) {
+    for (const { courseNumber, subjectCode, name, detailHref } of entries) {
       try {
         expect(courseNumber).to.be.not.empty;
         expect(subjectCode).to.be.equal('CIS');
-        expect(title).to.be.not.empty;
-        expect(href).to.be.not.empty;
+        expect(name).to.be.not.empty;
+        expect(detailHref).to.be.not.empty;
       } catch (e) {
         throw new Error(`${subjectCode} ${courseNumber} threw and error`);
       }
