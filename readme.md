@@ -39,11 +39,11 @@ GET /api/catalog
   "CIS": {
     "450": {
       "name": "Operating Systems",
-      "shortDes": "Introduction to computer operating systems. Proces...",
+      "description": "Introduction to computer operating systems. Proces...",
       "credits": 4,
       "creditsMin": null,
       "restrictions": [],
-      "prereqs": {
+      "prerequisites": {
         "g": "&",
         "o": [
           ["CIS", "999"],
