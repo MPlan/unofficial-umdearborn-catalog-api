@@ -46,15 +46,11 @@ describe('fetch', function () {
     }
     const entries = await fetchCatalogEntries('201820', 'CIS');
 
-    for (const { courseNumber, subjectCode, name, detailHref } of entries) {
-      try {
-        expect(courseNumber).to.be.not.empty;
-        expect(subjectCode).to.be.equal('CIS');
-        expect(name).to.be.not.empty;
-        expect(detailHref).to.be.not.empty;
-      } catch (e) {
-        throw new Error(`${subjectCode} ${courseNumber} threw and error`);
-      }
+    for (const { courseNumber, subjectCode, name, scheduleTypes } of entries) {
+      expect(courseNumber).to.be.not.empty;
+      expect(subjectCode).to.be.equal('CIS');
+      expect(name).to.be.not.empty;
+      expect(Array.isArray(scheduleTypes)).to.be.true;
     }
   });
 });

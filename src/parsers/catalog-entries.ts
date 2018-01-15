@@ -1,14 +1,15 @@
 import { JSDOM } from 'jsdom';
 import { CatalogEntry } from '../models/catalog-entry';
 import { formDecode } from '../utilities';
+import * as he from 'he';
 
 export function parseHeader(header: string) {
   const titleSplit = header.split('-');
-  const subjectAndNumber = titleSplit[0] || '';
-  const title = titleSplit.slice(1).join('-').trim();
+  const subjectAndNumber = he.decode(titleSplit[0] || '');
+  const title = he.decode(titleSplit.slice(1).join('-').trim());
   const subjectAndNumberSplit = subjectAndNumber.split(' ');
-  const subjectCode = (subjectAndNumberSplit[0] || '').toUpperCase().trim();
-  const courseNumber = subjectAndNumberSplit.slice(1).join(' ').trim();
+  const subjectCode = he.decode((subjectAndNumberSplit[0] || '').toUpperCase().trim());
+  const courseNumber = he.decode(subjectAndNumberSplit.slice(1).join(' ').trim());
   return { title, subjectCode, courseNumber };
 }
 
@@ -53,7 +54,7 @@ export function parseCatalogEntries(html: string) {
       const courseNumber = titleSubjectAndNumber && titleSubjectAndNumber.courseNumber || '';
       const detailHref = titleElement && titleElement.href || '';
 
-      const scheduleHrefs = (Array
+      const scheduleTypesObject = (Array
         .from(htmlCatalogEntry.body.querySelectorAll('a'))
         .filter(a => {
           if (!a.href) { return false; }
@@ -70,16 +71,18 @@ export function parseCatalogEntries(html: string) {
           const querySplit = a.href.split('?');
           const queryEncoded = querySplit[1];
           const query = formDecode(queryEncoded);
-          return { scheduleType: query.schd_in, href: a.href };
+          return query.schd_in;
         })
-        .reduce((scheduleHrefs, { scheduleType, href }) => {
-          scheduleHrefs[scheduleType.trim().toUpperCase()] = href;
-          return scheduleHrefs;
-        }, {} as { [scheuledType: string]: string })
+        .reduce((scheduleTypes, scheduleType) => {
+          scheduleTypes[scheduleType.trim().toUpperCase()] = scheduleType;
+          return scheduleTypes;
+        }, {} as { [scheduleType: string]: string })
       );
 
+      const scheduleTypes = Object.keys(scheduleTypesObject);
+
       const catalogEntry: CatalogEntry = {
-        name, subjectCode, courseNumber, detailHref, scheduleHrefs,
+        name, subjectCode, courseNumber, scheduleTypes,
       };
       return catalogEntry;
     })

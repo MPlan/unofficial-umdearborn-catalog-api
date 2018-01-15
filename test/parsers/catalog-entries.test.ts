@@ -22,12 +22,11 @@ describe('catalog entries parser', function () {
     const catalogEntries = parseCatalogEntries(exampleHtml);
     expect(catalogEntries.length).to.be.equal(136);
 
-    for (const { subjectCode, courseNumber, name, detailHref, scheduleHrefs } of catalogEntries) {
+    for (const { subjectCode, courseNumber, name, scheduleTypes } of catalogEntries) {
       expect(subjectCode).to.be.equal('CIS');
       expect(courseNumber).to.not.be.empty;
       expect(name).to.not.be.empty;
-      expect(detailHref).to.not.be.empty;
-      expect(typeof scheduleHrefs).to.be.equal('object');
+      expect(Array.isArray(scheduleTypes)).to.be.true;
     }
   });
 });
