@@ -3,6 +3,7 @@ import { expect } from 'chai';
 import { fetchTerms } from '../../src/fetch/terms';
 import { fetchSubjects } from '../../src/fetch/subjects';
 import { fetchCatalogEntries } from '../../src/fetch/catalog-entries';
+import { fetchScheduleListings } from '../../src/fetch/schedule-listings';
 
 const twentySeconds = 20 * 1000;
 
@@ -51,6 +52,18 @@ describe('fetch', function () {
       expect(subjectCode).to.be.equal('CIS');
       expect(name).to.be.not.empty;
       expect(Array.isArray(scheduleTypes)).to.be.true;
+    }
+  });
+  it('schedule listings', async function () {
+    this.timeout(twentySeconds);
+    if (process.env.SKIP_FETCH_TEST_ALL || process.env.SKIP_FETCH_TEST_SCHEDULE_LISTINGS) {
+      this.skip();
+      return;
+    }
+    const crns = await fetchScheduleListings('201820', 'CIS', '450', 'L');
+
+    for (const crn of crns) {
+      expect(crn).to.not.be.empty;
     }
   });
 });

@@ -11,11 +11,6 @@ export async function fetchTerms() {
     httpsAgent: new https.Agent({ ciphers: 'ALL' }),
   });
 
-  if (catalogTermResponse.status !== 200) {
-    throw new Error(
-      `Catalog term request returned non-200 response code: '${catalogTermResponse.status}'!`
-    );
-  }
   const html = catalogTermResponse.data as string | undefined;
   if (!html) {
     throw new Error('Catalog term response was undefined or empty.');

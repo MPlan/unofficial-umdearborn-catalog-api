@@ -12,11 +12,6 @@ export async function fetchSubjects(termCode: string) {
     data: formEncode({ call_proc_in: 'bwckctlg.p_disp_dyn_ctlg', cat_term_in: termCode })
   });
 
-  if (response.status !== 200) {
-    throw new Error(
-      `Subjects request returned non-200 response code: '${response.status}'!`
-    );
-  }
   const html = response.data as string | undefined;
   if (!html) {
     throw new Error('Subjects response was undefined or empty.');

@@ -42,11 +42,6 @@ export async function fetchCatalogEntries(termCode: string, subjectCode: string)
     }
   });
 
-  if (response.status !== 200) {
-    throw new Error(
-      `Subjects request returned non-200 response code: '${response.status}'!`
-    );
-  }
   const html = response.data as string | undefined;
   if (!html) {
     throw new Error('Subjects response was undefined or empty.');
