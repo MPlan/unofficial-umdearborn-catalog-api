@@ -1,7 +1,13 @@
 import { JSDOM } from 'jsdom';
-import { CatalogEntry } from '../models/catalog-entry';
 import { formDecode } from '../utilities';
 import * as he from 'he';
+
+export interface CatalogEntryResult {
+  subjectCode: string,
+  courseNumber: string,
+  name: string,
+  scheduleTypes: string[],
+}
 
 export function parseHeader(header: string) {
   const titleSplit = header.split('-');
@@ -19,8 +25,7 @@ interface HtmlCatalogEntry {
 }
 
 export function parseCatalogEntries(html: string) {
-  const { window } = new JSDOM(html);
-  const { document } = window;
+  const document = new JSDOM(html).window.document;
 
   const dataTableRows: HTMLTableRowElement[] = Array.from(
     document.querySelectorAll('.datadisplaytable tr')
@@ -81,7 +86,7 @@ export function parseCatalogEntries(html: string) {
 
       const scheduleTypes = Object.keys(scheduleTypesObject);
 
-      const catalogEntry: CatalogEntry = {
+      const catalogEntry: CatalogEntryResult = {
         name, subjectCode, courseNumber, scheduleTypes,
       };
       return catalogEntry;
@@ -89,7 +94,7 @@ export function parseCatalogEntries(html: string) {
     .filter(catalogEntry => {
       return (Object
         .keys(catalogEntry)
-        .every(objectKey => !!catalogEntry[objectKey as keyof CatalogEntry])
+        .every(objectKey => !!catalogEntry[objectKey as keyof CatalogEntryResult])
       );
     })
   );

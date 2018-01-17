@@ -1,7 +1,6 @@
 import axios from 'axios';
 import * as https from 'https';
 import { JSDOM } from 'jsdom';
-import { Term } from '../models/term';
 import { parseTerms } from '../parsers/terms'
 
 export async function fetchTerms() {

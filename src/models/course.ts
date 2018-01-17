@@ -1,6 +1,4 @@
-import { CatalogEntry } from './catalog-entry';
-
-interface Prerequisite {
+export interface Prerequisite {
   /** the logic gate to use */
   g: '&' | '|',
   /**
@@ -15,7 +13,7 @@ interface Prerequisite {
   o: Array<Prerequisite | [string, string] | string>,
 }
 
-interface Section {
+export interface Section {
   /** unique name of the instructor */
   ins: string,
   /** schedule type of this section e.g. Lecture or Internet */
@@ -33,6 +31,10 @@ interface Section {
 }
 
 export interface Course {
+  /** the subject code of this course. e.g. `CIS` */
+  subjectCode: string,
+  /** the course number of this course. e.g. `450` */
+  courseNumber: string,
   /** the full name of the course */
   name: string,
   /** the description of the course */

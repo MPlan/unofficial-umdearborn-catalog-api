@@ -1,5 +1,10 @@
 import { JSDOM } from 'jsdom';
-import { Term } from '../models/term';
+
+export interface TermResult {
+  code: string,
+  season: string,
+  year: number,
+}
 
 export function parseTerms(html: string) {
   const document = new JSDOM(html).window.document;
@@ -13,7 +18,7 @@ export function parseTerms(html: string) {
     .map(option => {
       const [rawSeason, rawYear] = option.text.split(' ');
 
-      const term: Term = {
+      const term: TermResult = {
         code: option.value,
         season: rawSeason.toLowerCase().trim(),
         year: parseInt(rawYear.trim()),

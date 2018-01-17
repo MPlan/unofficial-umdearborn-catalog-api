@@ -1,5 +1,9 @@
 import { JSDOM } from 'jsdom';
-import { Subject } from '../models/subject';
+
+export interface SubjectResult {
+  code: string,
+  name: string,
+}
 
 export function parseSubjects(html: string) {
   const document = new JSDOM(html).window.document;
@@ -8,7 +12,7 @@ export function parseSubjects(html: string) {
   const options = Array.from(selectBox.querySelectorAll('option')) as HTMLOptionElement[];
   const subjects = (options
     .map(option => {
-      const subject: Subject = {
+      const subject: SubjectResult = {
         code: option.value,
         name: option.text.trim(),
       };
