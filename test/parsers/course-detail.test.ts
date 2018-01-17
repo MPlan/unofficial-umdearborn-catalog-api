@@ -1,22 +1,21 @@
 import { expect } from 'chai';
-import { parseDescription } from '../../src/parsers/course-details';
+import { parseCourseDetail } from '../../src/parsers/course-detail';
 import { oneLine } from 'common-tags';
 import * as fs from 'fs';
 import * as path from 'path';
-const rawDescriptionHtml = fs.readFileSync(
-  path.resolve(__dirname, '../example-pages/description-body.html')
+const courseDetailHtml = fs.readFileSync(
+  path.resolve(__dirname, '../example-pages/course-detail.html')
 ).toString();
 
 describe(`course detail parser`, function () {
   it(`parses description out of course detail HTML`, function () {
-    const description = parseDescription(rawDescriptionHtml);
-    expect(description).to.be.equal(oneLine`
-      This course takes a detailed, hands-on approach to study the procedures and techniques used to
-      identify, extract, validate, document and preserve electronic evidence. Students completing
-      this course will be familiar with the core computer science theory and practical skills
-      necessary to perform basic computer forensic investigations, understand the role of technology
-      in investigating computer-based crime, and be prepared to deal with investigative bodies at a
-      basic level.
+    const courseDetail = parseCourseDetail(courseDetailHtml);
+    expect(courseDetail.description).to.be.equal(oneLine`
+      Introduction to computer operating systems. Process control, threads, concurrency, memory
+      management, virtual memory, uniprocessor, multiprocessor, and real-time scheduling, I/O
+      management, disk scheduling, file management, distributed processing, client/server, clusters,
+      distributed process management, security. (F,W).
     `);
   });
+  it(`parses the prerequisites out of the course detail HTML`);
 });

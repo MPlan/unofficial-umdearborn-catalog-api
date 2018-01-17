@@ -1,6 +1,6 @@
 import { JSDOM } from 'jsdom';
 import { formDecode } from '../utilities';
-import * as he from 'he';
+import { decode } from 'he';
 
 export interface CatalogEntryResult {
   subjectCode: string,
@@ -11,11 +11,11 @@ export interface CatalogEntryResult {
 
 export function parseHeader(header: string) {
   const titleSplit = header.split('-');
-  const subjectAndNumber = he.decode(titleSplit[0] || '');
-  const title = he.decode(titleSplit.slice(1).join('-').trim());
+  const subjectAndNumber = decode(titleSplit[0] || '');
+  const title = decode(titleSplit.slice(1).join('-').trim());
   const subjectAndNumberSplit = subjectAndNumber.split(' ');
-  const subjectCode = he.decode((subjectAndNumberSplit[0] || '').toUpperCase().trim());
-  const courseNumber = he.decode(subjectAndNumberSplit.slice(1).join(' ').trim());
+  const subjectCode = decode((subjectAndNumberSplit[0] || '').toUpperCase().trim());
+  const courseNumber = decode(subjectAndNumberSplit.slice(1).join(' ').trim());
   return { title, subjectCode, courseNumber };
 }
 
