@@ -27,13 +27,69 @@ export function parseDescription(bodyHtml: string) {
   return oneLine(Object.assign(arr, { raw: arr }));
 }
 
+interface _Prerequisite {
+  g: '&' | '|' | undefined,
+  o: Array<string | _Prerequisite>,
+}
+
+export function parsePrerequisiteBlock(block: string) {
+  // finds inner most `()`
+  const match = /\(([^()]*)\)/.exec(block);
+  if (!match) {
+    throw new Error('no match');
+  }
+  const innerMost = match[1];
+
+  const tokens = innerMost.split(' ').map(x => x.trim()).filter(x => /* removes empty strings */ x);
+
+  let currentPrerequisite: _Prerequisite = {
+    g: undefined,
+    o: []
+  };
+
+  for (const token of tokens) {
+    if (/and/i.test(token) || /or/i.test(token)) {
+      const gate = /*if*/ token === 'and' ? '&' : '|';
+      if (gate === currentPrerequisite.g) {
+        continue;
+      } else if (currentPrerequisite.g === undefined) {
+        currentPrerequisite.g = gate;
+      } else {
+        let previousPrerequisite = currentPrerequisite;
+        currentPrerequisite = {
+          g: gate,
+          o: [],
+        };
+        currentPrerequisite.o.push(previousPrerequisite);
+      }
+    } else {
+      currentPrerequisite.o.push(token);
+    }
+  }
+  return currentPrerequisite;
+}
+
+export function formatPrerequisite(prerequisite: _Prerequisite, depth: number = 0): string {
+  const logicGate = prerequisite.g;
+  const operands = prerequisite.o;
+
+  const joinedOperands = (operands
+    .map(operand => /*if*/ typeof operand === 'object'
+      ? formatPrerequisite(operand, depth + 1)
+      : operand
+    )
+    .join(' ')
+  );
+
+  return `(${/*if*/ logicGate === '&' ? 'and' : 'or'} ${joinedOperands})`;
+}
+
 export function parsePrerequisites(bodyHtml: string) {
-  // TODO
-  // const match = /prerequisites([\s\S]*)/i.exec(bodyHtml);
-  // if (!match) {
-  //   throw new Error(`Could not find prerequisite block in body of course detail html!`);
-  // }
-  // const prerequisiteHtml = match[1];
+  const match = /prerequisites([\s\S]*)/i.exec(bodyHtml);
+  if (!match) {
+    throw new Error(`Could not find prerequisite block in body of course detail html!`);
+  }
+  const prerequisiteHtml = match[1];
   return { g: '|', o: [] } as Prerequisite;
 }
 

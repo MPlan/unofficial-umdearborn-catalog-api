@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { parseCourseDetail } from '../../src/parsers/course-detail';
+import { parseCourseDetail, parsePrerequisiteBlock, formatPrerequisite } from '../../src/parsers/course-detail';
 import { oneLine } from 'common-tags';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -16,6 +16,25 @@ describe(`course detail parser`, function () {
       management, disk scheduling, file management, distributed processing, client/server, clusters,
       distributed process management, security. (F,W).
     `);
+  });
+  it(`parses prerequisite blocks correctly`, function () {
+    const block = oneLine`(
+      CIS_310
+      and (CIS_350 or CIS_3501 or IMSE_350)
+      or (ECE_370 and MATH_276)
+      or (ECE_370 and ECE_276)
+      and IMSE_317 
+    )`;
+
+    // const result = parsePrerequisiteBlock(block);
+
+    const result = parsePrerequisiteBlock(`(A and B and C or D and E)`);
+    // (and (or (and A B C) D) E)
+    // A + B + C - D ==> (- (+ A B C) D)
+    const formatted = formatPrerequisite(result);
+
+    console.log(formatted);
+
   });
   it(`parses the prerequisites out of the course detail HTML`);
 });
