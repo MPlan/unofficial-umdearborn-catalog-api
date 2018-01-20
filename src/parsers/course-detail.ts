@@ -32,6 +32,65 @@ interface _Prerequisite {
   o: Array<string | _Prerequisite>,
 }
 
+interface ParseTree extends Array<string | ParseTree> {
+  [key: number]: string | ParseTree,
+}
+
+interface TokenizedParenthesesResult { tree: ParseTree, lastIndex: number }
+
+/**
+ * A simple recursive function that transforms this:
+ * 
+ * ```txt
+ * A B (NESTED_A (NESTED_NESTED) NESTED_B)
+ * ```
+ * 
+ * into a javascript array:
+ * 
+ * ```
+ * [
+ *   A,
+ *   B,
+ *   [
+ *     NESTED_A
+ *     [NESTED_NESTED]
+ *     NESTED_B
+ *   ]
+ * ]
+ * ```
+ * 
+ * This function removes the parentheses and puts words separated by spaces into nested arrays
+ */
+export function tokenizeParentheses(expression: string): TokenizedParenthesesResult {
+  const characters = expression.split('');
+  const tokens = [] as ParseTree;
+  let i = 0;
+  let currentToken = '';
+  while (i < expression.length) {
+    const character = characters[i];
+    if (character === ' ') { // terminal character
+      if (currentToken) { // check to see if the `currentToken` is falsy
+        tokens.push(currentToken);
+        currentToken = '';
+      }
+    } else if (character === '(') {
+      const subExpressionResult = tokenizeParentheses(expression.substring(i + 1));
+      i += subExpressionResult.lastIndex;
+      tokens.push(subExpressionResult.tree);
+    } else if (character === ')') { // also terminal character but returns the sub expression
+      if (currentToken) { // check to see if the `currentToken` is falsy
+        tokens.push(currentToken);
+      }
+      return { tree: tokens, lastIndex: i + 1 };
+    } else {
+      currentToken += character;
+    }
+    i += 1;
+  }
+
+  return { tree: tokens, lastIndex: i };
+}
+
 export function parsePrerequisiteBlock(block: string) {
   // finds inner most `()`
   const match = /\(([^()]*)\)/.exec(block);

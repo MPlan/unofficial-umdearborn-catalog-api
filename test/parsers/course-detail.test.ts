@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { parseCourseDetail, parsePrerequisiteBlock, formatPrerequisite } from '../../src/parsers/course-detail';
+import { parseCourseDetail, parsePrerequisiteBlock, formatPrerequisite, tokenizeParentheses } from '../../src/parsers/course-detail';
 import { oneLine } from 'common-tags';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -35,6 +35,22 @@ describe(`course detail parser`, function () {
 
     console.log(formatted);
 
+  });
+  it(`tokenizeParentheses`, function () {
+    const expression = `A B C (NESTED_A (super nested) NESTED_B NESTED_C)`;
+    const result = tokenizeParentheses(expression);
+    expect(result.lastIndex).to.be.equal(expression.length);
+    expect(result.tree).to.be.deep.equal([
+      'A',
+      'B',
+      'C',
+      [
+        'NESTED_A',
+        ['super', 'nested'],
+        'NESTED_B',
+        'NESTED_C',
+      ]
+    ]);
   });
   it(`parses the prerequisites out of the course detail HTML`);
 });
