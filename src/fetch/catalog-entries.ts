@@ -1,6 +1,5 @@
 import axios from 'axios';
 import * as https from 'https';
-import { JSDOM } from 'jsdom';
 import { oneLineTrim } from 'common-tags';
 import { formEncode } from '../utilities';
 import { parseCatalogEntries } from '../parsers/catalog-entries';

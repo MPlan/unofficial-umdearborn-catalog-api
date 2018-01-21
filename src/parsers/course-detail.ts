@@ -35,14 +35,14 @@ export interface ParseTree extends Array<string | ParseTree> {
  */
 export function parseDescription(bodyHtml: string) {
   /** grabs the top of the course detail which includes the description and the types of hours */
-  const firstMatch = /([\s\S]*)<br.*\/?>.*hour/.exec(bodyHtml);
+  const firstMatch = /([\s\S]*)<br.*\/?>[\s\S]*hour/.exec(bodyHtml);
   if (!firstMatch) {
     throw new Error(`Could not find description in course detail HTML! Match failed.`);
   }
   // the first capturing group
   const firstPass = firstMatch[1];
   // tries to remove any extra lines in that includes `<br /> 3.000 OR 4.000 Credit hours`
-  const secondMatch = firstPass.search(/<br.*\/?>.*hour/);
+  const secondMatch = firstPass.search(/<br.*\/?>[\s\S]*hour/);
   const descriptionHtmlEncoded = (/*if*/ secondMatch === -1
     ? firstPass
     : firstPass.substring(0, secondMatch)

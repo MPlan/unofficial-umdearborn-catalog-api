@@ -35,7 +35,7 @@ describe(`course detail parser`, function () {
       Introduction to computer operating systems. Process control, threads, concurrency, memory
       management, virtual memory, uniprocessor, multiprocessor, and real-time scheduling, I/O
       management, disk scheduling, file management, distributed processing, client/server, clusters,
-      distributed process management, security. (F,W).
+      distributed process management,security. (F,W).
     `);
     expect(result.prerequisites).to.be.deep.equal(expectedPrerequisites);
   });

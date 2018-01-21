@@ -4,6 +4,7 @@ import { fetchTerms } from '../../src/fetch/terms';
 import { fetchSubjects } from '../../src/fetch/subjects';
 import { fetchCatalogEntries } from '../../src/fetch/catalog-entries';
 import { fetchScheduleListings } from '../../src/fetch/schedule-listings';
+import { fetchCourseDetail } from '../../src/fetch/course-detail';
 
 const twentySeconds = 20 * 1000;
 
@@ -65,5 +66,17 @@ describe('fetch', function () {
     for (const crn of crns) {
       expect(crn).to.not.be.empty;
     }
+  });
+  it('course detail', async function () {
+    this.timeout(twentySeconds);
+    if (process.env.SKIP_FETCH_TEST_ALL || process.env.SKIP_FETCH_TEST_COURSE_DETAIL) {
+      this.skip();
+      return;
+    }
+
+    const courseDetail = await fetchCourseDetail('201820', 'CIS', '450');
+
+    expect(courseDetail.description).to.be.not.empty;
+    expect(courseDetail.prerequisites.o.length).to.be.greaterThan(0);
   });
 });
