@@ -2,6 +2,7 @@ import { JSDOM } from 'jsdom';
 import { Prerequisite } from '../models/course';
 import { decode } from 'he';
 import { oneLine } from 'common-tags';
+import { formDecode } from '../utilities';
 
 interface CourseDetailResult {
   description: string,
@@ -88,26 +89,32 @@ export function tokenizeParentheses(expression: string): TokenizedParenthesesRes
     i += 1;
   }
 
+  if (currentToken) { // adds the last current token if there is one
+    tokens.push(currentToken);
+  }
+
   return { tree: tokens, lastIndex: i };
 }
 
-export function parsePrerequisiteBlock(block: string) {
-  // finds inner most `()`
-  const match = /\(([^()]*)\)/.exec(block);
+export function replace(token: string) {
+  const match = /__(.*)\|(.*)__/.exec(token);
   if (!match) {
-    throw new Error('no match');
+    return token;
   }
-  const innerMost = match[1];
+  const subjectCode = match[1];
+  const courseNumber = match[2];
 
-  const tokens = innerMost.split(' ').map(x => x.trim()).filter(x => /* removes empty strings */ x);
+  return `__${subjectCode}|${courseNumber}__`;
+}
 
+export function parsePrerequisiteTokens(tokens: ParseTree) {
   let currentPrerequisite: _Prerequisite = {
     g: undefined,
     o: []
   };
 
   for (const token of tokens) {
-    if (/and/i.test(token) || /or/i.test(token)) {
+    if (token === 'and' || token === 'or') {
       const gate = /*if*/ token === 'and' ? '&' : '|';
       if (gate === currentPrerequisite.g) {
         continue;
@@ -121,6 +128,8 @@ export function parsePrerequisiteBlock(block: string) {
         };
         currentPrerequisite.o.push(previousPrerequisite);
       }
+    } else if (Array.isArray(token)) {
+      currentPrerequisite.o.push(parsePrerequisiteTokens(token))
     } else {
       currentPrerequisite.o.push(token);
     }
@@ -143,13 +152,79 @@ export function formatPrerequisite(prerequisite: _Prerequisite, depth: number = 
   return `(${/*if*/ logicGate === '&' ? 'and' : 'or'} ${joinedOperands})`;
 }
 
+export function replacePrerequisiteAnchors(prerequisiteHtml: string) {
+  const document = new JSDOM(prerequisiteHtml).window.document;
+  const anchors = (Array
+    .from(document.querySelectorAll('a')).filter(link => {
+      const query = link.href.split('?')[1];
+      if (!query) {
+        return false;
+      }
+      const decoded = formDecode(query);
+      if (!decoded.one_subj) { return false; }
+      if (!decoded.sel_crse_strt) { return false; }
+      return true;
+    })
+    .map(anchor => {
+      const query = anchor.href.split('?')[1];
+      const decoded = formDecode(query);
+      return { anchor, subjectCode: decoded.one_subj, courseNumber: decoded.sel_crse_strt };
+    })
+  );
+
+  for (const { anchor, subjectCode, courseNumber } of anchors) {
+    const anchorParent = anchor.parentElement;
+    if (!anchorParent) {
+      throw new Error(`Anchor parent was null`); // should never happen
+    }
+    // replaces the anchor with an easily parsed string directive
+    anchorParent.replaceChild(
+      document.createTextNode(`__${subjectCode}|${courseNumber}__`),
+      anchor
+    );
+  }
+
+  return document.body.textContent || '';
+}
+
+export function tokenizeArray(tree: ParseTree): ParseTree {
+  const newTree = [] as ParseTree;
+  let currentToken = '';
+  for (const node of tree) {
+    if (Array.isArray(node)) {
+      newTree.push(tokenizeArray(node))
+    } else if (node.toLowerCase() === 'and' || node.toLowerCase() === 'or') {
+      if (currentToken) {
+        newTree.push(replace(currentToken.trim()));
+      }
+      newTree.push(node);
+      currentToken = '';
+    } else {
+      currentToken += ' ' + node;
+    }
+  }
+  if (currentToken) {
+    newTree.push(replace(currentToken.trim()));
+  }
+  return newTree;
+}
+
 export function parsePrerequisites(bodyHtml: string) {
-  const match = /prerequisites([\s\S]*)/i.exec(bodyHtml);
+  const match = /.*prerequisites.*\n?([\s\S]*)/i.exec(bodyHtml);
   if (!match) {
-    throw new Error(`Could not find prerequisite block in body of course detail html!`);
+    return {
+      g: '|',
+      o: [],
+    }
   }
   const prerequisiteHtml = match[1];
-  return { g: '|', o: [] } as Prerequisite;
+  const arr = [replacePrerequisiteAnchors(prerequisiteHtml)];
+  const textContent = oneLine(Object.assign(arr, { raw: arr }));
+  const tokenizedParentheses = tokenizeParentheses(textContent);
+  const tokens = tokenizeArray(tokenizedParentheses.tree);
+  const result = parsePrerequisiteTokens(tokens);
+
+  return result as Prerequisite;
 }
 
 export function parseCourseDetail(html: string) {
@@ -164,6 +239,6 @@ export function parseCourseDetail(html: string) {
   const description = parseDescription(bodyHtml);
   const prerequisites = parsePrerequisites(bodyHtml);
 
-  const result: CourseDetailResult = { description, prerequisites };
+  const result = { description, prerequisites };
   return result;
 }

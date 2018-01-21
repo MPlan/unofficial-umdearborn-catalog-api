@@ -1,6 +1,10 @@
 import { expect } from 'chai';
-import { parseCourseDetail, parsePrerequisiteBlock, formatPrerequisite, tokenizeParentheses } from '../../src/parsers/course-detail';
+import {
+  parseCourseDetail, parsePrerequisiteTokens, formatPrerequisite, tokenizeParentheses,
+  parsePrerequisites, tokenizeArray
+} from '../../src/parsers/course-detail';
 import { oneLine } from 'common-tags';
+import { JSDOM } from 'jsdom';
 import * as fs from 'fs';
 import * as path from 'path';
 const courseDetailHtml = fs.readFileSync(
@@ -8,6 +12,10 @@ const courseDetailHtml = fs.readFileSync(
 ).toString();
 
 describe(`course detail parser`, function () {
+  it(`works`, function () {
+    const result = parseCourseDetail(courseDetailHtml);
+    console.log(result.prerequisites);
+  });
   it(`parses description out of course detail HTML`, function () {
     const courseDetail = parseCourseDetail(courseDetailHtml);
     expect(courseDetail.description).to.be.equal(oneLine`
@@ -28,12 +36,12 @@ describe(`course detail parser`, function () {
 
     // const result = parsePrerequisiteBlock(block);
 
-    const result = parsePrerequisiteBlock(`(A and B and C or D and E)`);
-    // (and (or (and A B C) D) E)
-    // A + B + C - D ==> (- (+ A B C) D)
-    const formatted = formatPrerequisite(result);
+    // const result = parsePrerequisiteTokens(`(A and B and C or D and E)`);
+    // // (and (or (and A B C) D) E)
+    // // A + B + C - D ==> (- (+ A B C) D)
+    // const formatted = formatPrerequisite(result);
 
-    console.log(formatted);
+    // console.log(formatted);
 
   });
   it(`tokenizeParentheses`, function () {
@@ -52,5 +60,99 @@ describe(`course detail parser`, function () {
       ]
     ]);
   });
-  it(`parses the prerequisites out of the course detail HTML`);
+  it(`parses the prerequisites out of the course detail HTML`, function () {
+    const document = new JSDOM(courseDetailHtml).window.document;
+
+    const body = document.querySelector('.ntdefault');
+    if (!body) {
+      throw new Error('no body found in course detail html');
+    }
+
+    const bodyHtml = body.innerHTML;
+    const prerequisites = parsePrerequisites(bodyHtml);
+
+    // console.log(prerequisites);
+  });
+  it(`replacePrerequisiteAnchors`);
+  it(`tokenizeArray`, function () {
+    const tree = [
+      'Undergraduate',
+      'level',
+      '__CIS|310__',
+      'Minimum',
+      'Grade',
+      'of',
+      'D',
+      'and',
+      ['Undergraduate',
+        'level',
+        '__CIS|350__',
+        'Minimum',
+        'Grade',
+        'of',
+        'D',
+        'or',
+        'Undergraduate',
+        'level',
+        '__CIS|3501__',
+        'Minimum',
+        'Grade',
+        'of',
+        'D',
+        'or',
+        'Undergraduate',
+        'level',
+        '__IMSE|350__',
+        'Minimum',
+        'Grade',
+        'of',
+        'D'],
+      'or',
+      ['Undergraduate',
+        'level',
+        '__ECE|370__',
+        'Minimum',
+        'Grade',
+        'of',
+        'D',
+        'and',
+        'Undergraduate',
+        'level',
+        '__MATH|276__',
+        'Minimum',
+        'Grade',
+        'of',
+        'D'],
+      'or',
+      ['Undergraduate',
+        'level',
+        '__ECE|370__',
+        'Minimum',
+        'Grade',
+        'of',
+        'D',
+        'and',
+        'Undergraduate',
+        'level',
+        '__ECE|276__',
+        'Minimum',
+        'Grade',
+        'of',
+        'D'],
+      'and',
+      'Undergraduate',
+      'level',
+      '__IMSE|317__',
+      'Minimum',
+      'Grade',
+      'of',
+      'D'
+    ];
+
+    const newTree = tokenizeArray(tree);
+
+    const result = parsePrerequisiteTokens(newTree);
+
+    console.log(formatPrerequisite(result));
+  });
 });
