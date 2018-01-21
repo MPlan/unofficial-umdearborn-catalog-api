@@ -14,7 +14,7 @@ const courseDetailHtml = fs.readFileSync(
 describe(`course detail parser`, function () {
   it(`works`, function () {
     const result = parseCourseDetail(courseDetailHtml);
-    console.log(result.prerequisites);
+    console.log(JSON.stringify(result.prerequisites));
   });
   it(`parses description out of course detail HTML`, function () {
     const courseDetail = parseCourseDetail(courseDetailHtml);

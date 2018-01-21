@@ -96,7 +96,7 @@ export function tokenizeParentheses(expression: string): TokenizedParenthesesRes
   return { tree: tokens, lastIndex: i };
 }
 
-export function replace(token: string) {
+export function replaceCourseDirectiveInToken(token: string) {
   const match = /__(.*)\|(.*)__/.exec(token);
   if (!match) {
     return token;
@@ -105,6 +105,23 @@ export function replace(token: string) {
   const courseNumber = match[2];
 
   return `__${subjectCode}|${courseNumber}__`;
+}
+
+export function replaceAllCourseDirectives(prerequisite: _Prerequisite) {
+  const newTree = { g: prerequisite.g, o: [] } as Prerequisite;
+
+  for (let operand of prerequisite.o) {
+    if (typeof operand === 'object') {
+      newTree.o.push(replaceAllCourseDirectives(operand));
+    } else if (/__(.*)\|(.*)__/.test(operand)) {
+      const match = /__(.*)\|(.*)__/.exec(operand)!;
+      newTree.o.push([match[1], match[2]]);
+    } else {
+      newTree.o.push(operand);
+    }
+  }
+
+  return newTree;
 }
 
 export function parsePrerequisiteTokens(tokens: ParseTree) {
@@ -195,7 +212,7 @@ export function tokenizeArray(tree: ParseTree): ParseTree {
       newTree.push(tokenizeArray(node))
     } else if (node.toLowerCase() === 'and' || node.toLowerCase() === 'or') {
       if (currentToken) {
-        newTree.push(replace(currentToken.trim()));
+        newTree.push(replaceCourseDirectiveInToken(currentToken.trim()));
       }
       newTree.push(node);
       currentToken = '';
@@ -204,7 +221,7 @@ export function tokenizeArray(tree: ParseTree): ParseTree {
     }
   }
   if (currentToken) {
-    newTree.push(replace(currentToken.trim()));
+    newTree.push(replaceCourseDirectiveInToken(currentToken.trim()));
   }
   return newTree;
 }
@@ -222,9 +239,9 @@ export function parsePrerequisites(bodyHtml: string) {
   const textContent = oneLine(Object.assign(arr, { raw: arr }));
   const tokenizedParentheses = tokenizeParentheses(textContent);
   const tokens = tokenizeArray(tokenizedParentheses.tree);
-  const result = parsePrerequisiteTokens(tokens);
-
-  return result as Prerequisite;
+  const prefix = parsePrerequisiteTokens(tokens);
+  const result = replaceAllCourseDirectives(prefix);
+  return result;
 }
 
 export function parseCourseDetail(html: string) {
