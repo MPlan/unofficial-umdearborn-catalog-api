@@ -38,7 +38,7 @@ paths:
           name: termCode
           required: true
           schema:
-            type: array
+            type: string
       responses:
         '200':
           description: Returns a list of subjects in a term
@@ -66,6 +66,63 @@ paths:
           description: >-
             Returns a list of catalog entries available during the given term in
             the given subject
+          content:
+            application/json:
+              schema:
+                type: array
+  '/api/catalog/course-details/{termCode}/{subjectCode}/{courseNumber}':
+    get:
+      parameters:
+      - in: path
+        name: termCode
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: subjectCode
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: courseNumber
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: >-
+            Returns the course description and its prerequisties.
+          content:
+            application/json:
+              schema:
+                type: array
+  '/api/catalog/schedule-listings/{termCode}/{subjectCode}/{courseNumber}/{scheduleTypeCode}':
+    get:
+      parameters:
+      - in: path
+        name: termCode
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: subjectCode
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: courseNumber
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: scheduleTypeCode
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: >-
+            Returns a list of course registration numbers (CRNs).
           content:
             application/json:
               schema:
