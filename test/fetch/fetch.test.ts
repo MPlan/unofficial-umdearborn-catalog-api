@@ -84,7 +84,5 @@ describe('fetch', function () {
       throw new Error('Expected prerequisites to be an object!');
     }
     expect(courseDetail.prerequisites.o.length).to.be.greaterThan(0);
-
-    console.log(JSON.stringify(courseDetail));
   });
 });

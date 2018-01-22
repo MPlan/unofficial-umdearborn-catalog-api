@@ -302,11 +302,7 @@ export function formatPrerequisite(prerequisite: Prerequisite, depth: number = 0
 export function parsePrerequisites(bodyHtml: string) {
   const match = /.*prerequisites.*\n?([\s\S]*)/i.exec(bodyHtml);
   if (!match) {
-    const emptyPrerequisite: Prerequisite = {
-      g: '|',
-      o: [],
-    };
-    return emptyPrerequisite;
+    return undefined;
   }
   const prerequisiteHtml = match[1];
   const textContent = replacePrerequisiteAnchors(prerequisiteHtml);

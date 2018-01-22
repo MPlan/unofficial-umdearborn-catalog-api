@@ -114,10 +114,6 @@ describe(`course detail parser`, function () {
         { 'g': '|', 'o': ['buckle shoe', 'three four'] }
       ]
     });
-
-    const expressionWithoutOperator = ['the', 'quick', 'or', 'brown', 'fox'];
-    const otherResult = buildPrerequisiteTree(expressionWithoutOperator);
-    console.log({ otherResult });
   });
 
   it(`replaceAllCourseDirectivesInTree`, function () {
