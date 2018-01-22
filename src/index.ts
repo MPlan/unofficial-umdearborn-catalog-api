@@ -9,5 +9,8 @@ const swaggerDocument = Yaml.load(path.resolve(__dirname, '../../swagger.yaml'))
 
 app.use('/api', api);
 app.use('/swagger-ui', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.get('/', (req, res) => {
+  res.redirect('/swagger-ui');
+});
 
 app.listen(port, () => console.log(`Listening on port: ${port}`));
