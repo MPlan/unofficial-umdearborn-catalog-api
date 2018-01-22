@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import {
   parseCourseDetail, replacePrerequisiteAnchors, transformParenthesesToTree,
-  replaceCourseDirectiveInToken, tokenizeByOperator, buildPrerequisiteTree, _Prerequisite,
+  replaceCourseDirectiveInToken, tokenizeByOperator, buildPrerequisiteTree,
   replaceAllCourseDirectivesInTree,
 } from '../../src/parsers/course-detail';
 import { oneLine } from 'common-tags';
@@ -12,20 +12,28 @@ import { Prerequisite } from '../../src/models/course';
 const courseDetailHtml = fs.readFileSync(
   path.resolve(__dirname, '../example-pages/course-detail.html')
 ).toString();
+const emptyCourseDetailHtml = fs.readFileSync(
+  path.resolve(__dirname, '../example-pages/empty-course-detail.html')
+).toString();
 
 describe(`course detail parser`, function () {
   it(`'parseCourseDetail' with 'description' and 'prerequisites'`, function () {
     const result = parseCourseDetail(courseDetailHtml);
     const expectedPrerequisites = {
-      'g': '&', 'o': [
+      g: '&',
+      o: [
         {
-          'g': '|', 'o': [
+          g: '|',
+          o: [
             {
-              'g': '&', 'o': [
-                ['CIS', '310'], { 'g': '|', 'o': [['CIS', '350'], ['CIS', '3501'], ['IMSE', '350']] }]
+              g: '&',
+              o: [
+                ['CIS', '310'],
+                { g: '|', o: [['CIS', '350'], ['CIS', '3501'], ['IMSE', '350']] }
+              ]
             },
-            { 'g': '&', 'o': [['ECE', '370'], ['MATH', '276']] },
-            { 'g': '&', 'o': [['ECE', '370'], ['ECE', '276']] }
+            { g: '&', o: [['ECE', '370'], ['MATH', '276']] },
+            { g: '&', o: [['ECE', '370'], ['ECE', '276']] }
           ]
         },
         ['IMSE', '317']
@@ -38,6 +46,12 @@ describe(`course detail parser`, function () {
       distributed process management,security. (F,W).
     `);
     expect(result.prerequisites).to.be.deep.equal(expectedPrerequisites);
+  });
+
+  it(`returns empty when the course detail page is empty`, function () {
+    const result = parseCourseDetail(emptyCourseDetailHtml);
+    expect(result.description).to.be.undefined;
+    expect(result.prerequisites).to.be.undefined;
   });
 
   it(`replacePrerequisiteAnchors`, function () {
@@ -100,10 +114,14 @@ describe(`course detail parser`, function () {
         { 'g': '|', 'o': ['buckle shoe', 'three four'] }
       ]
     });
+
+    const expressionWithoutOperator = ['the', 'quick', 'or', 'brown', 'fox'];
+    const otherResult = buildPrerequisiteTree(expressionWithoutOperator);
+    console.log({ otherResult });
   });
 
   it(`replaceAllCourseDirectivesInTree`, function () {
-    const tree: _Prerequisite = {
+    const tree: Prerequisite = {
       'g': '&',
       'o': [
         '__ONE|TWO__',

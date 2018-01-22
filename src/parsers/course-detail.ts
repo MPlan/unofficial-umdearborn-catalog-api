@@ -4,26 +4,6 @@ import { decode } from 'he';
 import { oneLine } from 'common-tags';
 import { formDecode } from '../utilities';
 
-/**
- * the return type of the main `parseCourseDetail` function.
- */
-export interface CourseDetailResult {
-  description: string,
-  prerequisites: Prerequisite,
-}
-
-/**
- * Pretty much the same as the normal `Prerequisite` interface expect this one allows `g` to be
- * `undefined` while we're building the tree. Also the operand cannot be a
- * `[subjectCode, courseNumber]` tuple.
- * 
- * This type serves as the type to use while building the final `Prerequisite` type.
- */
-export interface _Prerequisite {
-  g: '&' | '|' | undefined,
-  o: Array<string | _Prerequisite>,
-}
-
 /** A simple interface that extends an array */
 export interface ParseTree extends Array<string | ParseTree> {
   [key: number]: string | ParseTree,
@@ -36,9 +16,7 @@ export interface ParseTree extends Array<string | ParseTree> {
 export function parseDescription(bodyHtml: string) {
   /** grabs the top of the course detail which includes the description and the types of hours */
   const firstMatch = /([\s\S]*)<br.*\/?>[\s\S]*hour/.exec(bodyHtml);
-  if (!firstMatch) {
-    throw new Error(`Could not find description in course detail HTML! Match failed.`);
-  }
+  if (!firstMatch) { return undefined;}
   // the first capturing group
   const firstPass = firstMatch[1];
   // tries to remove any extra lines in that includes `<br /> 3.000 OR 4.000 Credit hours`
@@ -51,7 +29,6 @@ export function parseDescription(bodyHtml: string) {
   const arr = [decode(descriptionHtmlEncoded).trim()];
   return oneLine(Object.assign(arr, { raw: arr }));
 }
-
 
 /**
  * Given the HTML containing the prerequisites, this function will find all the anchors denoting
@@ -202,19 +179,21 @@ export function tokenizeByOperator(tree: ParseTree): ParseTree {
  * Recursively builds the `_Prerequisite` type given a `ParseTree` from the `tokenizeByOperator`
  * function.
  */
-export function buildPrerequisiteTree(tokens: ParseTree) {
-  let currentPrerequisite: _Prerequisite = {
-    g: undefined,
-    o: []
+export function buildPrerequisiteTree(tokens: ParseTree): Prerequisite {
+  let logicGateSetOnce = false;
+  let currentPrerequisite: Prerequisite = {
+    g: '|',
+    o: [] as Prerequisite[]
   };
 
   for (const token of tokens) {
     if (token === 'and' || token === 'or') {
       const gate = /*if*/ token === 'and' ? '&' : '|';
-      if (gate === currentPrerequisite.g) {
-        continue;
-      } else if (currentPrerequisite.g === undefined) {
+      if (!logicGateSetOnce) {
+        logicGateSetOnce = true;
         currentPrerequisite.g = gate;
+      } else if (gate === currentPrerequisite.g) {
+        continue;
       } else {
         let previousPrerequisite = currentPrerequisite;
         currentPrerequisite = {
@@ -229,20 +208,57 @@ export function buildPrerequisiteTree(tokens: ParseTree) {
       currentPrerequisite.o.push(token);
     }
   }
+
+  // if the logic gate `g` has never been set, then it has never occurred in the parse tree.
+  // this should only be possible if there is a single class as the prerequisite meaning there
+  // should also only be *one* operand
+  if (!logicGateSetOnce) {
+    const firstOperand = currentPrerequisite.o[0];
+    // if there is more than one operand then there is an error
+    if (currentPrerequisite.o.length > 1) {
+      throw new Error(oneLine`
+        Encountered a ParseTree with more than one operand and no operator (i.e. 'and' or 'or')!
+        The parse tree encountered is: '${JSON.stringify(tokens)}'.
+      `);
+    }
+    return firstOperand;
+  }
+
   return currentPrerequisite;
 }
 
 /**
- * Given a `_Prerequisite` tree, this function will replace all `__SUBJECT-CODE|COURSE-NUMBER__`
- * directives in the operands of the `_Prerequisite` with `['SUBJECT-CODE', 'COURSE-NUMBER']`
+ * Given a `Prerequisite` tree, this function will replace all `__SUBJECT-CODE|COURSE-NUMBER__`
+ * directives in the operands of the `Prerequisite` with `['SUBJECT-CODE', 'COURSE-NUMBER']`
  * tuples.
- * 
- * In other words, this function takes in a `_Prerequisite` and returns the final `Prerequisite`
  */
-export function replaceAllCourseDirectivesInTree(prerequisite: _Prerequisite) {
-  const newTree = { g: prerequisite.g, o: [] } as Prerequisite;
+export function replaceAllCourseDirectivesInTree(prerequisite: Prerequisite) {
+  if (prerequisite === undefined) { return undefined; }
+  if (typeof prerequisite === 'string') {
+    // test the prerequisite for the `__SUBJECT-CODE|COURSE-NUMBER__` pattern
+    if (/__(.*)\|(.*)__/.test(prerequisite)) {
+      const match = /__(.*)\|(.*)__/.exec(prerequisite)!;
+      return [ // return the tuple if the match is found
+        match[1].toUpperCase().trim(),
+        match[2].toUpperCase().trim(),
+      ] as [string, string];
+    }
+    // else if the pattern doesn't match, just return the string
+    return prerequisite;
+  } else if (Array.isArray(prerequisite)) {
+    // this case shouldn't ever happen because this is the function that replaces the
+    // `__SUBJECT-CODE|COURSE-NUMBER__` pattern with array tuples.
+    throw new Error(oneLine`
+      Found an array when replacing '__SUBJECT-CODE|COURSE-NUMBER__' patterns from 
+      'replaceAllCourseDirectivesInTree'!
+    `);  
+  }
+  const newTree = { g: prerequisite.g, o: [] as Prerequisite[] };
 
   for (let operand of prerequisite.o) {
+    if (operand === undefined) {
+      continue;
+    }
     if (typeof operand === 'object') {
       newTree.o.push(replaceAllCourseDirectivesInTree(operand));
     } else if (/__(.*)\|(.*)__/.test(operand)) {
@@ -256,10 +272,19 @@ export function replaceAllCourseDirectivesInTree(prerequisite: _Prerequisite) {
     }
   }
 
-  return newTree;
+  return newTree as Prerequisite;
 }
 
-export function formatPrerequisite(prerequisite: _Prerequisite, depth: number = 0): string {
+export function formatPrerequisite(prerequisite: Prerequisite, depth: number = 0): string {
+  if (!prerequisite) {
+    return '';
+  }
+  if (Array.isArray(prerequisite)) {
+    return `${prerequisite[0] || ''} ${prerequisite[1] || ''}`
+  }
+  if (typeof prerequisite === 'string') {
+    return prerequisite;
+  }
   const logicGate = prerequisite.g;
   const operands = prerequisite.o;
 
@@ -273,8 +298,6 @@ export function formatPrerequisite(prerequisite: _Prerequisite, depth: number = 
 
   return `(${/*if*/ logicGate === '&' ? 'and' : 'or'} ${joinedOperands})`;
 }
-
-
 
 export function parsePrerequisites(bodyHtml: string) {
   const match = /.*prerequisites.*\n?([\s\S]*)/i.exec(bodyHtml);
@@ -305,6 +328,5 @@ export function parseCourseDetail(html: string) {
   const description = parseDescription(bodyHtml);
   const prerequisites = parsePrerequisites(bodyHtml);
 
-  const result = { description, prerequisites };
-  return result;
+  return { description, prerequisites };
 }

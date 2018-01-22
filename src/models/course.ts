@@ -1,4 +1,4 @@
-export interface Prerequisite {
+export type Prerequisite = undefined | [string, string] | string | {
   /** the logic gate to use */
   g: '&' | '|',
   /**
@@ -10,7 +10,7 @@ export interface Prerequisite {
    * * a tuple of `[subjectCode, courseNumber]` e.g. `["CIS", "310"]`
    * * or a simple string e.g. `"Remedial Math"`
    */
-  o: Array<Prerequisite | [string, string] | string>,
+  o: Prerequisite[],
 }
 
 export interface Section {

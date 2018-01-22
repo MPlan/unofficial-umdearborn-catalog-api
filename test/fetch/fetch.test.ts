@@ -74,9 +74,17 @@ describe('fetch', function () {
       return;
     }
 
-    const courseDetail = await fetchCourseDetail('201820', 'CIS', '450');
+    const courseDetail = await fetchCourseDetail('201820', 'CIS', '3200');
 
     expect(courseDetail.description).to.be.not.empty;
+    if (Array.isArray(courseDetail.prerequisites)) {
+      throw new Error('Was not expecting an array for prerequisites!');
+    }
+    if (typeof courseDetail.prerequisites !== 'object') {
+      throw new Error('Expected prerequisites to be an object!');
+    }
     expect(courseDetail.prerequisites.o.length).to.be.greaterThan(0);
+
+    console.log(JSON.stringify(courseDetail));
   });
 });
