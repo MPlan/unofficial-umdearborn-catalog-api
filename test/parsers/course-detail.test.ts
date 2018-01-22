@@ -15,6 +15,12 @@ const courseDetailHtml = fs.readFileSync(
 const emptyCourseDetailHtml = fs.readFileSync(
   path.resolve(__dirname, '../example-pages/empty-course-detail.html')
 ).toString();
+const courseDetailOnePrerequisiteHtml = fs.readFileSync(
+  path.resolve(__dirname, '../example-pages/course-detail-one-prereq.html')
+).toString();
+const courseDetailOneCoursePrerequisiteHtml = fs.readFileSync(
+  path.resolve(__dirname, '../example-pages/course-detail-one-course-prereq.html')
+).toString();
 
 describe(`course detail parser`, function () {
   it(`'parseCourseDetail' with 'description' and 'prerequisites'`, function () {
@@ -52,6 +58,13 @@ describe(`course detail parser`, function () {
     const result = parseCourseDetail(emptyCourseDetailHtml);
     expect(result.description).to.be.undefined;
     expect(result.prerequisites).to.be.undefined;
+  });
+
+  it(`returns a single string or tuple if there is only one prerequisite`, function () {
+    const resultString = parseCourseDetail(courseDetailOnePrerequisiteHtml);
+    expect(resultString.prerequisites).to.be.equal('Mathematics Placement 080');
+    const resultTuple = parseCourseDetail(courseDetailOneCoursePrerequisiteHtml);
+    expect(resultTuple.prerequisites).to.be.deep.equal(['ACC', '298']);
   });
 
   it(`replacePrerequisiteAnchors`, function () {

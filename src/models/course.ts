@@ -50,8 +50,10 @@ export interface Course {
   creditsMin: number | undefined,
   /** the restriction placed on this course */
   restrictions: Array<any>,
-  /** the prerequisites placed on this course */
+  /** represents the set of courses needed to have been taken before the course */
   prerequisites: Prerequisite,
+  /** represents the set of courses needed to be taken either before or during the course */
+  corequisites: Prerequisite,
   /** tuples of courses that this course is cross listed with */
   crossList: Array<[string, string]>,
   /** a record of sections in the last three years */
