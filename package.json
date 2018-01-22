@@ -8,7 +8,8 @@
     "build": "./node_modules/.bin/tsc",
     "watch": "./node_modules/.bin/tsc --watch",
     "nodemon": "./node_modules/.bin/nodemon ./dist/src/index.js",
-    "start": "npm run watch & npm run nodemon"
+    "start": "npm run watch & npm run nodemon",
+    "heroku-prebuild": "npm install --only=dev && npm install && npm run build"
   },
   "author": "rico kahler",
   "license": "MIT",
