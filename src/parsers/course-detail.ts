@@ -299,12 +299,10 @@ export function formatPrerequisite(prerequisite: Prerequisite, depth: number = 0
   return `(${/*if*/ logicGate === '&' ? 'and' : 'or'} ${joinedOperands})`;
 }
 
-export function parsePrerequisites(bodyHtml: string) {
-  const match = /.*prerequisites.*\n?([\s\S]*)/i.exec(bodyHtml);
-  if (!match) {
-    return undefined;
-  }
-  const prerequisiteHtml = match[1];
+/**
+ * Used to parse both `prerequisites` and `corequisites`. Simply calls all the individual functions.
+ */
+export function parsePrerequisitesHtml(prerequisiteHtml: string) {
   const textContent = replacePrerequisiteAnchors(prerequisiteHtml);
   const parseTree = transformParenthesesToTree(textContent);
   const tokens = tokenizeByOperator(parseTree.tree);
@@ -313,6 +311,39 @@ export function parsePrerequisites(bodyHtml: string) {
   return result;
 }
 
+/**
+ * Parses the prerequisites from the `bodyHtml`
+ */
+export function parsePrerequisites(bodyHtml: string) {
+  const match = /.*prerequisites.*\n?([\s\S]*)/i.exec(bodyHtml);
+  if (!match) {
+    return undefined;
+  }
+  const prerequisiteHtml = match[1];
+  return parsePrerequisitesHtml(prerequisiteHtml);
+}
+
+/**
+ * Parses corequisites from the `bodyHtml`
+ */
+export function parseCorequisites(bodyHtml: string) {
+  const match = /.*corequisites.*\n?([\s\S]*)/i.exec(bodyHtml);
+  if (!match) { return undefined; }
+  const corequisiteHtmlFirstPass = match[1];
+  const prerequisiteMatch = /.*prerequisites.*\n?/i.exec(corequisiteHtmlFirstPass);
+
+  const corequisiteHtml = (/*if*/ prerequisiteMatch
+    ? corequisiteHtmlFirstPass.slice(0, prerequisiteMatch.index)
+    : corequisiteHtmlFirstPass
+  );
+
+  return parsePrerequisitesHtml(corequisiteHtml);
+}
+
+/**
+ * Given a course detail html, this returns the `description`, the `prerequisites`, and the
+ * `corequisites`.
+ */
 export function parseCourseDetail(html: string) {
   const document = new JSDOM(html).window.document;
   const body = document.querySelector('.ntdefault');
@@ -323,6 +354,7 @@ export function parseCourseDetail(html: string) {
   const bodyHtml = body.innerHTML;
   const description = parseDescription(bodyHtml);
   const prerequisites = parsePrerequisites(bodyHtml);
+  const corequisites = parseCorequisites(bodyHtml);
 
-  return { description, prerequisites };
+  return { description, prerequisites, corequisites };
 }

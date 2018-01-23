@@ -21,9 +21,12 @@ const courseDetailOnePrerequisiteHtml = fs.readFileSync(
 const courseDetailOneCoursePrerequisiteHtml = fs.readFileSync(
   path.resolve(__dirname, '../example-pages/course-detail-one-course-prereq.html')
 ).toString();
+const courseDetailWithCorequisiteHtml = fs.readFileSync(
+  path.resolve(__dirname, '../example-pages/course-detail-with-corequisites.html')
+).toString();
 
 describe(`course detail parser`, function () {
-  it(`'parseCourseDetail' with 'description' and 'prerequisites'`, function () {
+  it(`parseCourseDetail`, function () {
     const result = parseCourseDetail(courseDetailHtml);
     const expectedPrerequisites = {
       g: '&',
@@ -52,6 +55,11 @@ describe(`course detail parser`, function () {
       distributed process management,security. (F,W).
     `);
     expect(result.prerequisites).to.be.deep.equal(expectedPrerequisites);
+  });
+
+  it(`'parseCourseDetail' with corequisites`, function () {
+    const result = parseCourseDetail(courseDetailWithCorequisiteHtml);
+    expect(result.corequisites).to.be.deep.equal(['CIS', '200L']);
   });
 
   it(`returns empty when the course detail page is empty`, function () {
