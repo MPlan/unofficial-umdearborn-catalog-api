@@ -1,5 +1,7 @@
 # Unofficial course catalog APIs for the University of Michigan-Dearborn
 
+[Checkout the deployed version here](https://umdearborn-catalog-api.herokuapp.com)
+
 The purpose of this project is to be a fast and reliable course catalog API for MPlan. There are three goals to this service:
 
 * fetch and parse data from the UMConnect portal available at [selfservice.umd.umich.edu](https://selfservice.umd.umich.edu).
