@@ -7,7 +7,7 @@ import { parseCatalogEntries } from '../parsers/catalog-entries';
 export async function fetchCatalogEntries(termCode: string, subjectCode: string) {
 
   const data = oneLineTrim`
-    term_in=${termCode}&
+    term_in=${encodeURIComponent(termCode)}&
     call_proc_in=bwckctlg.p_disp_dyn_ctlg&
     sel_subj=dummy&
     sel_levl=dummy&
@@ -16,7 +16,7 @@ export async function fetchCatalogEntries(termCode: string, subjectCode: string)
     sel_divs=dummy&
     sel_dept=dummy&
     sel_attr=dummy&
-    sel_subj=${subjectCode}&
+    sel_subj=${encodeURIComponent(subjectCode)}&
     sel_crse_strt=&
     sel_crse_end=&
     sel_title=&
