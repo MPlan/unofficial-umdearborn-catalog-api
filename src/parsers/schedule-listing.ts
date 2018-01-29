@@ -12,8 +12,6 @@ import { Section } from '../models/course'
  * * `tim` time of day this section ran/runs at
  * * `day` the days this section ran/runs at
  * * `loc` the location as listed on the page
- * * `cap` the total capacity including the cross-listed seats
- * * `rem` the number of remaining seats including the cross listed courses
  */
 export function parseScheduleListing(html: string) {
   const document = new JSDOM(html).window.document;
