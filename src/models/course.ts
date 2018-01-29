@@ -14,16 +14,18 @@ export type Prerequisite = undefined | [string, string] | string | {
 }
 
 export interface Section {
+  /** the course registration number */
+  crn: string,
   /** unique name of the instructor */
-  ins: string,
+  ins: string[],
   /** schedule type of this section e.g. Lecture or Internet */
-  typ: string,
+  typ: string[],
   /** time of day of this schedule */
-  tim: string,
+  tim: string[],
   /** the days this schedule was offered on e.g. TR for Tuesday Thursdays */
-  day: string,
+  day: string[],
   /** the location of this section as it appears on the SIS */
-  loc: string,
+  loc: string[],
   /** the total capacity *including* cross-listed seats */
   cap: number,
   /** the remaining seats *including* cross-listed seats */

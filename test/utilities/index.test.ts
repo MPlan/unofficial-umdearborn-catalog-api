@@ -1,9 +1,9 @@
 import { expect } from 'chai';
 
-import { formEncode, formDecode } from "../../src/utilities/index";
+import { formEncode, formDecode, regularToCamelCase } from "../../src/utilities/index";
 
-describe('form encoding/decoding', function () {
-  it('encodes and decodes objects', function () {
+describe('utilities', function () {
+  it('form encoding/decoding', function () {
     const someObject = {
       someKey: 'something that should be encoded',
       someOtherKey: 'some other value -- with // slashes and stuff //',
@@ -13,5 +13,9 @@ describe('form encoding/decoding', function () {
     const decoded = formDecode(encoded);
 
     expect(decoded).to.be.deep.equal(someObject);
+  });
+  it('regularToCamelCase', function () {
+    const regularString = '  The quick Brown FOX juMps  Over the Lazy dog  ';
+    expect(regularToCamelCase(regularString)).to.be.equal('theQuickBrownFoxJumpsOverTheLazyDog');
   });
 })

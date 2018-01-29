@@ -8,8 +8,83 @@ const scheduleListingsHtml = fs.readFileSync(
 
 describe(`schedule listing parser`, function () {
   it(`parsers 'schedule-listings.html'`, function () {
-    const crns = parseScheduleListing(scheduleListingsHtml);
+    const result = parseScheduleListing(scheduleListingsHtml);
 
-    expect(crns).to.have.same.members(['20156', '22609']);
+    const expectedResult = [
+      {
+        crn: '20070',
+        ins: ['adityavv'],
+        typ: ['recitation'],
+        tim: ['9:00 am - 9:50 am', '9:30 am - 10:45 am'],
+        day: ['M', 'WF'],
+        loc: ['CAS&L Building 2070']
+      },
+      {
+        crn: '20071',
+        ins: ['mmacany'],
+        typ: ['recitation'],
+        tim: ['10:00 am - 10:50 am', '9:30 am - 10:45 am'],
+        day: ['M', 'TR'],
+        loc: ['CAS&L Building 2070']
+      },
+      {
+        crn: '20072',
+        ins: ['nlavrov'],
+        typ: ['recitation'],
+        tim: ['1:00 pm - 1:50 pm', '12:30 pm - 1:45 pm'],
+        day: ['M', 'WF'],
+        loc: ['CAS&L Building 2062']
+      },
+      {
+        crn: '20083',
+        ins: ['bazzia'],
+        typ: ['recitation'],
+        tim: ['11:00 am - 11:50 am', '11:00 am - 12:15 pm'],
+        day: ['M', 'TR'],
+        loc: ['CAS&L Building 1086']
+      },
+      {
+        crn: '21684',
+        ins: ['Benjamin   Phillips (P)'],
+        typ: ['recitation'],
+        tim: ['1:00 pm - 1:50 pm', '12:30 pm - 1:45 pm'],
+        day: ['M', 'TR'],
+        loc: ['CAS&L Building 2063']
+      },
+      {
+        crn: '20085',
+        ins: ['jabbusch'],
+        typ: ['recitation'],
+        tim: ['2:00 pm - 2:50 pm', '2:00 pm - 3:15 pm'],
+        day: ['M', 'WF'],
+        loc: ['CAS&L Building 2090', 'CAS&L Building 2048']
+      },
+      {
+        crn: '20086',
+        ins: ['mmacany'],
+        typ: ['recitation'],
+        tim: ['2:00 pm - 2:50 pm', '2:00 pm - 3:15 pm'],
+        day: ['M', 'TR'],
+        loc: ['CAS&L Building 2070']
+      },
+      {
+        crn: '20361',
+        ins: ['beydoung'],
+        typ: ['recitation'],
+        tim: ['6:00 pm - 7:45 pm'],
+        day: ['TR'],
+        loc: ['CAS&L Building 2062']
+      },
+      {
+        crn: '22655',
+        ins: ['jeffigo'],
+        typ: ['recitation'],
+        tim: ['4:00 pm - 5:45 pm'],
+        day: ['TR'],
+        loc: ['CAS&L Building 2062']
+      }
+    ];
+
+    expect(result).to.be.deep.equal(expectedResult);
   });
 });
