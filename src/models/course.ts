@@ -59,5 +59,5 @@ export interface Course {
   /** tuples of courses that this course is cross listed with */
   crossList: Array<[string, string]>,
   /** a record of sections in the last three years */
-  sections: { [sectionCode: string]: Array<Section> },
+  sections: { [termCode: string]: Array<Section> },
 }

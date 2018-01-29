@@ -35,7 +35,7 @@ export function parseScheduleDetail(html: string) {
       const firstCell = cells[0];
       if (!firstCell) { return obj; } // continue
 
-      const key = regularToCamelCase(firstCell.textContent || '');
+      const key = regularToCamelCase(firstCell.textContent || '').toLowerCase();
       const values = (cells
         .slice(1)
         .map(cell => cell.textContent || '')
@@ -56,8 +56,15 @@ export function parseScheduleDetail(html: string) {
     }, {} as { [seatType: string]: { [heading: string]: number } })
   );
 
-  const cap = result.crossListSeats.capacity || result.seats.capacity;
-  const rem = result.crossListSeats.remaining || result.seats.remaining;
+  if (result.crosslistseats) {
+    const cap = result.crosslistseats && result.crosslistseats.capacity || NaN;
+    const rem = result.crosslistseats && result.crosslistseats.remaining || NaN;
+    return { cap, rem };
+  } else if (result.seats) {
+    const cap = result.seats && result.seats.capacity || NaN;
+    const rem = result.seats && result.seats.remaining || NaN;
+    return { cap, rem };
+  }
 
-  return { cap, rem };
+  return undefined;
 }
