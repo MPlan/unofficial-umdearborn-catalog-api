@@ -40,12 +40,15 @@ export function parseScheduleListing(html: string) {
     `);
   }
 
-  return range(crns.length).map(i => {
+  const result = range(crns.length).map(i => {
     const crn = crns[i];
     const sectionTBody = sectionTBodies[i];
     const section = parseSectionElement(sectionTBody);
+    if (!section) { return undefined; }
     return { crn, ...section };
-  });
+  }).filter(x => !!x).map(x => x!);;
+
+  return result;
 }
 
 function findUniqueName(element: Element) {

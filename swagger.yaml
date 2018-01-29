@@ -127,3 +127,24 @@ paths:
             application/json:
               schema:
                 type: array
+  '/api/catalog/schedule-detail/{termCode}/{crn}':
+    get:
+      parameters:
+      - in: path
+        name: termCode
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: crn
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: >-
+            Returns a list of course registration numbers (CRNs).
+          content:
+            application/json:
+              schema:
+                type: array

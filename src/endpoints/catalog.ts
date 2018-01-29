@@ -6,6 +6,7 @@ import { fetchSubjects } from '../fetch/subjects';
 import { fetchCatalogEntries } from '../fetch/catalog-entries';
 import { fetchCourseDetail } from '../fetch/course-detail';
 import { fetchScheduleListings } from '../fetch/schedule-listings';
+import { fetchScheduleDetail } from '../fetch/schedule-detail';
 
 catalog.get('/terms', async (req, res) => {
   const terms = await fetchTerms();
@@ -60,5 +61,25 @@ catalog.get(
       termCode, subjectCode, courseNumber, scheduleTypeCode
     );
     res.json(scheduleListings);
+  }
+);
+
+catalog.get(
+  '/schedule-detail/:termCode/:crn',
+  async (req, res) => {
+    const termCode = req.params.termCode as string | undefined;
+    const crn = req.params.crn as string | undefined;
+    if (!termCode || !crn) {
+      res.sendStatus(Http.NOT_FOUND);
+      return;
+    }
+    const scheduleDetail = await fetchScheduleDetail(
+      termCode, crn
+    );
+    if (!scheduleDetail) {
+      res.sendStatus(Http.NOT_FOUND);
+      return;
+    }
+    res.json(scheduleDetail);
   }
 );

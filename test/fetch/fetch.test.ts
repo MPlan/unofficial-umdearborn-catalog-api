@@ -5,6 +5,7 @@ import { fetchSubjects } from '../../src/fetch/subjects';
 import { fetchCatalogEntries } from '../../src/fetch/catalog-entries';
 import { fetchScheduleListings } from '../../src/fetch/schedule-listings';
 import { fetchCourseDetail } from '../../src/fetch/course-detail';
+import { fetchScheduleDetail } from '../../src/fetch/schedule-detail';
 
 const twentySeconds = 20 * 1000;
 
@@ -84,5 +85,16 @@ describe('fetch', function () {
       throw new Error('Expected prerequisites to be an object!');
     }
     expect(courseDetail.prerequisites.o.length).to.be.greaterThan(0);
+  });
+  it('schedule detail', async function () {
+    this.timeout(twentySeconds);
+    if (process.env.SKIP_FETCH_TEST_ALL || process.env.SKIP_FETCH_TEST_SCHEDULE_DETAIL) {
+      this.skip();
+      return;
+    }
+
+    const scheduleDetail = await fetchScheduleDetail('201820', '20156');
+
+    expect(scheduleDetail).to.be.not.undefined;
   });
 });
