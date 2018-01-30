@@ -1,6 +1,6 @@
 import { JSDOM } from 'jsdom';
 
-export interface TermResult {
+export type TermResult = {
   code: string,
   season: string,
   year: number,

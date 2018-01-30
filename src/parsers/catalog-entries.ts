@@ -2,7 +2,7 @@ import { JSDOM } from 'jsdom';
 import { formDecode } from '../utilities';
 import { decode } from 'he';
 
-export interface CatalogEntryResult {
+export type CatalogEntryResult = {
   subjectCode: string,
   courseNumber: string,
   name: string,

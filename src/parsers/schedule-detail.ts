@@ -2,24 +2,16 @@ import { JSDOM } from 'jsdom';
 import { regularToCamelCase } from '../utilities';
 import { range } from 'lodash';
 
-/**
- * captures the `cap` and `rem` of a section detail HTML
- */
-export function parseScheduleDetail(html: string) {
-  const document = new JSDOM(html).window.document;
-
-  const tbody = document.querySelector('.datadisplaytable tbody .datadisplaytable tbody');
-
-  if (!tbody) { return undefined; }
-
+export function parseCapacityAndRemaining(seatsTbody: HTMLTableSectionElement) {
+  const empty = { cap: NaN, rem: NaN };
   const rows = (Array
-    .from(tbody.children)
+    .from(seatsTbody.children)
     .filter(elem => elem.tagName.toLowerCase().trim() === 'tr')
   );
 
   const headerRow = rows[0];
 
-  if (!headerRow) { return undefined; }
+  if (!headerRow) { return empty; }
 
   const headings = (Array
     .from(headerRow.children)
@@ -66,5 +58,52 @@ export function parseScheduleDetail(html: string) {
     return { cap, rem };
   }
 
-  return undefined;
+  return empty;
+}
+
+function parseCreditHours(infoCell: Element) {
+  const textContent = infoCell.textContent || '';
+  const creditHourRangeMatch = /((?:\d|\.)*)\s*to\s*((?:\d|\.)*)\s*credits/i.exec(textContent);
+  if (creditHourRangeMatch) {
+    const creditsMin = parseFloat(creditHourRangeMatch[1]);
+    const credits = parseFloat(creditHourRangeMatch[2]);
+    return { creditsMin, credits };
+  }
+
+  const creditHourMatch = /((?:\d|\.)*)\s*credits/i.exec(textContent);
+
+  if (creditHourMatch) {
+    const credits = parseFloat(creditHourMatch[1]);
+    return { credits, creditsMin: NaN };
+  }
+
+  return { credits: NaN, creditsMin: NaN };
+}
+
+type ScheduleDetailResult = {
+  cap: number,
+  rem: number,
+  credits: number,
+  creditsMin: number,
+};
+
+/**
+ * captures the `cap` and `rem` of a section detail HTML
+ */
+export function parseScheduleDetail(html: string) {
+  const document = new JSDOM(html).window.document;
+
+  const seatsTbody = document.querySelector(
+    '.datadisplaytable tbody .datadisplaytable tbody'
+  ) as HTMLTableSectionElement | null;
+
+  const infoCell = document.querySelector(
+    '.datadisplaytable tbody .dddefault'
+  ) as Element | null;
+
+  const capAndRem = parseCapacityAndRemaining(seatsTbody || document.createElement('tbody'));
+  const creditHours = parseCreditHours(infoCell || document.createElement('td'));
+
+  const result: ScheduleDetailResult = { ...capAndRem, ...creditHours };
+  return result;
 }

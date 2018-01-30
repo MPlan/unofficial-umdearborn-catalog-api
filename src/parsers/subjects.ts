@@ -1,6 +1,6 @@
 import { JSDOM } from 'jsdom';
 
-export interface SubjectResult {
+export type SubjectResult = {
   code: string,
   name: string,
 }

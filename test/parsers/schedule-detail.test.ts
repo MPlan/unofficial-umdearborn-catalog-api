@@ -9,6 +9,8 @@ const scheduleDetailHtml = fs.readFileSync(
 describe(`schedule detail parser`, function () {
   it(`parsers 'schedule-detail.html'`, function () {
     const result = parseScheduleDetail(scheduleDetailHtml);
-    expect(result).to.be.deep.equal({ cap: 35, rem: 1 });
+    expect(result).to.be.deep.equal({ cap: 35, rem: 1, credits: 4, creditsMin: NaN });
   });
+  it(`parses the crosslisted seats: capacity and remaining`);
+  it(`parses the credits or credit range`);
 });
