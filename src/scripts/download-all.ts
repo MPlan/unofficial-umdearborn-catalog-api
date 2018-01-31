@@ -110,7 +110,7 @@ async function main() {
             crossList: [],
             description: description || '',
             prerequisites,
-            restrictions: [],
+            restrictions: '',
             sections,
             subjectCode,
           };
