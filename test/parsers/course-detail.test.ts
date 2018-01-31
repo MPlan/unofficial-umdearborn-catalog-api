@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import {
   parseCourseDetail, replacePrerequisiteAnchors, transformParenthesesToTree,
   replaceCourseDirectiveInToken, tokenizeByOperator, buildPrerequisiteTree,
-  replaceAllCourseDirectivesInTree,
+  replaceAllCourseDirectivesInTree, parseRestrictions
 } from '../../src/parsers/course-detail';
 import { oneLine } from 'common-tags';
 import { JSDOM } from 'jsdom';
@@ -23,6 +23,9 @@ const courseDetailOneCoursePrerequisiteHtml = fs.readFileSync(
 ).toString();
 const courseDetailWithCorequisiteHtml = fs.readFileSync(
   path.resolve(__dirname, '../example-pages/course-detail-with-corequisites.html')
+).toString();
+const courseDetailManyRestrictions = fs.readFileSync(
+  path.resolve(__dirname, '../example-pages/course-detail-many-restrictions.html')
 ).toString();
 
 describe(`course detail parser`, function () {
@@ -153,5 +156,20 @@ describe(`course detail parser`, function () {
       ]
     };
     expect(replaceAllCourseDirectivesInTree(tree)).to.be.deep.equal(expectedResult);
+  });
+
+  it(`parseRestrictions`, function () {
+    const document = new JSDOM(courseDetailManyRestrictions).window.document;
+
+    const body = document.querySelector('.ntdefault');
+    if (!body) {
+      throw new Error('Body was not found in course detail.');
+    }
+
+    const bodyTextContent = body.textContent || '';
+
+    expect(parseRestrictions(bodyTextContent)).to.have.same.members([
+      'doctorate', 'graduate', 'rackham', 'coll of engineering & comp sci'
+    ]);
   });
 });

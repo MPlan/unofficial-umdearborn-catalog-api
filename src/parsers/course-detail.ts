@@ -16,7 +16,7 @@ export interface ParseTree extends Array<string | ParseTree> {
 export function parseDescription(bodyHtml: string) {
   /** grabs the top of the course detail which includes the description and the types of hours */
   const firstMatch = /([\s\S]*)<br.*\/?>[\s\S]*hour/.exec(bodyHtml);
-  if (!firstMatch) { return undefined;}
+  if (!firstMatch) { return undefined; }
   // the first capturing group
   const firstPass = firstMatch[1];
   // tries to remove any extra lines in that includes `<br /> 3.000 OR 4.000 Credit hours`
@@ -251,7 +251,7 @@ export function replaceAllCourseDirectivesInTree(prerequisite: Prerequisite) {
     throw new Error(oneLine`
       Found an array when replacing '__SUBJECT-CODE|COURSE-NUMBER__' patterns from 
       'replaceAllCourseDirectivesInTree'!
-    `);  
+    `);
   }
   const newTree = { g: prerequisite.g, o: [] as Prerequisite[] };
 
@@ -341,6 +341,39 @@ export function parseCorequisites(bodyHtml: string) {
 }
 
 /**
+ * parses the restrictions sections of a course detail
+ */
+export function parseRestrictions(bodyTextContent: string) {
+  const matchWithPrerequisites = /must be.*:([\s\S]*)(?:pre|co)requisites/i.exec(bodyTextContent);
+
+  if (!matchWithPrerequisites) { return []; }
+
+  const matchWithoutPrerequisites = /must be.*:([\s\S]*)/i.exec(bodyTextContent);
+
+  const captureGroup = (/*if*/ matchWithPrerequisites
+    ? matchWithPrerequisites[1]
+    : (/*if*/ matchWithoutPrerequisites
+      ? matchWithoutPrerequisites[1]
+      : ''
+    )
+  );
+
+  const restrictionsObj = (captureGroup
+    .split('\n')
+    .map(line => line.trim().toLowerCase())
+    .filter(line => !!line)
+    .filter(line => !line.includes('must be'))
+    .reduce((obj, restriction) => {
+      obj[restriction] = true;
+      return obj;
+    }, {} as { [key: string]: true })
+  );
+
+  const restrictions = Object.keys(restrictionsObj);
+  return restrictions;
+}
+
+/**
  * Given a course detail html, this returns the `description`, the `prerequisites`, and the
  * `corequisites`.
  */
@@ -355,6 +388,7 @@ export function parseCourseDetail(html: string) {
   const description = parseDescription(bodyHtml);
   const prerequisites = parsePrerequisites(bodyHtml);
   const corequisites = parseCorequisites(bodyHtml);
+  const restrictions = parseRestrictions(body.textContent || '');
 
-  return { description, prerequisites, corequisites };
+  return { description, prerequisites, corequisites, restrictions };
 }
