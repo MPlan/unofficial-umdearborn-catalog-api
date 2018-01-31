@@ -61,7 +61,7 @@ export function parseCapacityAndRemaining(seatsTbody: HTMLTableSectionElement) {
   return empty;
 }
 
-function parseCreditHours(infoCell: Element) {
+export function parseCreditHours(infoCell: Element) {
   const textContent = infoCell.textContent || '';
   const creditHourRangeMatch = /((?:\d|\.)*)\s*to\s*((?:\d|\.)*)\s*credits/i.exec(textContent);
   if (creditHourRangeMatch) {
