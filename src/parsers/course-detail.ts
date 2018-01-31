@@ -344,11 +344,10 @@ export function parseCorequisites(bodyHtml: string) {
  * parses the restrictions sections of a course detail
  */
 export function parseRestrictions(bodyTextContent: string) {
-  const matchWithPrerequisites = /must be.*:([\s\S]*)(?:pre|co)requisites/i.exec(bodyTextContent);
-
-  if (!matchWithPrerequisites) { return []; }
-
-  const matchWithoutPrerequisites = /must be.*:([\s\S]*)/i.exec(bodyTextContent);
+  const matchWithPrerequisites = /restrictions:([\s\S]*)(?:pre|co)requisites/i.exec(
+    bodyTextContent
+  );
+  const matchWithoutPrerequisites = /restrictions:([\s\S]*)/i.exec(bodyTextContent);
 
   const captureGroup = (/*if*/ matchWithPrerequisites
     ? matchWithPrerequisites[1]
@@ -358,18 +357,13 @@ export function parseRestrictions(bodyTextContent: string) {
     )
   );
 
-  const restrictionsObj = (captureGroup
+  const restrictions = (captureGroup
     .split('\n')
-    .map(line => line.trim().toLowerCase())
+    .map(line => line.trim())
     .filter(line => !!line)
-    .filter(line => !line.includes('must be'))
-    .reduce((obj, restriction) => {
-      obj[restriction] = true;
-      return obj;
-    }, {} as { [key: string]: true })
+    .join(' ')
   );
 
-  const restrictions = Object.keys(restrictionsObj);
   return restrictions;
 }
 

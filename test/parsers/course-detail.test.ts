@@ -168,8 +168,9 @@ describe(`course detail parser`, function () {
 
     const bodyTextContent = body.textContent || '';
 
-    expect(parseRestrictions(bodyTextContent)).to.have.same.members([
-      'doctorate', 'graduate', 'rackham', 'coll of engineering & comp sci'
-    ]);
+    expect(parseRestrictions(bodyTextContent)).to.be.equal(oneLine`
+      Must be enrolled in one of the following Levels: Doctorate Rackham Graduate Rackham Doctorate
+      Graduate Must be enrolled in one of the following Colleges: Coll of Engineering & Comp Sci
+    `);
   });
 });
