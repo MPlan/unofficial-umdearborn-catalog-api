@@ -364,7 +364,7 @@ export function parseRestrictions(bodyTextContent: string) {
     .join(' ')
   );
 
-  return restrictions;
+  return /*if*/ restrictions ? restrictions : undefined;
 }
 
 /**
