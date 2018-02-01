@@ -14,7 +14,13 @@ const document = new JSDOM(scheduleDetailHtml).window.document;
 describe(`schedule detail parser`, function () {
   it(`parsers 'schedule-detail.html'`, function () {
     const result = parseScheduleDetail(scheduleDetailHtml);
-    expect(result).to.be.deep.equal({ cap: 35, rem: 1, credits: 4, creditsMin: NaN });
+    expect(result).to.be.deep.equal({
+      cap: 35,
+      rem: 1,
+      credits: 4,
+      creditsMin: undefined,
+      crossList: [['ECE', '478']]
+    });
   });
   it(`parses the crosslisted seats: capacity and remaining`, function () {
     const seatsTbody = document.querySelector(
@@ -32,6 +38,6 @@ describe(`schedule detail parser`, function () {
 
     const { credits, creditsMin } = parseCreditHours(infoCell || document.createElement('div'));
     expect(credits).to.be.equal(4);
-    expect(isNaN(creditsMin)).to.be.true;
+    expect(creditsMin).to.be.undefined;
   });
 });

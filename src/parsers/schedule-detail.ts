@@ -1,6 +1,7 @@
 import { JSDOM } from 'jsdom';
-import { regularToCamelCase } from '../utilities';
+import { regularToCamelCase, formDecode } from '../utilities';
 import { range } from 'lodash';
+import { decode } from 'he';
 
 export function parseCapacityAndRemaining(seatsTbody: HTMLTableSectionElement) {
   const empty = { cap: NaN, rem: NaN };
@@ -74,17 +75,50 @@ export function parseCreditHours(infoCell: Element) {
 
   if (creditHourMatch) {
     const credits = parseFloat(creditHourMatch[1]);
-    return { credits, creditsMin: NaN };
+    return { credits, creditsMin: undefined };
   }
 
-  return { credits: NaN, creditsMin: NaN };
+  return { credits: NaN, creditsMin: undefined };
+}
+
+export function parseCrossListedCourses(infoCell: Element) {
+  const match = /cross\s*list\s*courses([\s\S]*)<table/i.exec(infoCell.innerHTML);
+  if (!match) { return []; }
+
+  try {
+    const document = new JSDOM(match[1]).window.document;
+    const anchors = Array.from(document.querySelectorAll('a'));
+
+    const crossListedCourses = (anchors
+      .map(anchor => anchor.href)
+      .filter(x => !!x)
+      .map(href => {
+        const match = /\?(.*)/.exec(href);
+        if (!match) { return undefined; }
+        const decoded = formDecode(decode(match[1]));
+        return [
+          decoded.one_subj.trim().toUpperCase(),
+          decoded.sel_crse_strt.toUpperCase()
+        ] as [string, string];
+      })
+      .filter(x => x && x.length > 0)
+      .map(x => x!)
+    );
+
+    return crossListedCourses;
+
+  } catch (e) {
+    console.warn('Error in parsing cross listed courses.', e);
+    return [];
+  }
 }
 
 type ScheduleDetailResult = {
   cap: number,
   rem: number,
   credits: number,
-  creditsMin: number,
+  creditsMin: number | undefined,
+  crossList: [string, string][],
 };
 
 /**
@@ -93,17 +127,18 @@ type ScheduleDetailResult = {
 export function parseScheduleDetail(html: string) {
   const document = new JSDOM(html).window.document;
 
-  const seatsTbody = document.querySelector(
+  const seatsTbody = (document.querySelector(
     '.datadisplaytable tbody .datadisplaytable tbody'
-  ) as HTMLTableSectionElement | null;
+  ) || document.createElement('tbody')) as HTMLTableSectionElement;
 
   const infoCell = document.querySelector(
     '.datadisplaytable tbody .dddefault'
-  ) as Element | null;
+  ) || document.createElement('td');
 
-  const capAndRem = parseCapacityAndRemaining(seatsTbody || document.createElement('tbody'));
-  const creditHours = parseCreditHours(infoCell || document.createElement('td'));
+  const capAndRem = parseCapacityAndRemaining(seatsTbody);
+  const creditHours = parseCreditHours(infoCell);
+  const crossList = parseCrossListedCourses(infoCell);
 
-  const result: ScheduleDetailResult = { ...capAndRem, ...creditHours };
+  const result: ScheduleDetailResult = { ...capAndRem, ...creditHours, crossList };
   return result;
 }
