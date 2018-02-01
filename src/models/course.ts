@@ -14,22 +14,23 @@ export type Prerequisite = undefined | [string, string] | string | {
 }
 
 export interface Section {
+  termCode: string,
   /** the course registration number */
-  crn: string,
+  courseRegistrationNumber: string,
   /** unique name of the instructor */
-  ins: string[],
+  instructor: string[],
   /** schedule type of this section e.g. Lecture or Internet */
-  typ: string[],
+  type: string[],
   /** time of day of this schedule */
-  tim: string[],
+  time: string[],
   /** the days this schedule was offered on e.g. TR for Tuesday Thursdays */
-  day: string[],
+  days: string[],
   /** the location of this section as it appears on the SIS */
-  loc: string[],
+  location: string[],
   /** the total capacity *including* cross-listed seats */
-  cap: number,
+  capacity: number,
   /** the remaining seats *including* cross-listed seats */
-  rem: number,
+  remaining: number,
 }
 
 export interface Course {
@@ -59,5 +60,5 @@ export interface Course {
   /** tuples of courses that this course is cross listed with */
   crossList: Array<[string, string]>,
   /** a record of sections in the last three years */
-  sections: { [termCode: string]: Array<Section> },
+  sections: Section[],
 }
