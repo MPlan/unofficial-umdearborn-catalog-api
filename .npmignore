@@ -3,3 +3,4 @@ test
 Procfile
 playground.*
 catalog.json
+.vscode
