@@ -1,4 +1,6 @@
-# Unofficial course catalog APIs for the University of Michigan-Dearborn
+# Unofficial UMDearborn Catalog API · [![Build Status](https://travis-ci.org/MPlan/unofficial-umdearborn-catalog-api.svg?branch=master)](https://travis-ci.org/MPlan/unofficial-umdearborn-catalog-api)
+
+> The unofficial course catalog APIs for the University of Michigan-Dearborn
 
 [Checkout the deployed version here][0]
 
