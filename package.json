@@ -1,6 +1,6 @@
 {
   "name": "unofficial-umdearborn-catalog-api",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Unofficial course catalog APIs for the University of Michigan-Dearborn",
   "main": "./dist/src/library.js",
   "typings": "./src/library.ts",
@@ -30,7 +30,6 @@
     "@types/common-tags": "^1.4.0",
     "@types/he": "^0.5.29",
     "@types/jsdom": "^11.0.2",
-    "@types/koa": "^2.0.39",
     "@types/lodash": "^4.14.97",
     "@types/node": "^8.0.46",
     "axios": "^0.17.1",
@@ -40,7 +39,6 @@
     "he": "^1.1.1",
     "http-status-codes": "^1.3.0",
     "jsdom": "^11.3.0",
-    "koa": "^2.3.0",
     "lodash": "^4.17.4",
     "swagger-ui-express": "^2.0.14",
     "yamljs": "^0.3.0"
