@@ -1,5 +1,5 @@
 import { JSDOM } from 'jsdom';
-import { Prerequisite } from '../models/course';
+import { Prerequisite } from '../models/catalog';
 import { decode } from 'he';
 import { oneLine } from 'common-tags';
 import { formDecode } from '../utilities';

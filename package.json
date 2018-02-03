@@ -2,7 +2,8 @@
   "name": "unofficial-umdearborn-catalog-api",
   "version": "0.0.0",
   "description": "",
-  "main": "./dist/index.js",
+  "main": "./dist/src/library.js",
+  "typings": "./src/library.ts",
   "scripts": {
     "test": "./node_modules/.bin/mocha --require ts-node/register \"test/**/*.ts\" --watch-extensions ts",
     "build": "./node_modules/.bin/tsc",
@@ -22,7 +23,6 @@
     "ts-node": "^3.3.0",
     "typescript": "^2.6.2"
   },
-  "private": true,
   "dependencies": {
     "@types/common-tags": "^1.4.0",
     "@types/he": "^0.5.29",

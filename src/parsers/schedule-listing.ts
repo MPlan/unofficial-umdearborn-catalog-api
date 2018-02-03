@@ -2,7 +2,7 @@ import { JSDOM } from 'jsdom';
 import { oneLine } from 'common-tags';
 import { isEqual, range } from 'lodash';
 import { formDecode, regularToCamelCase } from '../utilities';
-import { Section } from '../models/course'
+import { Section } from '../models/catalog'
 
 /**
  * given a schedule listing HTML, this returns an array of sections with the following info:
