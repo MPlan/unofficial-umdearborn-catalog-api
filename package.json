@@ -1,6 +1,6 @@
 {
   "name": "unofficial-umdearborn-catalog-api",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Unofficial course catalog APIs for the University of Michigan-Dearborn",
   "main": "./dist/src/library.js",
   "typings": "./src/library.ts",
@@ -13,12 +13,13 @@
     "nodemon": "nodemon ./dist/src/index.js",
     "start": "npm run watch & npm run nodemon",
     "heroku-prebuild": "npm install --only=dev && npm install && npm run build",
-    "prepublish": "npm run clean && npm run test"
+    "prepare": "npm run clean && npm run test"
   },
   "author": "rico kahler",
   "license": "MIT",
   "devDependencies": {
     "@types/chai": "^4.0.4",
+    "@types/express": "^4.11.1",
     "@types/mocha": "^2.2.43",
     "chai": "^4.1.2",
     "mocha": "^4.0.1",
