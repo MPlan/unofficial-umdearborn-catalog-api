@@ -1,6 +1,6 @@
 {
   "name": "unofficial-umdearborn-catalog-api",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Unofficial course catalog APIs for the University of Michigan-Dearborn",
   "main": "./dist/src/library.js",
   "typings": "./src/library.ts",
