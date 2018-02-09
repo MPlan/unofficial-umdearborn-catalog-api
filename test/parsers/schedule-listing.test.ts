@@ -2,8 +2,12 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { expect } from 'chai';
 import { parseScheduleListing } from '../../src/parsers/schedule-listing';
+import { parseScheduleDetail } from '../../src/library';
 const scheduleListingsHtml = fs.readFileSync(
   path.resolve(__dirname, '../example-pages/schedule-listings.html')
+).toString();
+const scheduleListingsHtmlWithNoMeetingTimes = fs.readFileSync(
+  path.resolve(__dirname, '../example-pages/schedule-listing-with-no-meeting-times.html')
 ).toString();
 
 describe(`schedule listing parser`, function () {
@@ -86,5 +90,30 @@ describe(`schedule listing parser`, function () {
     ];
 
     expect(result).to.be.deep.equal(expectedResult);
+  });
+
+  it(`parses schedules listings with no meetings times`, function () {
+    const result = parseScheduleListing(scheduleListingsHtmlWithNoMeetingTimes);
+
+    const expectedResult = [
+      {
+        crn: '21206',
+        ins: [],
+        typ: [],
+        tim: [],
+        day: [],
+        loc: [],
+      },
+      {
+        crn: '22759',
+        ins: ['marilee'],
+        typ: ['independent study'],
+        tim: ['TBA'],
+        day: [],
+        loc: ['TBA']
+      }
+    ];
+
+    expect(result).to.be.deep.equal(expectedResult)
   });
 });
