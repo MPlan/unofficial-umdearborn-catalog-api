@@ -2,7 +2,14 @@ import { JSDOM } from 'jsdom';
 import { oneLine } from 'common-tags';
 import { isEqual, range } from 'lodash';
 import { formDecode, regularToCamelCase } from '../utilities';
-import { Section } from '../models/catalog'
+
+interface SectionTableParseResult {
+  instructor: string[],
+  scheduleType: string[],
+  time: string[],
+  days: string[],
+  locations: string[],
+}
 
 /**
  * given a schedule listing HTML, this returns an array of sections with the following info:
@@ -16,37 +23,42 @@ import { Section } from '../models/catalog'
 export function parseScheduleListing(html: string) {
   const document = new JSDOM(html).window.document;
 
-  const tableBody = document.querySelector('.datadisplaytable tbody');
+  const dataDisplayTable = document.querySelector('.pagebodydiv > .datadisplaytable');
+  if (!dataDisplayTable) { return []; }
+
+  const tableBody = dataDisplayTable.querySelector('tbody');
   if (!tableBody) { return []; }
 
-  const anchors = Array.from(tableBody.querySelectorAll('.ddtitle a')) as HTMLAnchorElement[];
+  const tableRows = (Array
+    .from(tableBody.children)
+    .filter(child => child.tagName === 'TR')
+  ) as HTMLTableRowElement[];
 
-  const crns = (anchors
-    .map(a => {
-      const decoded = formDecode(a.href || '');
-      return decoded.crn_in;
+  const sectionGroups = tableRows.reduce((arr, headerOrBody, index) => {
+    const arrIndex = Math.floor(index / 2);
+    arr[arrIndex] = arr[arrIndex] || {};
+    if (index % 2 === 0) {
+      arr[arrIndex].header = headerOrBody;
+    } else {
+      arr[arrIndex].body = headerOrBody;
+    }
+    return arr;
+  }, [] as Array<{ header: HTMLTableRowElement, body: HTMLTableRowElement }>);
+
+  const result = (sectionGroups
+    .map(group => {
+      const anchorWithCrn = group.header.querySelector('a');
+      const crn = anchorWithCrn && formDecode(anchorWithCrn.href || '').crn_in || '';
+      const section = parseSectionElement(group.body);
+
+      return { crn, section };
     })
-    .filter(x => x)
+    .filter(({ crn, section }) => !!crn)
+    .map(({ crn, section }) => ({
+      courseRegistrationNumber: crn,
+      ...section
+    }))
   );
-
-  const sectionTBodies = Array.from(
-    document.querySelectorAll('.datadisplaytable tbody .datadisplaytable tbody')
-  ) as HTMLTableSectionElement[];
-
-  if (crns.length !== sectionTBodies.length) {
-    throw new Error(oneLine`
-      Section count mismatch: The number of section bodies found was ${sectionTBodies.length} but
-      found ${crns.length} CRNs.
-    `);
-  }
-
-  const result = range(crns.length).map(i => {
-    const crn = crns[i];
-    const sectionTBody = sectionTBodies[i];
-    const section = parseSectionElement(sectionTBody);
-    if (!section) { return undefined; }
-    return { crn, ...section };
-  }).filter(x => !!x).map(x => x!);;
 
   return result;
 }
@@ -61,17 +73,25 @@ function findUniqueName(element: Element) {
   return match[1].trim().toLowerCase();
 }
 
-function parseSectionElement(sectionTBody: HTMLTableSectionElement) {
+const emptySectionResult: SectionTableParseResult = {
+  days: [],
+  instructor: [],
+  locations: [],
+  scheduleType: [],
+  time: [],
+};
+
+function parseSectionElement(body: HTMLTableRowElement) {
+  const sectionTBody = body.querySelector('.datadisplaytable > tbody');
+  if (!sectionTBody) { return emptySectionResult; }
+
   const rows = (Array
     .from(sectionTBody.children)
     .filter(child => child.tagName.toLowerCase().trim() === 'tr')
   ) as HTMLTableRowElement[];
 
   const headerRow = rows[0];
-
-  if (!headerRow) {
-    return undefined;
-  }
+  if (!headerRow) { return emptySectionResult; }
 
   const headers = (Array
     .from(headerRow.children)
@@ -101,13 +121,13 @@ function parseSectionElement(sectionTBody: HTMLTableSectionElement) {
     return obj;
   }, {} as { [key: string]: undefined | string[] });
 
-  const section = {
-    ins: result.instructors || [],
-    typ: (result.scheduleType || []).map(type => type.toLowerCase().trim()),
-    tim: result.time || [],
-    day: result.days || [],
-    loc: result.where || [],
-  }
+  const section: SectionTableParseResult = {
+    instructor: result.instructors || [],
+    scheduleType: (result.scheduleType || []).map(type => type.toLowerCase().trim()),
+    time: result.time || [],
+    days: result.days || [],
+    locations: result.where || [],
+  };
 
   return section;
 }

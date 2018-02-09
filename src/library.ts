@@ -5,7 +5,6 @@ export * from './fetch/schedule-detail';
 export * from './fetch/schedule-listings';
 export * from './fetch/subjects';
 export * from './fetch/terms';
-export * from './models/catalog';
 export * from './parsers/catalog-entries';
 export * from './parsers/course-detail';
 export * from './parsers/schedule-detail';

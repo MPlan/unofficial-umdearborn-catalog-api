@@ -16,76 +16,76 @@ describe(`schedule listing parser`, function () {
 
     const expectedResult = [
       {
-        crn: '20070',
-        ins: ['adityavv'],
-        typ: ['recitation'],
-        tim: ['9:00 am - 9:50 am', '9:30 am - 10:45 am'],
-        day: ['M', 'WF'],
-        loc: ['CAS&L Building 2070']
+        courseRegistrationNumber: '20070',
+        instructor: ['adityavv'],
+        scheduleType: ['recitation'],
+        time: ['9:00 am - 9:50 am', '9:30 am - 10:45 am'],
+        days: ['M', 'WF'],
+        locations: ['CAS&L Building 2070']
       },
       {
-        crn: '20071',
-        ins: ['mmacany'],
-        typ: ['recitation'],
-        tim: ['10:00 am - 10:50 am', '9:30 am - 10:45 am'],
-        day: ['M', 'TR'],
-        loc: ['CAS&L Building 2070']
+        courseRegistrationNumber: '20071',
+        instructor: ['mmacany'],
+        scheduleType: ['recitation'],
+        time: ['10:00 am - 10:50 am', '9:30 am - 10:45 am'],
+        days: ['M', 'TR'],
+        locations: ['CAS&L Building 2070']
       },
       {
-        crn: '20072',
-        ins: ['nlavrov'],
-        typ: ['recitation'],
-        tim: ['1:00 pm - 1:50 pm', '12:30 pm - 1:45 pm'],
-        day: ['M', 'WF'],
-        loc: ['CAS&L Building 2062']
+        courseRegistrationNumber: '20072',
+        instructor: ['nlavrov'],
+        scheduleType: ['recitation'],
+        time: ['1:00 pm - 1:50 pm', '12:30 pm - 1:45 pm'],
+        days: ['M', 'WF'],
+        locations: ['CAS&L Building 2062']
       },
       {
-        crn: '20083',
-        ins: ['bazzia'],
-        typ: ['recitation'],
-        tim: ['11:00 am - 11:50 am', '11:00 am - 12:15 pm'],
-        day: ['M', 'TR'],
-        loc: ['CAS&L Building 1086']
+        courseRegistrationNumber: '20083',
+        instructor: ['bazzia'],
+        scheduleType: ['recitation'],
+        time: ['11:00 am - 11:50 am', '11:00 am - 12:15 pm'],
+        days: ['M', 'TR'],
+        locations: ['CAS&L Building 1086']
       },
       {
-        crn: '21684',
-        ins: ['Benjamin   Phillips (P)'],
-        typ: ['recitation'],
-        tim: ['1:00 pm - 1:50 pm', '12:30 pm - 1:45 pm'],
-        day: ['M', 'TR'],
-        loc: ['CAS&L Building 2063']
+        courseRegistrationNumber: '21684',
+        instructor: ['Benjamin   Phillips (P)'],
+        scheduleType: ['recitation'],
+        time: ['1:00 pm - 1:50 pm', '12:30 pm - 1:45 pm'],
+        days: ['M', 'TR'],
+        locations: ['CAS&L Building 2063']
       },
       {
-        crn: '20085',
-        ins: ['jabbusch'],
-        typ: ['recitation'],
-        tim: ['2:00 pm - 2:50 pm', '2:00 pm - 3:15 pm'],
-        day: ['M', 'WF'],
-        loc: ['CAS&L Building 2090', 'CAS&L Building 2048']
+        courseRegistrationNumber: '20085',
+        instructor: ['jabbusch'],
+        scheduleType: ['recitation'],
+        time: ['2:00 pm - 2:50 pm', '2:00 pm - 3:15 pm'],
+        days: ['M', 'WF'],
+        locations: ['CAS&L Building 2090', 'CAS&L Building 2048']
       },
       {
-        crn: '20086',
-        ins: ['mmacany'],
-        typ: ['recitation'],
-        tim: ['2:00 pm - 2:50 pm', '2:00 pm - 3:15 pm'],
-        day: ['M', 'TR'],
-        loc: ['CAS&L Building 2070']
+        courseRegistrationNumber: '20086',
+        instructor: ['mmacany'],
+        scheduleType: ['recitation'],
+        time: ['2:00 pm - 2:50 pm', '2:00 pm - 3:15 pm'],
+        days: ['M', 'TR'],
+        locations: ['CAS&L Building 2070']
       },
       {
-        crn: '20361',
-        ins: ['beydoung'],
-        typ: ['recitation'],
-        tim: ['6:00 pm - 7:45 pm'],
-        day: ['TR'],
-        loc: ['CAS&L Building 2062']
+        courseRegistrationNumber: '20361',
+        instructor: ['beydoung'],
+        scheduleType: ['recitation'],
+        time: ['6:00 pm - 7:45 pm'],
+        days: ['TR'],
+        locations: ['CAS&L Building 2062']
       },
       {
-        crn: '22655',
-        ins: ['jeffigo'],
-        typ: ['recitation'],
-        tim: ['4:00 pm - 5:45 pm'],
-        day: ['TR'],
-        loc: ['CAS&L Building 2062']
+        courseRegistrationNumber: '22655',
+        instructor: ['jeffigo'],
+        scheduleType: ['recitation'],
+        time: ['4:00 pm - 5:45 pm'],
+        days: ['TR'],
+        locations: ['CAS&L Building 2062']
       }
     ];
 
@@ -94,26 +94,25 @@ describe(`schedule listing parser`, function () {
 
   it(`parses schedules listings with no meetings times`, function () {
     const result = parseScheduleListing(scheduleListingsHtmlWithNoMeetingTimes);
-
     const expectedResult = [
       {
-        crn: '21206',
-        ins: [],
-        typ: [],
-        tim: [],
-        day: [],
-        loc: [],
+        courseRegistrationNumber: '21206',
+        days: [],
+        instructor: [],
+        locations: [],
+        scheduleType: [],
+        time: []
       },
       {
-        crn: '22759',
-        ins: ['marilee'],
-        typ: ['independent study'],
-        tim: ['TBA'],
-        day: [],
-        loc: ['TBA']
+        courseRegistrationNumber: '22759',
+        instructor: ['marilee'],
+        scheduleType: ['independent study'],
+        time: ['TBA'],
+        days: [''],
+        locations: ['TBA']
       }
     ];
 
-    expect(result).to.be.deep.equal(expectedResult)
+    expect(result).to.deep.equal(expectedResult);
   });
 });

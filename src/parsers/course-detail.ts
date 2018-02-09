@@ -1,8 +1,22 @@
 import { JSDOM } from 'jsdom';
-import { Prerequisite } from '../models/catalog';
 import { decode } from 'he';
 import { oneLine } from 'common-tags';
 import { formDecode } from '../utilities';
+
+export type Prerequisite = undefined | [string, string] | string | {
+  /** the logic gate to use */
+  g: '&' | '|',
+  /**
+   * the operands of the logic gate
+   * 
+   * can be:
+   * 
+   * * another `Prerequisite`
+   * * a tuple of `[subjectCode, courseNumber]` e.g. `["CIS", "310"]`
+   * * or a simple string e.g. `"Remedial Math"`
+   */
+  o: Prerequisite[],
+}
 
 /** A simple interface that extends an array */
 export interface ParseTree extends Array<string | ParseTree> {
