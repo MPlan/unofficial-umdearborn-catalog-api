@@ -8,6 +8,9 @@ export async function fetchTerms() {
     method: 'GET',
     url: 'https://selfservice.umd.umich.edu/BANP/bwckctlg.p_disp_dyn_ctlg',
     httpsAgent: new https.Agent({ ciphers: 'ALL' }),
+    headers: {
+      'X-What-Is-This-Request': 'https://github.com/MPlan/unofficial-umdearborn-catalog-api',
+    },
   });
 
   const html = catalogTermResponse.data as string | undefined;

@@ -26,6 +26,9 @@ export async function fetchScheduleListings(
     method: 'POST',
     url,
     httpsAgent: new https.Agent({ ciphers: 'ALL' }),
+    headers: {
+      'X-What-Is-This-Request': 'https://github.com/MPlan/unofficial-umdearborn-catalog-api',
+    },
   });
 
   const html = response.data as string | undefined;

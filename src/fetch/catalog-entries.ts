@@ -38,7 +38,8 @@ export async function fetchCatalogEntries(termCode: string, subjectCode: string)
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Content-Length': Buffer.byteLength(data),
-    }
+      'X-What-Is-This-Request': 'https://github.com/MPlan/unofficial-umdearborn-catalog-api',
+    },
   });
 
   const html = response.data as string | undefined;
