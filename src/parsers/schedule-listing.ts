@@ -4,9 +4,9 @@ import { isEqual, range } from 'lodash';
 import { formDecode, regularToCamelCase } from '../utilities';
 
 interface SectionTableParseResult {
-  instructor: string[],
+  instructors: string[],
   scheduleType: string[],
-  time: string[],
+  times: string[],
   days: string[],
   locations: string[],
 }
@@ -75,10 +75,10 @@ function findUniqueName(element: Element) {
 
 const emptySectionResult: SectionTableParseResult = {
   days: [],
-  instructor: [],
+  instructors: [],
   locations: [],
   scheduleType: [],
-  time: [],
+  times: [],
 };
 
 function parseSectionElement(body: HTMLTableRowElement) {
@@ -122,9 +122,9 @@ function parseSectionElement(body: HTMLTableRowElement) {
   }, {} as { [key: string]: undefined | string[] });
 
   const section: SectionTableParseResult = {
-    instructor: result.instructors || [],
+    instructors: result.instructors || [],
     scheduleType: (result.scheduleType || []).map(type => type.toLowerCase().trim()),
-    time: result.time || [],
+    times: result.time || [],
     days: result.days || [],
     locations: result.where || [],
   };
