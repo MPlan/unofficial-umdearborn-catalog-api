@@ -15,8 +15,8 @@ describe(`schedule detail parser`, function () {
   it(`parsers 'schedule-detail.html'`, function () {
     const result = parseScheduleDetail(scheduleDetailHtml);
     expect(result).to.be.deep.equal({
-      cap: 35,
-      rem: 1,
+      capacity: 35,
+      remaining: 1,
       credits: 4,
       creditsMin: undefined,
       crossList: [['ECE', '478']]
@@ -27,9 +27,9 @@ describe(`schedule detail parser`, function () {
       '.datadisplaytable tbody .datadisplaytable tbody'
     ) as HTMLTableSectionElement | null;
 
-    const { cap, rem } = parseCapacityAndRemaining(seatsTbody || document.createElement('tbody'));
-    expect(cap).to.be.equal(35);
-    expect(rem).to.be.equal(1);
+    const { capacity, remaining } = parseCapacityAndRemaining(seatsTbody || document.createElement('tbody'));
+    expect(capacity).to.be.equal(35);
+    expect(remaining).to.be.equal(1);
   });
   it(`parses the credits or credit range`, function () {
     const infoCell = document.querySelector(

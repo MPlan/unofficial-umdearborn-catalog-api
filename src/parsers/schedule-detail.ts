@@ -4,7 +4,7 @@ import { range } from 'lodash';
 import { decode } from 'he';
 
 export function parseCapacityAndRemaining(seatsTbody: HTMLTableSectionElement) {
-  const empty = { cap: NaN, rem: NaN };
+  const empty = { capacity: NaN, remaining: NaN };
   const rows = (Array
     .from(seatsTbody.children)
     .filter(elem => elem.tagName.toLowerCase().trim() === 'tr')
@@ -50,13 +50,13 @@ export function parseCapacityAndRemaining(seatsTbody: HTMLTableSectionElement) {
   );
 
   if (result.crosslistseats) {
-    const cap = result.crosslistseats && result.crosslistseats.capacity || NaN;
-    const rem = result.crosslistseats && result.crosslistseats.remaining || NaN;
-    return { cap, rem };
+    const capacity = result.crosslistseats && result.crosslistseats.capacity || NaN;
+    const remaining = result.crosslistseats && result.crosslistseats.remaining || NaN;
+    return { capacity, remaining };
   } else if (result.seats) {
-    const cap = result.seats && result.seats.capacity || NaN;
-    const rem = result.seats && result.seats.remaining || NaN;
-    return { cap, rem };
+    const capacity = result.seats && result.seats.capacity || NaN;
+    const remaining = result.seats && result.seats.remaining || NaN;
+    return { capacity, remaining };
   }
 
   return empty;
@@ -114,15 +114,15 @@ export function parseCrossListedCourses(infoCell: Element) {
 }
 
 type ScheduleDetailResult = {
-  cap: number,
-  rem: number,
+  capacity: number,
+  remaining: number,
   credits: number,
   creditsMin: number | undefined,
   crossList: [string, string][],
 };
 
 /**
- * captures the `cap` and `rem` of a section detail HTML
+ * captures the `capacity` and `remaining` of a section detail HTML
  */
 export function parseScheduleDetail(html: string) {
   const document = new JSDOM(html).window.document;
