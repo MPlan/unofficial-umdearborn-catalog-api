@@ -9,6 +9,9 @@ const scheduleListingsHtml = fs.readFileSync(
 const scheduleListingsHtmlWithNoMeetingTimes = fs.readFileSync(
   path.resolve(__dirname, '../example-pages/schedule-listing-with-no-meeting-times.html')
 ).toString();
+const scheduleListingsHtmlEmpty = fs.readFileSync(
+  path.resolve(__dirname, '../example-pages/schedule-listing-empty.html')
+).toString();
 
 describe(`schedule listing parser`, function () {
   it(`parsers 'schedule-listings.html'`, function () {
@@ -114,5 +117,10 @@ describe(`schedule listing parser`, function () {
     ];
 
     expect(result).to.deep.equal(expectedResult);
+  });
+
+  it(`should handle empty schedule listings gracefully`, function () {
+    const result = parseScheduleListing(scheduleListingsHtmlEmpty);
+    expect(result).to.be.empty;
   });
 });

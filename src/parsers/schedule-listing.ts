@@ -81,7 +81,9 @@ const emptySectionResult: SectionTableParseResult = {
   times: [],
 };
 
-function parseSectionElement(body: HTMLTableRowElement) {
+function parseSectionElement(body: HTMLTableRowElement | undefined | null) {
+  if (!body) { return emptySectionResult; }
+
   const sectionTBody = body.querySelector('.datadisplaytable > tbody');
   if (!sectionTBody) { return emptySectionResult; }
 
