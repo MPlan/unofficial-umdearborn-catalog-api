@@ -381,6 +381,25 @@ export function parseRestrictions(bodyTextContent: string) {
   return /*if*/ restrictions ? restrictions : undefined;
 }
 
+export function parseCreditHours(bodyTextContent: string): {
+  creditHours: number | undefined,
+  creditHoursMin: number | undefined,
+} {
+  const rangeMatch = /([\d.]*)\s*or\s*([\d.]*)\s*credit\s*hours/i.exec(bodyTextContent);
+  if (!rangeMatch) {
+    const singleMatch = /([\d.]*)\s*credit\s*hours/i.exec(bodyTextContent);
+    if (!singleMatch) {
+      return { creditHours: undefined, creditHoursMin: undefined };
+    }
+    const creditHours = parseFloat(singleMatch[1]);
+    const creditHoursMin = creditHours;
+    return { creditHours, creditHoursMin };
+  }
+  const creditHoursMin = parseFloat(rangeMatch[1]);
+  const creditHours = parseFloat(rangeMatch[2]);
+  return { creditHours, creditHoursMin };
+}
+
 /**
  * Given a course detail html, this returns the `description`, the `prerequisites`, and the
  * `corequisites`.
@@ -396,7 +415,9 @@ export function parseCourseDetail(html: string) {
   const description = parseDescription(bodyHtml);
   const prerequisites = parsePrerequisites(bodyHtml);
   const corequisites = parseCorequisites(bodyHtml);
-  const restrictions = parseRestrictions(body.textContent || '');
+  const bodyTextContent = body.textContent || '';
+  const restrictions = parseRestrictions(bodyTextContent);
+  const { creditHours, creditHoursMin } = parseCreditHours(bodyTextContent);
 
-  return { description, prerequisites, corequisites, restrictions };
+  return { description, prerequisites, corequisites, restrictions, creditHours, creditHoursMin };
 }

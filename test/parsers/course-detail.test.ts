@@ -173,4 +173,16 @@ describe(`course detail parser`, function () {
       Graduate Must be enrolled in one of the following Colleges: Coll of Engineering & Comp Sci
     `);
   });
+
+  it(`parseCreditHours`, function () {
+    const creditHourRange = parseCourseDetail(courseDetailHtml);
+
+    expect(creditHourRange.creditHours).to.be.equal(4);
+    expect(creditHourRange.creditHoursMin).to.be.equal(3);
+
+    const singleCreditHours = parseCourseDetail(courseDetailOnePrerequisiteHtml);
+
+    expect(singleCreditHours.creditHours).to.be.equal(3);
+    expect(singleCreditHours.creditHoursMin).to.be.equal(3);
+  });
 });

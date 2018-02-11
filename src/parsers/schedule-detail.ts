@@ -62,7 +62,7 @@ export function parseCapacityAndRemaining(seatsTbody: HTMLTableSectionElement) {
   return empty;
 }
 
-export function parseCreditHours(infoCell: Element) {
+export function parseCredits(infoCell: Element) {
   const textContent = infoCell.textContent || '';
   const creditHourRangeMatch = /((?:\d|\.)*)\s*to\s*((?:\d|\.)*)\s*credits/i.exec(textContent);
   if (creditHourRangeMatch) {
@@ -136,7 +136,7 @@ export function parseScheduleDetail(html: string) {
   ) || document.createElement('td');
 
   const capAndRem = parseCapacityAndRemaining(seatsTbody);
-  const creditHours = parseCreditHours(infoCell);
+  const creditHours = parseCredits(infoCell);
   const crossList = parseCrossListedCourses(infoCell);
 
   const result: ScheduleDetailResult = { ...capAndRem, ...creditHours, crossList };

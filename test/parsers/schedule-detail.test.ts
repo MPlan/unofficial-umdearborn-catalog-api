@@ -3,7 +3,7 @@ import * as path from 'path';
 import { expect } from 'chai';
 import { JSDOM } from 'jsdom';
 import {
-  parseScheduleDetail, parseCapacityAndRemaining, parseCreditHours
+  parseScheduleDetail, parseCapacityAndRemaining, parseCredits
 } from '../../src/parsers/schedule-detail';
 const scheduleDetailHtml = fs.readFileSync(
   path.resolve(__dirname, '../example-pages/schedule-detail.html')
@@ -36,7 +36,7 @@ describe(`schedule detail parser`, function () {
       '.datadisplaytable tbody .dddefault'
     ) as Element | null;
 
-    const { credits, creditsMin } = parseCreditHours(infoCell || document.createElement('div'));
+    const { credits, creditsMin } = parseCredits(infoCell || document.createElement('div'));
     expect(credits).to.be.equal(4);
     expect(creditsMin).to.be.undefined;
   });
