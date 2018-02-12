@@ -3,6 +3,8 @@
 > The unofficial course catalog APIs for the University of Michigan-Dearborn
 
 [Checkout the deployed version here][0]
+or
+[Checkout the generated API docs here][1]
 
 The purpose of this project is to be a fast and reliable course catalog API for MPlan.
 
@@ -33,8 +35,16 @@ To use this in your node project:
 Then you can use like so:
 
 ```ts
-import * as UmdearbornCatalog from 'unofficial-umdearborn-catalog-api'
+import * as UmdearbornCatalog from 'unofficial-umdearborn-catalog-api';
+
+async function main() {
+    const courseDetail = await UmdearbornCatalog.fetchCourseDetail('201820', 'CIS', '450');
+}
+
+main();
 ```
+
+[See the generated API docs here][1]
 
 # Questions we want to ask the data:
 
@@ -51,3 +61,4 @@ import * as UmdearbornCatalog from 'unofficial-umdearborn-catalog-api'
 [See here][0] or [here](./swagger.yaml)
 
 [0]: https://umdearborn-catalog-api.herokuapp.com
+[1]: https://mplan.github.io/unofficial-umdearborn-catalog-api/
