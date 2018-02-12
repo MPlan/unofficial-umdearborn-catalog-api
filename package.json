@@ -13,7 +13,8 @@
     "nodemon": "nodemon ./dist/src/index.js",
     "start": "npm run watch & npm run nodemon",
     "heroku-prebuild": "npm install --only=dev && npm install && npm run build",
-    "prepare": "npm run clean && npm run test"
+    "prepare": "npm run clean && npm run test",
+    "docs": "typedoc --out docs src"
   },
   "author": "rico kahler",
   "license": "MIT",
@@ -25,6 +26,7 @@
     "mocha": "^4.0.1",
     "nodemon": "^1.12.1",
     "ts-node": "^3.3.0",
+    "typedoc": "^0.10.0",
     "typescript": "^2.6.2"
   },
   "dependencies": {
