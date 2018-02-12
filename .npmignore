@@ -4,3 +4,4 @@ Procfile
 playground.*
 catalog.json
 .vscode
+docs
