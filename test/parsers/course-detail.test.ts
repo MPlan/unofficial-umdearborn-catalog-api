@@ -185,4 +185,106 @@ describe(`course detail parser`, function () {
     expect(singleCreditHours.creditHours).to.be.equal(3);
     expect(singleCreditHours.creditHoursMin).to.be.equal(3);
   });
+
+  it(`course truth table`, function () {
+    function and(...args: boolean[]) { return args.reduce((final, next) => final && next); }
+
+    function or(...args: boolean[]) { return args.reduce((final, next) => final || next); }
+
+    function fromPage(
+      cis310: boolean,
+      cis350: boolean,
+      cis3501: boolean,
+      imse350: boolean,
+      ece370a: boolean,
+      math276: boolean,
+      ece370b: boolean,
+      ece276: boolean,
+      imse317: boolean,
+    ) {
+      return cis310 && (cis350 || cis3501 || imse350) || (ece370a && math276) || (ece370b && ece276) && imse317;
+    }
+
+    function fromParser(
+      cis310: boolean,
+      cis350: boolean,
+      cis3501: boolean,
+      imse350: boolean,
+      ece370a: boolean,
+      math276: boolean,
+      ece370b: boolean,
+      ece276: boolean,
+      imse317: boolean,
+    ) {
+      // return or(
+      //   or(
+      //     and(cis310, or(cis350, cis3501, imse350,)),
+      //     and(ece370a, math276),
+      //   ),
+      //   and(
+      //     and(ece370b, ece276),
+      //     imse317,
+      //   ),
+      // );
+      return or(
+        and(cis310, or(cis350, cis3501, imse350,)),
+        and(ece370a, math276),
+        and(ece370b, ece276, imse317),
+      );
+    }
+
+    function toBooleans(x: number) {
+      const binaryString = x.toString(2);
+      let newX = '';
+      for (let i = 0; i < 9 - binaryString.length; i += 1) {
+        newX += '0';
+      }
+      newX += binaryString;
+
+      const booleans = newX.split('').map(x => x === '1' ? true : false);
+      return booleans;
+    }
+
+    for (let i = 0; i < Math.pow(2, 9); i += 1) {
+      const booleans = toBooleans(i);
+
+      expect(booleans.length).to.be.equal(9);
+
+      const cis310 = booleans[0];
+      const cis350 = booleans[1];
+      const cis3501 = booleans[2];
+      const imse350 = booleans[3];
+      const ece370a = booleans[4];
+      const math276 = booleans[5];
+      const ece370b = booleans[6];
+      const ece276 = booleans[7];
+      const imse317 = booleans[8];
+
+      const resultFromParser = fromParser(
+        cis310,
+        cis350,
+        cis3501,
+        imse350,
+        ece370a,
+        math276,
+        ece370b,
+        ece276,
+        imse317,
+      );
+
+      const resultFromPage = fromPage(
+        cis310,
+        cis350,
+        cis3501,
+        imse350,
+        ece370a,
+        math276,
+        ece370b,
+        ece276,
+        imse317,
+      );
+
+      expect(resultFromParser).to.be.equal(resultFromPage);
+    }
+  });
 });
