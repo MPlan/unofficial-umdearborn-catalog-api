@@ -32,7 +32,7 @@ export function regularToCamelCase(reg: string) {
     .trim()
     .toLowerCase()
     .split(' ')
-    .filter(x => x)
+    .filter(x => !!x)
     .map(s => s.substring(0, 1).toUpperCase() + s.substring(1))
   );
 

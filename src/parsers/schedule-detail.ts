@@ -50,12 +50,12 @@ export function parseCapacityAndRemaining(seatsTbody: HTMLTableSectionElement) {
   );
 
   if (result.crosslistseats) {
-    const capacity = result.crosslistseats && result.crosslistseats.capacity || NaN;
-    const remaining = result.crosslistseats && result.crosslistseats.remaining || NaN;
+    const capacity = result.crosslistseats && result.crosslistseats.capacity;
+    const remaining = result.crosslistseats && result.crosslistseats.remaining;
     return { capacity, remaining };
   } else if (result.seats) {
-    const capacity = result.seats && result.seats.capacity || NaN;
-    const remaining = result.seats && result.seats.remaining || NaN;
+    const capacity = result.seats && result.seats.capacity;
+    const remaining = result.seats && result.seats.remaining;
     return { capacity, remaining };
   }
 
@@ -82,7 +82,10 @@ export function parseCredits(infoCell: Element) {
 }
 
 export function parseCrossListedCourses(infoCell: Element) {
-  const match = /cross\s*list\s*courses([\s\S]*)<table/i.exec(infoCell.innerHTML);
+  const innerHtml = infoCell.innerHTML;
+  const matchWithPrerequisites = /cross\s*list\s*courses([\s\S]*)(?:prerequisites)/i.exec(innerHtml);
+  const matchWithoutPrerequisites = /cross\s*list\s*courses([\s\S]*)/i.exec(infoCell.innerHTML);
+  const match = matchWithPrerequisites || matchWithoutPrerequisites;
   if (!match) { return []; }
 
   try {
@@ -98,10 +101,10 @@ export function parseCrossListedCourses(infoCell: Element) {
         const decoded = formDecode(decode(match[1]));
         return [
           decoded.one_subj.trim().toUpperCase(),
-          decoded.sel_crse_strt.toUpperCase()
+          decoded.sel_crse_strt.trim().toUpperCase()
         ] as [string, string];
       })
-      .filter(x => x && x.length > 0)
+      .filter(x => x && x.length == 2)
       .map(x => x!)
     );
 
