@@ -7,15 +7,14 @@ import { parseCourseDetail } from '../parsers/course-detail';
 export async function fetchCourseDetail(
   termCode: string,
   subjectCode: string,
-  courseNumber: string,
+  courseNumber: string
 ) {
-
   const url = oneLineTrim`
     https://selfservice.umd.umich.edu/BANP/bwckctlg.p_disp_course_detail?
     ${formEncode({
       cat_term_in: termCode.trim().toUpperCase(),
       subj_code_in: subjectCode.trim().toUpperCase(),
-      crse_numb_in: courseNumber.trim().toUpperCase(),
+      crse_numb_in: courseNumber.trim().toUpperCase()
     })}
   `;
 
@@ -24,8 +23,9 @@ export async function fetchCourseDetail(
     url,
     httpsAgent: new https.Agent({ ciphers: 'ALL' }),
     headers: {
-      'X-What-Is-This-Request': 'https://github.com/MPlan/unofficial-umdearborn-catalog-api',
-    },
+      'X-What-Is-This-Request':
+        'https://github.com/MPlan/unofficial-umdearborn-catalog-api'
+    }
   });
 
   const html = response.data as string | undefined;

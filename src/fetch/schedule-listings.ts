@@ -9,16 +9,15 @@ export async function fetchScheduleListings(
   termCode: string,
   subjectCode: string,
   courseNumber: string,
-  scheduleTypeCode: string,
+  scheduleTypeCode: string
 ) {
-
   const url = oneLineTrim`
     https://selfservice.umd.umich.edu/BANP/bwckctlg.p_disp_listcrse?
     ${formEncode({
       term_in: termCode,
       subj_in: subjectCode,
       crse_in: courseNumber,
-      schd_in: scheduleTypeCode,
+      schd_in: scheduleTypeCode
     })}
   `;
 
@@ -27,8 +26,9 @@ export async function fetchScheduleListings(
     url,
     httpsAgent: new https.Agent({ ciphers: 'ALL' }),
     headers: {
-      'X-What-Is-This-Request': 'https://github.com/MPlan/unofficial-umdearborn-catalog-api',
-    },
+      'X-What-Is-This-Request':
+        'https://github.com/MPlan/unofficial-umdearborn-catalog-api'
+    }
   });
 
   const html = response.data as string | undefined;

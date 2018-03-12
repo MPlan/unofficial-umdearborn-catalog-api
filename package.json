@@ -1,20 +1,23 @@
 {
   "name": "unofficial-umdearborn-catalog-api",
   "version": "0.3.2",
-  "description": "Unofficial course catalog APIs for the University of Michigan-Dearborn",
+  "description":
+    "Unofficial course catalog APIs for the University of Michigan-Dearborn",
   "main": "./dist/src/library.js",
   "typings": "./src/library.ts",
   "scripts": {
     "clean": "rm -rf ./dist",
     "test": "npm run build && npm run run-tests",
-    "run-tests": "mocha --require ts-node/register \"test/**/*.ts\" --watch-extensions ts",
+    "run-tests":
+      "mocha --require ts-node/register \"test/**/*.ts\" --watch-extensions ts",
     "build": "tsc",
     "watch": "tsc --watch",
     "nodemon": "nodemon ./dist/src/index.js",
     "start": "npm run watch & npm run nodemon",
     "heroku-prebuild": "npm install --only=dev && npm install && npm run build",
     "prepare": "npm run clean && npm run test",
-    "docs": "typedoc --out docs src"
+    "docs": "typedoc --out docs src",
+    "pretty": "prettier --single-quote --write ./src/**/*.ts ./test/**/*.ts"
   },
   "author": "rico kahler",
   "license": "MIT",
@@ -25,6 +28,7 @@
     "dotenv": "^4.0.0",
     "mocha": "^4.0.1",
     "nodemon": "^1.12.1",
+    "prettier": "^1.11.1",
     "ts-node": "^3.3.0",
     "typedoc": "^0.10.0",
     "typescript": "^2.6.2"

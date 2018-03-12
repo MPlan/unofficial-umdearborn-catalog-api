@@ -3,24 +3,28 @@ import { decode } from 'he';
 import { oneLine } from 'common-tags';
 import { formDecode } from '../utilities';
 
-export type Prerequisite = undefined | [string, string] | string | {
-  /** the logic gate to use */
-  g: '&' | '|',
-  /**
-   * the operands of the logic gate
-   * 
-   * can be:
-   * 
-   * * another `Prerequisite`
-   * * a tuple of `[subjectCode, courseNumber]` e.g. `["CIS", "310"]`
-   * * or a simple string e.g. `"Remedial Math"`
-   */
-  o: Prerequisite[],
-}
+export type Prerequisite =
+  | undefined
+  | [string, string]
+  | string
+  | {
+      /** the logic gate to use */
+      g: '&' | '|';
+      /**
+       * the operands of the logic gate
+       *
+       * can be:
+       *
+       * * another `Prerequisite`
+       * * a tuple of `[subjectCode, courseNumber]` e.g. `["CIS", "310"]`
+       * * or a simple string e.g. `"Remedial Math"`
+       */
+      o: Prerequisite[];
+    };
 
 /** A simple interface that extends an array */
 export interface ParseTree extends Array<string | ParseTree> {
-  [key: number]: string | ParseTree,
+  [key: number]: string | ParseTree;
 }
 
 /**
@@ -30,15 +34,15 @@ export interface ParseTree extends Array<string | ParseTree> {
 export function parseDescription(bodyHtml: string) {
   /** grabs the top of the course detail which includes the description and the types of hours */
   const firstMatch = /([\s\S]*)<br.*\/?>[\s\S]*hour/.exec(bodyHtml);
-  if (!firstMatch) { return undefined; }
+  if (!firstMatch) {
+    return undefined;
+  }
   // the first capturing group
   const firstPass = firstMatch[1];
   // tries to remove any extra lines in that includes `<br /> 3.000 OR 4.000 Credit hours`
   const secondMatch = firstPass.search(/<br.*\/?>[\s\S]*hour/);
-  const descriptionHtmlEncoded = (/*if*/ secondMatch === -1
-    ? firstPass
-    : firstPass.substring(0, secondMatch)
-  );
+  const descriptionHtmlEncoded =
+    /*if*/ secondMatch === -1 ? firstPass : firstPass.substring(0, secondMatch);
 
   const arr = [decode(descriptionHtmlEncoded).trim()];
   return oneLine(Object.assign(arr, { raw: arr }));
@@ -51,23 +55,30 @@ export function parseDescription(bodyHtml: string) {
  */
 export function replacePrerequisiteAnchors(prerequisiteHtml: string) {
   const document = new JSDOM(prerequisiteHtml).window.document;
-  const anchors = (Array
-    .from(document.querySelectorAll('a')).filter(link => {
+  const anchors = Array.from(document.querySelectorAll('a'))
+    .filter(link => {
       const query = link.href.split('?')[1];
       if (!query) {
         return false;
       }
       const decoded = formDecode(query);
-      if (!decoded.one_subj) { return false; }
-      if (!decoded.sel_crse_strt) { return false; }
+      if (!decoded.one_subj) {
+        return false;
+      }
+      if (!decoded.sel_crse_strt) {
+        return false;
+      }
       return true;
     })
     .map(anchor => {
       const query = anchor.href.split('?')[1];
       const decoded = formDecode(query);
-      return { anchor, subjectCode: decoded.one_subj, courseNumber: decoded.sel_crse_strt };
-    })
-  );
+      return {
+        anchor,
+        subjectCode: decoded.one_subj,
+        courseNumber: decoded.sel_crse_strt
+      };
+    });
 
   for (const { anchor, subjectCode, courseNumber } of anchors) {
     const anchorParent = anchor.parentElement;
@@ -82,7 +93,7 @@ export function replacePrerequisiteAnchors(prerequisiteHtml: string) {
   }
 
   const arr = [document.body.textContent || ''];
-  const textContent = oneLine(Object.assign(arr, { raw: arr }))
+  const textContent = oneLine(Object.assign(arr, { raw: arr }));
   return textContent;
 }
 
@@ -90,39 +101,45 @@ export function replacePrerequisiteAnchors(prerequisiteHtml: string) {
  * Recursive function that takes in a string which can include `(` `)` and transforms it into an
  * array of arrays. Strings get separated by spaces and substrings inside of `(` `)` will get put
  * into a sub array:
- * 
+ *
  * e.g.:
- * 
+ *
  * ```txt
  * the quick (brown (fox jumps) over the (lazy dog))
  * ```
- * 
+ *
  * becomes:
- * 
+ *
  * ```js
  * ['the', 'quick', ['brown', ['fox', 'jumps'], 'over', 'the', ['lazy', 'dog']]]
  * ```
  */
 export function transformParenthesesToTree(
   expression: string
-): { tree: ParseTree, lastIndex: number } {
+): { tree: ParseTree; lastIndex: number } {
   const characters = expression.split('');
   const tokens = [] as ParseTree;
   let i = 0;
   let currentToken = '';
   while (i < expression.length) {
     const character = characters[i];
-    if (character === ' ') { // terminal character
-      if (currentToken) { // check to see if the `currentToken` is falsy
+    if (character === ' ') {
+      // terminal character
+      if (currentToken) {
+        // check to see if the `currentToken` is falsy
         tokens.push(currentToken);
         currentToken = '';
       }
     } else if (character === '(') {
-      const subExpressionResult = transformParenthesesToTree(expression.substring(i + 1));
+      const subExpressionResult = transformParenthesesToTree(
+        expression.substring(i + 1)
+      );
       i += subExpressionResult.lastIndex;
       tokens.push(subExpressionResult.tree);
-    } else if (character === ')') { // also terminal character but returns the sub expression
-      if (currentToken) { // check to see if the `currentToken` is falsy
+    } else if (character === ')') {
+      // also terminal character but returns the sub expression
+      if (currentToken) {
+        // check to see if the `currentToken` is falsy
         tokens.push(currentToken);
       }
       return { tree: tokens, lastIndex: i + 1 };
@@ -132,7 +149,8 @@ export function transformParenthesesToTree(
     i += 1;
   }
 
-  if (currentToken) { // adds the last current token if there is one
+  if (currentToken) {
+    // adds the last current token if there is one
     tokens.push(currentToken);
   }
 
@@ -156,12 +174,12 @@ export function replaceCourseDirectiveInToken(token: string) {
 
 /**
  * Joins strings in an array tree based on whether or not they are operators (i.e. `and` or `or`).
- * 
+ *
  * transforms:
  * ```
  * ['one', 'two', 'and', ['buckle', 'shoe', 'or', 'three', 'four']]
  * ```
- * 
+ *
  * into:
  * ```
  * ['one two', 'and', ['buckle shoe', 'or', 'three four']]
@@ -172,7 +190,7 @@ export function tokenizeByOperator(tree: ParseTree): ParseTree {
   let currentToken = '';
   for (const node of tree) {
     if (Array.isArray(node)) {
-      newTree.push(tokenizeByOperator(node))
+      newTree.push(tokenizeByOperator(node));
     } else if (node.toLowerCase() === 'and' || node.toLowerCase() === 'or') {
       if (currentToken) {
         newTree.push(replaceCourseDirectiveInToken(currentToken.trim()));
@@ -212,12 +230,12 @@ export function buildPrerequisiteTree(tokens: ParseTree): Prerequisite {
         let previousPrerequisite = currentPrerequisite;
         currentPrerequisite = {
           g: gate,
-          o: [],
+          o: []
         };
         currentPrerequisite.o.push(previousPrerequisite);
       }
     } else if (Array.isArray(token)) {
-      currentPrerequisite.o.push(buildPrerequisiteTree(token))
+      currentPrerequisite.o.push(buildPrerequisiteTree(token));
     } else {
       currentPrerequisite.o.push(token);
     }
@@ -247,14 +265,17 @@ export function buildPrerequisiteTree(tokens: ParseTree): Prerequisite {
  * tuples.
  */
 export function replaceAllCourseDirectivesInTree(prerequisite: Prerequisite) {
-  if (prerequisite === undefined) { return undefined; }
+  if (prerequisite === undefined) {
+    return undefined;
+  }
   if (typeof prerequisite === 'string') {
     // test the prerequisite for the `__SUBJECT-CODE|COURSE-NUMBER__` pattern
     if (/__(.*)\|(.*)__/.test(prerequisite)) {
       const match = /__(.*)\|(.*)__/.exec(prerequisite)!;
-      return [ // return the tuple if the match is found
+      return [
+        // return the tuple if the match is found
         match[1].toUpperCase().trim(),
-        match[2].toUpperCase().trim(),
+        match[2].toUpperCase().trim()
       ] as [string, string];
     }
     // else if the pattern doesn't match, just return the string
@@ -279,7 +300,7 @@ export function replaceAllCourseDirectivesInTree(prerequisite: Prerequisite) {
       const match = /__(.*)\|(.*)__/.exec(operand)!;
       newTree.o.push([
         match[1].toUpperCase().trim(),
-        match[2].toUpperCase().trim(),
+        match[2].toUpperCase().trim()
       ]);
     } else {
       newTree.o.push(operand);
@@ -289,12 +310,15 @@ export function replaceAllCourseDirectivesInTree(prerequisite: Prerequisite) {
   return newTree as Prerequisite;
 }
 
-export function formatPrerequisite(prerequisite: Prerequisite, depth: number = 0): string {
+export function formatPrerequisite(
+  prerequisite: Prerequisite,
+  depth: number = 0
+): string {
   if (!prerequisite) {
     return '';
   }
   if (Array.isArray(prerequisite)) {
-    return `${prerequisite[0] || ''} ${prerequisite[1] || ''}`
+    return `${prerequisite[0] || ''} ${prerequisite[1] || ''}`;
   }
   if (typeof prerequisite === 'string') {
     return prerequisite;
@@ -302,13 +326,14 @@ export function formatPrerequisite(prerequisite: Prerequisite, depth: number = 0
   const logicGate = prerequisite.g;
   const operands = prerequisite.o;
 
-  const joinedOperands = (operands
-    .map(operand => /*if*/ typeof operand === 'object'
-      ? formatPrerequisite(operand, depth + 1)
-      : operand
+  const joinedOperands = operands
+    .map(
+      operand =>
+        /*if*/ typeof operand === 'object'
+          ? formatPrerequisite(operand, depth + 1)
+          : operand
     )
-    .join(' ')
-  );
+    .join(' ');
 
   return `(${/*if*/ logicGate === '&' ? 'and' : 'or'} ${joinedOperands})`;
 }
@@ -342,14 +367,17 @@ export function parsePrerequisites(bodyHtml: string) {
  */
 export function parseCorequisites(bodyHtml: string) {
   const match = /.*corequisites.*\n?([\s\S]*)/i.exec(bodyHtml);
-  if (!match) { return undefined; }
+  if (!match) {
+    return undefined;
+  }
   const corequisiteHtmlFirstPass = match[1];
-  const prerequisiteMatch = /.*prerequisites.*\n?/i.exec(corequisiteHtmlFirstPass);
-
-  const corequisiteHtml = (/*if*/ prerequisiteMatch
-    ? corequisiteHtmlFirstPass.slice(0, prerequisiteMatch.index)
-    : corequisiteHtmlFirstPass
+  const prerequisiteMatch = /.*prerequisites.*\n?/i.exec(
+    corequisiteHtmlFirstPass
   );
+
+  const corequisiteHtml = /*if*/ prerequisiteMatch
+    ? corequisiteHtmlFirstPass.slice(0, prerequisiteMatch.index)
+    : corequisiteHtmlFirstPass;
 
   return parsePrerequisitesHtml(corequisiteHtml);
 }
@@ -361,31 +389,32 @@ export function parseRestrictions(bodyTextContent: string) {
   const matchWithPrerequisites = /restrictions:([\s\S]*)(?:pre|co)requisites/i.exec(
     bodyTextContent
   );
-  const matchWithoutPrerequisites = /restrictions:([\s\S]*)/i.exec(bodyTextContent);
-
-  const captureGroup = (/*if*/ matchWithPrerequisites
-    ? matchWithPrerequisites[1]
-    : (/*if*/ matchWithoutPrerequisites
-      ? matchWithoutPrerequisites[1]
-      : ''
-    )
+  const matchWithoutPrerequisites = /restrictions:([\s\S]*)/i.exec(
+    bodyTextContent
   );
 
-  const restrictions = (captureGroup
+  const captureGroup = /*if*/ matchWithPrerequisites
+    ? matchWithPrerequisites[1]
+    : /*if*/ matchWithoutPrerequisites ? matchWithoutPrerequisites[1] : '';
+
+  const restrictions = captureGroup
     .split('\n')
     .map(line => line.trim())
     .filter(line => !!line)
-    .join(' ')
-  );
+    .join(' ');
 
   return /*if*/ restrictions ? restrictions : undefined;
 }
 
-export function parseCreditHours(bodyTextContent: string): {
-  creditHours: number | undefined,
-  creditHoursMin: number | undefined,
+export function parseCreditHours(
+  bodyTextContent: string
+): {
+  creditHours: number | undefined;
+  creditHoursMin: number | undefined;
 } {
-  const rangeMatch = /([\d.]*)\s*or\s*([\d.]*)\s*credit\s*hours/i.exec(bodyTextContent);
+  const rangeMatch = /([\d.]*)\s*or\s*([\d.]*)\s*credit\s*hours/i.exec(
+    bodyTextContent
+  );
   if (!rangeMatch) {
     const singleMatch = /([\d.]*)\s*credit\s*hours/i.exec(bodyTextContent);
     if (!singleMatch) {
@@ -419,5 +448,12 @@ export function parseCourseDetail(html: string) {
   const restrictions = parseRestrictions(bodyTextContent);
   const { creditHours, creditHoursMin } = parseCreditHours(bodyTextContent);
 
-  return { description, prerequisites, corequisites, restrictions, creditHours, creditHoursMin };
+  return {
+    description,
+    prerequisites,
+    corequisites,
+    restrictions,
+    creditHours,
+    creditHoursMin
+  };
 }

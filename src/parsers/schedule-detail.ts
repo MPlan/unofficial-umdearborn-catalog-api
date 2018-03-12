@@ -5,48 +5,50 @@ import { decode } from 'he';
 
 export function parseCapacityAndRemaining(seatsTbody: HTMLTableSectionElement) {
   const empty = { capacity: NaN, remaining: NaN };
-  const rows = (Array
-    .from(seatsTbody.children)
-    .filter(elem => elem.tagName.toLowerCase().trim() === 'tr')
+  const rows = Array.from(seatsTbody.children).filter(
+    elem => elem.tagName.toLowerCase().trim() === 'tr'
   );
 
   const headerRow = rows[0];
 
-  if (!headerRow) { return empty; }
+  if (!headerRow) {
+    return empty;
+  }
 
-  const headings = (Array
-    .from(headerRow.children)
+  const headings = Array.from(headerRow.children)
     .slice(1)
     .map(cell => cell.textContent || '')
-    .map(text => regularToCamelCase(text))
-  );
+    .map(text => regularToCamelCase(text));
 
-  const result = (rows
-    .slice(1)
-    .reduce((obj, row) => {
+  const result = rows.slice(1).reduce(
+    (obj, row) => {
       const cells = Array.from(row.children);
       const firstCell = cells[0];
-      if (!firstCell) { return obj; } // continue
+      if (!firstCell) {
+        return obj;
+      } // continue
 
       const key = regularToCamelCase(firstCell.textContent || '').toLowerCase();
-      const values = (cells
+      const values = cells
         .slice(1)
         .map(cell => cell.textContent || '')
-        .map(text => parseInt(text.trim()))
-      );
+        .map(text => parseInt(text.trim()));
 
-      const value = (range(values.length)
+      const value = range(values.length)
         .map(i => ({ key: headings[i], value: values[i] }))
-        .reduce((obj, { key, value }) => {
-          obj[key] = value;
-          return obj;
-        }, {} as { [key: string]: number })
-      );
+        .reduce(
+          (obj, { key, value }) => {
+            obj[key] = value;
+            return obj;
+          },
+          {} as { [key: string]: number }
+        );
 
       obj[key] = value;
 
       return obj;
-    }, {} as { [seatType: string]: { [heading: string]: number } })
+    },
+    {} as { [seatType: string]: { [heading: string]: number } }
   );
 
   if (result.crosslistseats) {
@@ -64,7 +66,9 @@ export function parseCapacityAndRemaining(seatsTbody: HTMLTableSectionElement) {
 
 export function parseCredits(infoCell: Element) {
   const textContent = infoCell.textContent || '';
-  const creditHourRangeMatch = /((?:\d|\.)*)\s*to\s*((?:\d|\.)*)\s*credits/i.exec(textContent);
+  const creditHourRangeMatch = /((?:\d|\.)*)\s*to\s*((?:\d|\.)*)\s*credits/i.exec(
+    textContent
+  );
   if (creditHourRangeMatch) {
     const creditsMin = parseFloat(creditHourRangeMatch[1]);
     const credits = parseFloat(creditHourRangeMatch[2]);
@@ -83,21 +87,29 @@ export function parseCredits(infoCell: Element) {
 
 export function parseCrossListedCourses(infoCell: Element) {
   const innerHtml = infoCell.innerHTML;
-  const matchWithPrerequisites = /cross\s*list\s*courses([\s\S]*)(?:prerequisites)/i.exec(innerHtml);
-  const matchWithoutPrerequisites = /cross\s*list\s*courses([\s\S]*)/i.exec(infoCell.innerHTML);
+  const matchWithPrerequisites = /cross\s*list\s*courses([\s\S]*)(?:prerequisites)/i.exec(
+    innerHtml
+  );
+  const matchWithoutPrerequisites = /cross\s*list\s*courses([\s\S]*)/i.exec(
+    infoCell.innerHTML
+  );
   const match = matchWithPrerequisites || matchWithoutPrerequisites;
-  if (!match) { return []; }
+  if (!match) {
+    return [];
+  }
 
   try {
     const document = new JSDOM(match[1]).window.document;
     const anchors = Array.from(document.querySelectorAll('a'));
 
-    const crossListedCourses = (anchors
+    const crossListedCourses = anchors
       .map(anchor => anchor.href)
       .filter(x => !!x)
       .map(href => {
         const match = /\?(.*)/.exec(href);
-        if (!match) { return undefined; }
+        if (!match) {
+          return undefined;
+        }
         const decoded = formDecode(decode(match[1]));
         return [
           decoded.one_subj.trim().toUpperCase(),
@@ -105,11 +117,9 @@ export function parseCrossListedCourses(infoCell: Element) {
         ] as [string, string];
       })
       .filter(x => x && x.length == 2)
-      .map(x => x!)
-    );
+      .map(x => x!);
 
     return crossListedCourses;
-
   } catch (e) {
     console.warn('Error in parsing cross listed courses.', e);
     return [];
@@ -117,11 +127,11 @@ export function parseCrossListedCourses(infoCell: Element) {
 }
 
 type ScheduleDetailResult = {
-  capacity: number,
-  remaining: number,
-  credits: number,
-  creditsMin: number | undefined,
-  crossList: [string, string][],
+  capacity: number;
+  remaining: number;
+  credits: number;
+  creditsMin: number | undefined;
+  crossList: [string, string][];
 };
 
 /**
@@ -134,14 +144,18 @@ export function parseScheduleDetail(html: string) {
     '.datadisplaytable tbody .datadisplaytable tbody'
   ) || document.createElement('tbody')) as HTMLTableSectionElement;
 
-  const infoCell = document.querySelector(
-    '.datadisplaytable tbody .dddefault'
-  ) || document.createElement('td');
+  const infoCell =
+    document.querySelector('.datadisplaytable tbody .dddefault') ||
+    document.createElement('td');
 
   const capAndRem = parseCapacityAndRemaining(seatsTbody);
   const creditHours = parseCredits(infoCell);
   const crossList = parseCrossListedCourses(infoCell);
 
-  const result: ScheduleDetailResult = { ...capAndRem, ...creditHours, crossList };
+  const result: ScheduleDetailResult = {
+    ...capAndRem,
+    ...creditHours,
+    crossList
+  };
   return result;
 }

@@ -5,16 +5,12 @@ import { oneLineTrim } from 'common-tags';
 import { formEncode } from '../utilities';
 import { parseScheduleDetail } from '../parsers/schedule-detail';
 
-export async function fetchScheduleDetail(
-  termCode: string,
-  crn: string,
-) {
-
+export async function fetchScheduleDetail(termCode: string, crn: string) {
   const url = oneLineTrim`
     https://selfservice.umd.umich.edu/BANP/bwckschd.p_disp_detail_sched?
     ${formEncode({
       term_in: termCode,
-      crn_in: crn,
+      crn_in: crn
     })}
   `;
 
@@ -23,8 +19,9 @@ export async function fetchScheduleDetail(
     url,
     httpsAgent: new https.Agent({ ciphers: 'ALL' }),
     headers: {
-      'X-What-Is-This-Request': 'https://github.com/MPlan/unofficial-umdearborn-catalog-api',
-    },
+      'X-What-Is-This-Request':
+        'https://github.com/MPlan/unofficial-umdearborn-catalog-api'
+    }
   });
 
   const html = response.data as string | undefined;

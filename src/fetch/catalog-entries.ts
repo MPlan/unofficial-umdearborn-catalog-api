@@ -4,8 +4,10 @@ import { oneLineTrim } from 'common-tags';
 import { formEncode } from '../utilities';
 import { parseCatalogEntries } from '../parsers/catalog-entries';
 
-export async function fetchCatalogEntries(termCode: string, subjectCode: string) {
-
+export async function fetchCatalogEntries(
+  termCode: string,
+  subjectCode: string
+) {
   const data = oneLineTrim`
     term_in=${encodeURIComponent(termCode)}&
     call_proc_in=bwckctlg.p_disp_dyn_ctlg&
@@ -38,8 +40,9 @@ export async function fetchCatalogEntries(termCode: string, subjectCode: string)
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Content-Length': Buffer.byteLength(data),
-      'X-What-Is-This-Request': 'https://github.com/MPlan/unofficial-umdearborn-catalog-api',
-    },
+      'X-What-Is-This-Request':
+        'https://github.com/MPlan/unofficial-umdearborn-catalog-api'
+    }
   });
 
   const html = response.data as string | undefined;

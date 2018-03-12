@@ -34,17 +34,24 @@ catalog.get('/entries/:termCode/:subjectCode', async (req, res) => {
   res.json(entries);
 });
 
-catalog.get('/course-details/:termCode/:subjectCode/:courseNumber', async (req, res) => {
-  const termCode = req.params.termCode as string | undefined;
-  const subjectCode = req.params.subjectCode as string | undefined;
-  const courseNumber = req.params.courseNumber as string | undefined;
-  if (!termCode || !subjectCode || !courseNumber) {
-    res.sendStatus(Http.NOT_FOUND);
-    return;
+catalog.get(
+  '/course-details/:termCode/:subjectCode/:courseNumber',
+  async (req, res) => {
+    const termCode = req.params.termCode as string | undefined;
+    const subjectCode = req.params.subjectCode as string | undefined;
+    const courseNumber = req.params.courseNumber as string | undefined;
+    if (!termCode || !subjectCode || !courseNumber) {
+      res.sendStatus(Http.NOT_FOUND);
+      return;
+    }
+    const courseDetail = await fetchCourseDetail(
+      termCode,
+      subjectCode,
+      courseNumber
+    );
+    res.json({ termCode, subjectCode, courseNumber, ...courseDetail });
   }
-  const courseDetail = await fetchCourseDetail(termCode, subjectCode, courseNumber);
-  res.json({ termCode, subjectCode, courseNumber, ...courseDetail });
-});
+);
 
 catalog.get(
   '/schedule-listings/:termCode/:subjectCode/:courseNumber/:scheduleTypeCode',
@@ -58,28 +65,26 @@ catalog.get(
       return;
     }
     const scheduleListings = await fetchScheduleListings(
-      termCode, subjectCode, courseNumber, scheduleTypeCode
+      termCode,
+      subjectCode,
+      courseNumber,
+      scheduleTypeCode
     );
     res.json(scheduleListings);
   }
 );
 
-catalog.get(
-  '/schedule-detail/:termCode/:crn',
-  async (req, res) => {
-    const termCode = req.params.termCode as string | undefined;
-    const crn = req.params.crn as string | undefined;
-    if (!termCode || !crn) {
-      res.sendStatus(Http.NOT_FOUND);
-      return;
-    }
-    const scheduleDetail = await fetchScheduleDetail(
-      termCode, crn
-    );
-    if (!scheduleDetail) {
-      res.sendStatus(Http.NOT_FOUND);
-      return;
-    }
-    res.json(scheduleDetail);
+catalog.get('/schedule-detail/:termCode/:crn', async (req, res) => {
+  const termCode = req.params.termCode as string | undefined;
+  const crn = req.params.crn as string | undefined;
+  if (!termCode || !crn) {
+    res.sendStatus(Http.NOT_FOUND);
+    return;
   }
-);
+  const scheduleDetail = await fetchScheduleDetail(termCode, crn);
+  if (!scheduleDetail) {
+    res.sendStatus(Http.NOT_FOUND);
+    return;
+  }
+  res.json(scheduleDetail);
+});
