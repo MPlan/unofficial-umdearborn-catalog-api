@@ -51,6 +51,11 @@ const courseDetailManyRestrictions = fs
     )
   )
   .toString();
+const courseDetailMath216 = fs
+  .readFileSync(
+    path.resolve(__dirname, '../example-pages/course-detail-math-216.html')
+  )
+  .toString();
 
 describe(`course detail parser`, function() {
   it(`parseCourseDetail`, function() {
@@ -223,7 +228,10 @@ describe(`course detail parser`, function() {
     expect(singleCreditHours.creditHoursMin).to.be.equal(3);
   });
 
-  it(``);
+  it(`parses MATH 216 (edge case)`, () => {
+    const resultMath216 = parseCourseDetail(courseDetailMath216);
+    expect(resultMath216.prerequisites).to.have.same.members(['MATH', '116']);
+  });
 
   it(`course truth table`, function() {
     function and(...args: boolean[]) {

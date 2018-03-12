@@ -270,8 +270,8 @@ export function replaceAllCourseDirectivesInTree(prerequisite: Prerequisite) {
   }
   if (typeof prerequisite === 'string') {
     // test the prerequisite for the `__SUBJECT-CODE|COURSE-NUMBER__` pattern
-    if (/__(.*)\|(.*)__/.test(prerequisite)) {
-      const match = /__(.*)\|(.*)__/.exec(prerequisite)!;
+    if (/__([^|_]*)\|([^|_]*)__/.test(prerequisite)) {
+      const match = /__([^|_]*)\|([^|_]*)__/.exec(prerequisite)!;
       return [
         // return the tuple if the match is found
         match[1].toUpperCase().trim(),
@@ -296,8 +296,8 @@ export function replaceAllCourseDirectivesInTree(prerequisite: Prerequisite) {
     }
     if (typeof operand === 'object') {
       newTree.o.push(replaceAllCourseDirectivesInTree(operand));
-    } else if (/__(.*)\|(.*)__/.test(operand)) {
-      const match = /__(.*)\|(.*)__/.exec(operand)!;
+    } else if (/__([^|_]*)\|([^|_]*)__/.test(operand)) {
+      const match = /__([^|_]*)\|([^|_]*)__/.exec(operand)!;
       newTree.o.push([
         match[1].toUpperCase().trim(),
         match[2].toUpperCase().trim()
