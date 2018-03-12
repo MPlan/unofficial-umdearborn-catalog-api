@@ -13,7 +13,6 @@
     "nodemon": "nodemon ./dist/src/index.js",
     "start": "npm run watch & npm run nodemon",
     "heroku-prebuild": "npm install --only=dev && npm install && npm run build",
-    "prepare": "npm run clean && npm run test",
     "docs": "typedoc --out docs src",
     "pretty": "prettier --single-quote --write ./src/**/*.ts ./test/**/*.ts"
   },
