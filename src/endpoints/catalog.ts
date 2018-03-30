@@ -2,7 +2,7 @@ import * as express from 'express';
 import * as Http from 'http-status-codes';
 export const catalog = express.Router();
 import { fetchTerms } from '../fetch/selfservice-umd/terms';
-import { fetchSubjects } from '../fetch/selfservice-umd/subjects';
+import { fetchSubjectsSelfService } from '../fetch/selfservice-umd/subjects';
 import { fetchCatalogEntries } from '../fetch/selfservice-umd/catalog-entries';
 import { fetchCourseDetail } from '../fetch/selfservice-umd/course-detail';
 import { fetchScheduleListings } from '../fetch/selfservice-umd/schedule-listings';
@@ -19,7 +19,7 @@ catalog.get('/subjects/:termCode', async (req, res) => {
     res.sendStatus(Http.NOT_FOUND);
     return;
   }
-  const subjects = await fetchSubjects(termCode);
+  const subjects = await fetchSubjectsSelfService(termCode);
   res.json(subjects);
 });
 

@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
 import { fetchTerms } from '../../src/fetch/selfservice-umd/terms';
-import { fetchSubjects } from '../../src/fetch/selfservice-umd/subjects';
+import { fetchSubjectsSelfService } from '../../src/fetch/selfservice-umd/subjects';
 import { fetchCatalogEntries } from '../../src/fetch/selfservice-umd/catalog-entries';
 import { fetchScheduleListings } from '../../src/fetch/selfservice-umd/schedule-listings';
 import { fetchCourseDetail } from '../../src/fetch/selfservice-umd/course-detail';
@@ -23,9 +23,7 @@ describe('fetch', function() {
     for (const { code, season, year } of terms) {
       const yearFromKey = parseInt(code.substring(0, 4));
       const seasonFromKey = parseInt(code.substring(4));
-      const correctedYear = Math.floor(
-        yearFromKey + seasonFromKey / 30 - 2 / 3
-      );
+      const correctedYear = Math.floor(yearFromKey + seasonFromKey / 30 - 2 / 3);
       expect(correctedYear).to.be.equal(year);
       const seasonIndex = Math.floor((seasonFromKey - 10) / 30 * 3);
       expect(season).to.be.equal(seasons[seasonIndex]);
@@ -33,14 +31,11 @@ describe('fetch', function() {
   });
   it('subjects', async function() {
     this.timeout(twentySeconds);
-    if (
-      process.env.SKIP_FETCH_TEST_ALL ||
-      process.env.SKIP_FETCH_TEST_SUBJECTS
-    ) {
+    if (process.env.SKIP_FETCH_TEST_ALL || process.env.SKIP_FETCH_TEST_SUBJECTS) {
       this.skip();
       return;
     }
-    const subjects = await fetchSubjects('201820');
+    const subjects = await fetchSubjectsSelfService('201820');
     for (const { code, name } of subjects) {
       expect(code).to.be.not.empty;
       expect(name).to.be.not.empty;
@@ -48,10 +43,7 @@ describe('fetch', function() {
   });
   it('catalog entries', async function() {
     this.timeout(twentySeconds);
-    if (
-      process.env.SKIP_FETCH_TEST_ALL ||
-      process.env.SKIP_FETCH_TEST_CATALOG_ENTRIES
-    ) {
+    if (process.env.SKIP_FETCH_TEST_ALL || process.env.SKIP_FETCH_TEST_CATALOG_ENTRIES) {
       this.skip();
       return;
     }
@@ -66,10 +58,7 @@ describe('fetch', function() {
   });
   it('schedule listings', async function() {
     this.timeout(twentySeconds);
-    if (
-      process.env.SKIP_FETCH_TEST_ALL ||
-      process.env.SKIP_FETCH_TEST_SCHEDULE_LISTINGS
-    ) {
+    if (process.env.SKIP_FETCH_TEST_ALL || process.env.SKIP_FETCH_TEST_SCHEDULE_LISTINGS) {
       this.skip();
       return;
     }
@@ -81,10 +70,7 @@ describe('fetch', function() {
   });
   it('course detail', async function() {
     this.timeout(twentySeconds);
-    if (
-      process.env.SKIP_FETCH_TEST_ALL ||
-      process.env.SKIP_FETCH_TEST_COURSE_DETAIL
-    ) {
+    if (process.env.SKIP_FETCH_TEST_ALL || process.env.SKIP_FETCH_TEST_COURSE_DETAIL) {
       this.skip();
       return;
     }
@@ -102,10 +88,7 @@ describe('fetch', function() {
   });
   it('schedule detail', async function() {
     this.timeout(twentySeconds);
-    if (
-      process.env.SKIP_FETCH_TEST_ALL ||
-      process.env.SKIP_FETCH_TEST_SCHEDULE_DETAIL
-    ) {
+    if (process.env.SKIP_FETCH_TEST_ALL || process.env.SKIP_FETCH_TEST_SCHEDULE_DETAIL) {
       this.skip();
       return;
     }

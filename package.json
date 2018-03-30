@@ -6,8 +6,7 @@
   "typings": "./src/library.ts",
   "scripts": {
     "clean": "rm -rf ./dist",
-    "test": "npm run build && npm run run-tests",
-    "run-tests": "mocha --require ts-node/register \"test/**/*.ts\" --watch-extensions ts",
+    "test": "mocha --require ts-node/register \"test/**/*.ts\" --watch-extensions ts",
     "build": "tsc",
     "watch": "tsc --watch",
     "nodemon": "nodemon ./dist/src/index.js",

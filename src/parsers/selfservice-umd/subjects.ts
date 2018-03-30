@@ -5,7 +5,7 @@ export type SubjectResult = {
   name: string;
 };
 
-export function parseSubjects(html: string) {
+export function parseSubjectsSelfService(html: string) {
   const document = new JSDOM(html).window.document;
   const selectBox = document.querySelector(
     'select[name=sel_subj]'

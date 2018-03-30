@@ -2,9 +2,9 @@ import axios from 'axios';
 import * as https from 'https';
 import { JSDOM } from 'jsdom';
 import { formEncode } from '../../utilities';
-import { parseSubjects } from '../../parsers/selfservice-umd/subjects';
+import { parseSubjectsSelfService } from '../../parsers/selfservice-umd/subjects';
 
-export async function fetchSubjects(termCode: string) {
+export async function fetchSubjectsSelfService(termCode: string) {
   const response = await axios({
     method: 'POST',
     url: 'https://selfservice.umd.umich.edu/BANP/bwckctlg.p_disp_cat_term_date',
@@ -23,5 +23,5 @@ export async function fetchSubjects(termCode: string) {
   if (!html) {
     throw new Error('Subjects response was undefined or empty.');
   }
-  return parseSubjects(html);
+  return parseSubjectsSelfService(html);
 }
