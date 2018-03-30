@@ -8,12 +8,12 @@ import {
   buildPrerequisiteTree,
   replaceAllCourseDirectivesInTree,
   parseRestrictions
-} from '../../src/parsers/course-detail';
+} from '../../src/parsers/selfservice-umd/course-detail';
 import { oneLine } from 'common-tags';
 import { JSDOM } from 'jsdom';
 import * as fs from 'fs';
 import * as path from 'path';
-import { Prerequisite } from '../../src/parsers/course-detail';
+import { Prerequisite } from '../../src/parsers/selfservice-umd/course-detail';
 const courseDetailHtml = fs
   .readFileSync(path.resolve(__dirname, '../example-pages/course-detail.html'))
   .toString();

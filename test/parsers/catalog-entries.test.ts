@@ -4,7 +4,7 @@ import * as path from 'path';
 import {
   parseCatalogEntries,
   parseHeader
-} from '../../src/parsers/catalog-entries';
+} from '../../src/parsers/selfservice-umd/catalog-entries';
 const exampleHtml = fs
   .readFileSync(path.resolve(__dirname, '../example-pages/course-list.html'))
   .toString();

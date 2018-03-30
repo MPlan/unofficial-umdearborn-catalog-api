@@ -14,7 +14,8 @@
     "start": "npm run watch & npm run nodemon",
     "heroku-prebuild": "npm install --only=dev && npm install && npm run build",
     "docs": "typedoc --out docs src",
-    "pretty": "prettier --single-quote --write ./src/**/*.ts ./test/**/*.ts"
+    "pretty": "prettier --single-quote --write ./src/**/*.ts ./test/**/*.ts",
+    "coverage": "nyc mocha --require ts-node/register \"test/**/*.ts\" --watch-extensions ts"
   },
   "author": "rico kahler",
   "license": "MIT",
@@ -26,6 +27,7 @@
     "mocha": "^4.0.1",
     "nodemon": "^1.12.1",
     "prettier": "^1.11.1",
+    "source-map-support": "^0.5.4",
     "ts-node": "^3.3.0",
     "typedoc": "^0.10.0",
     "typescript": "^2.6.2"
@@ -46,5 +48,22 @@
     "lodash": "^4.17.4",
     "swagger-ui-express": "^2.0.14",
     "yamljs": "^0.3.0"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "text-summary",
+      "html"
+    ],
+    "sourceMap": true,
+    "instrument": true
   }
 }

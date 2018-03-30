@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import * as fs from 'fs';
 import * as path from 'path';
-import { parseSubjects } from '../../src/parsers/subjects';
+import { parseSubjects } from '../../src/parsers/selfservice-umd/subjects';
 const exampleHtml = fs
   .readFileSync(path.resolve(__dirname, '../example-pages/subjects.html'))
   .toString();

@@ -1,7 +1,7 @@
 import { JSDOM } from 'jsdom';
 import { decode } from 'he';
 import { oneLine } from 'common-tags';
-import { formDecode } from '../utilities';
+import { formDecode } from '../../utilities';
 
 export type Prerequisite =
   | undefined

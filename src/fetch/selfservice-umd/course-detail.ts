@@ -1,8 +1,8 @@
 import axios from 'axios';
 import * as https from 'https';
 import { oneLineTrim } from 'common-tags';
-import { formEncode } from '../utilities';
-import { parseCourseDetail } from '../parsers/course-detail';
+import { formEncode } from '../../utilities';
+import { parseCourseDetail } from '../../parsers/selfservice-umd/course-detail';
 
 export async function fetchCourseDetail(
   termCode: string,

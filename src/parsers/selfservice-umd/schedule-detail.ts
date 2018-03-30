@@ -1,5 +1,5 @@
 import { JSDOM } from 'jsdom';
-import { regularToCamelCase, formDecode } from '../utilities';
+import { regularToCamelCase, formDecode } from '../../utilities';
 import { range } from 'lodash';
 import { decode } from 'he';
 

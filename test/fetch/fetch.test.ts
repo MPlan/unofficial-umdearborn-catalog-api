@@ -1,11 +1,11 @@
 import { expect } from 'chai';
 
-import { fetchTerms } from '../../src/fetch/terms';
-import { fetchSubjects } from '../../src/fetch/subjects';
-import { fetchCatalogEntries } from '../../src/fetch/catalog-entries';
-import { fetchScheduleListings } from '../../src/fetch/schedule-listings';
-import { fetchCourseDetail } from '../../src/fetch/course-detail';
-import { fetchScheduleDetail } from '../../src/fetch/schedule-detail';
+import { fetchTerms } from '../../src/fetch/selfservice-umd/terms';
+import { fetchSubjects } from '../../src/fetch/selfservice-umd/subjects';
+import { fetchCatalogEntries } from '../../src/fetch/selfservice-umd/catalog-entries';
+import { fetchScheduleListings } from '../../src/fetch/selfservice-umd/schedule-listings';
+import { fetchCourseDetail } from '../../src/fetch/selfservice-umd/course-detail';
+import { fetchScheduleDetail } from '../../src/fetch/selfservice-umd/schedule-detail';
 
 const twentySeconds = 20 * 1000;
 

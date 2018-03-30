@@ -6,7 +6,7 @@ import {
   parseScheduleDetail,
   parseCapacityAndRemaining,
   parseCredits
-} from '../../src/parsers/schedule-detail';
+} from '../../src/parsers/selfservice-umd/schedule-detail';
 const scheduleDetailHtml = fs
   .readFileSync(
     path.resolve(__dirname, '../example-pages/schedule-detail.html')

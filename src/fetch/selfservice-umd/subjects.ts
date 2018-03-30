@@ -1,8 +1,8 @@
 import axios from 'axios';
 import * as https from 'https';
 import { JSDOM } from 'jsdom';
-import { formEncode } from '../utilities';
-import { parseSubjects } from '../parsers/subjects';
+import { formEncode } from '../../utilities';
+import { parseSubjects } from '../../parsers/selfservice-umd/subjects';
 
 export async function fetchSubjects(termCode: string) {
   const response = await axios({

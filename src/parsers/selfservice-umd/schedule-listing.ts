@@ -1,7 +1,7 @@
 import { JSDOM } from 'jsdom';
 import { oneLine } from 'common-tags';
 import { isEqual, range } from 'lodash';
-import { formDecode, regularToCamelCase } from '../utilities';
+import { formDecode, regularToCamelCase } from '../../utilities';
 
 interface SectionTableParseResult {
   instructors: string[];

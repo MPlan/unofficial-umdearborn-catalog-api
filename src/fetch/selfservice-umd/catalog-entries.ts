@@ -1,8 +1,8 @@
 import axios from 'axios';
 import * as https from 'https';
 import { oneLineTrim } from 'common-tags';
-import { formEncode } from '../utilities';
-import { parseCatalogEntries } from '../parsers/catalog-entries';
+import { formEncode } from '../../utilities';
+import { parseCatalogEntries } from '../../parsers/selfservice-umd/catalog-entries';
 
 export async function fetchCatalogEntries(
   termCode: string,

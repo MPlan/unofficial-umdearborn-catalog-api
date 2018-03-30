@@ -1,12 +1,12 @@
 import * as express from 'express';
 import * as Http from 'http-status-codes';
 export const catalog = express.Router();
-import { fetchTerms } from '../fetch/terms';
-import { fetchSubjects } from '../fetch/subjects';
-import { fetchCatalogEntries } from '../fetch/catalog-entries';
-import { fetchCourseDetail } from '../fetch/course-detail';
-import { fetchScheduleListings } from '../fetch/schedule-listings';
-import { fetchScheduleDetail } from '../fetch/schedule-detail';
+import { fetchTerms } from '../fetch/selfservice-umd/terms';
+import { fetchSubjects } from '../fetch/selfservice-umd/subjects';
+import { fetchCatalogEntries } from '../fetch/selfservice-umd/catalog-entries';
+import { fetchCourseDetail } from '../fetch/selfservice-umd/course-detail';
+import { fetchScheduleListings } from '../fetch/selfservice-umd/schedule-listings';
+import { fetchScheduleDetail } from '../fetch/selfservice-umd/schedule-detail';
 
 catalog.get('/terms', async (req, res) => {
   const terms = await fetchTerms();

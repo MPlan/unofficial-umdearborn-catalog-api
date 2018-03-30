@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as https from 'https';
 import { JSDOM } from 'jsdom';
-import { parseTerms } from '../parsers/terms';
+import { parseTerms } from '../../parsers/selfservice-umd/terms';
 
 export async function fetchTerms() {
   const catalogTermResponse = await axios({

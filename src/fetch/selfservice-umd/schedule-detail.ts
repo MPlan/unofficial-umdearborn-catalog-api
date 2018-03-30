@@ -2,8 +2,8 @@ import axios from 'axios';
 import * as https from 'https';
 import { JSDOM } from 'jsdom';
 import { oneLineTrim } from 'common-tags';
-import { formEncode } from '../utilities';
-import { parseScheduleDetail } from '../parsers/schedule-detail';
+import { formEncode } from '../../utilities';
+import { parseScheduleDetail } from '../../parsers/selfservice-umd/schedule-detail';
 
 export async function fetchScheduleDetail(termCode: string, crn: string) {
   const url = oneLineTrim`

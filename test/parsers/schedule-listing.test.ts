@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { expect } from 'chai';
-import { parseScheduleListing } from '../../src/parsers/schedule-listing';
+import { parseScheduleListing } from '../../src/parsers/selfservice-umd/schedule-listing';
 import { parseScheduleDetail } from '../../src/library';
 const scheduleListingsHtml = fs
   .readFileSync(

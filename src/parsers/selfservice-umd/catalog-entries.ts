@@ -1,5 +1,5 @@
 import { JSDOM } from 'jsdom';
-import { formDecode } from '../utilities';
+import { formDecode } from '../../utilities';
 import { decode } from 'he';
 
 export type CatalogEntryResult = {
