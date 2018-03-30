@@ -8,9 +8,15 @@ const catalogSubjectsHtml = fs
   .readFileSync(path.resolve(__dirname, '../example-pages/catalog-subjects.html'))
   .toString();
 
-describe.only('catalog.umd.umich.edu', function() {
-  it('should do something', async function() {
+describe.only('catalog subjects parser', function() {
+  it('parses subjects and returns a node and code', async function() {
     const subjects = parseSubjects(catalogSubjectsHtml);
+    // console.log(subjects);
+
     expect(subjects).to.not.be.empty;
+    for (const subject of subjects) {
+      expect(subject.name).to.not.be.empty;
+      expect(subject.code).to.not.be.empty;
+    }
   });
 });
