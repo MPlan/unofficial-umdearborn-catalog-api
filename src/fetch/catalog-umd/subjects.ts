@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as https from 'https';
 import { JSDOM } from 'jsdom';
-import { parseTerms } from '../../parsers/selfservice-umd/terms';
+// import { parseTerms } from '../../p/';
 
 export async function fetchSubjects() {
   const subjectsResponse = await axios({
